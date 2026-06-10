@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeWire PRO 4.20.69 - vibesonvibesonvibes.com</title>
+  <meta name="description" content="A chaotic retro internet portfolio disguised as VibeWire: browse Jacob Kowalewski's vibecoded apps, agents, and odd useful systems through a Windows 95/LimeWire fever dream.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vibesonvibesonvibes.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="vibesonvibesonvibes.com">
+  <meta property="og:title" content="VibeWire PRO 4.20.69">
+  <meta property="og:description" content="A chaotic retro internet portfolio disguised as a LimeWire-era app for vibecoded projects, agents, and useful personal systems.">
+  <meta property="og:url" content="https://vibesonvibesonvibes.com/">
+  <meta property="og:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VibeWire PRO 4.20.69">
+  <meta name="twitter:description" content="A chaotic retro internet portfolio disguised as a LimeWire-era app for vibecoded projects, agents, and useful personal systems.">
+  <meta name="twitter:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lw-green: #7db72f;
+      --lw-green-dark: #4a8c00;
+      --lw-green-light: #a6d44e;
+      --lw-bg: #ece9d8;
+      --lw-toolbar-top: #f6f4ec;
+      --lw-toolbar-bot: #dcd8c8;
+      --lw-border: #999;
+      --lw-border-light: #ccc;
+      --lw-blue-sel: #3169c6;
+      --lw-blue-light: #ccdcf5;
+      --lw-yellow-warn: #fff8d0;
+      --lw-yellow-border: #e0c840;
+      --lw-text: #000;
+      --lw-text-gray: #666;
+      --lw-sidebar-bg: #f5f3ec;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #000;
+      color: var(--lw-text);
+      font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    #hero-container {
+      position: relative;
+      height: 100vh;
+      background: #000;
+      cursor: pointer;
+    }
+
+    #hero-scene {
+      position: sticky;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+
+    #zoom-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-origin: 50% 38%;
+      transform: translateZ(0) scale3d(1, 1, 1);
+      backface-visibility: hidden;
+      contain: layout paint style;
+      isolation: isolate;
+      will-change: transform;
+    }
+
+    #hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      background-color: #000;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    #hero-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 51% 50%;
+      backface-visibility: hidden;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    #aku-aku {
+      --aku-opacity: 0;
+      --aku-scale: 0.82;
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      z-index: 6;
+      width: clamp(112px, 18vw, 240px);
+      height: auto;
+      opacity: var(--aku-opacity);
+      pointer-events: none;
+      transform: translate3d(-50%, -50%, 0) scale(var(--aku-scale));
+      transform-origin: 50% 50%;
+      filter:
+        drop-shadow(0 8px 0 rgba(0, 0, 0, 0.28))
+        drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45));
+      backface-visibility: hidden;
+      will-change: opacity, transform;
+      user-select: none;
+    }
+
+    #hero-scene.aku-active #aku-aku {
+      animation: akuZoomVisit 1100ms ease-in-out both;
+    }
+
+    @keyframes akuZoomVisit {
+      0%,
+      16.9% {
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) scale(0.72) rotate(-7deg);
+      }
+      24%,
+      76% {
+        opacity: 1;
+        transform: translate3d(-50%, -50%, 0) scale(1.06) rotate(2deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) scale(1.18) rotate(8deg);
+      }
+    }
+
+    #app-frame {
+      --app-clip: 100%;
+      --app-scale: 1;
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      z-index: 3;
+      width: 48%;
+      height: 68%;
+      min-width: 440px;
+      min-height: 300px;
+      overflow: hidden;
+      border-radius: 4px;
+      opacity: 1;
+      clip-path: inset(0 0 var(--app-clip) 0 round 4px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      transform: translateX(-50%) scale(var(--app-scale));
+      transform-origin: 50% 50%;
+      background: transparent;
+      pointer-events: none;
+      will-change: opacity, transform;
+    }
+
+    #app-frame.locked {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      border-radius: 0;
+      clip-path: none;
+      box-shadow: none;
+      transform: none;
+      pointer-events: auto;
+    }
+
+    #limewire-app {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--lw-bg);
+      border: 1px solid #575757;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+
+    .title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 26px;
+      min-height: 26px;
+      padding: 3px 6px;
+      color: #fff;
+      background: linear-gradient(180deg, #a0b44c 0%, #6e8a28 30%, #5a7a18 70%, #4a6a10 100%);
+      font-size: 11px;
+      font-weight: 700;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+      cursor: default;
+    }
+
+    .title-left,
+    .window-buttons,
+    .logo-mark,
+    .status-cluster {
+      display: flex;
+      align-items: center;
+    }
+
+    .title-left {
+      min-width: 0;
+      gap: 5px;
+    }
+
+    .lime-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.35);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 36% 32%, #f5ffd5 0 12%, transparent 13%),
+        radial-gradient(circle at 50% 50%, #c7f35f 0 35%, #7db72f 58%, #3f8300 100%);
+      box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.7);
+    }
+
+    .title-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .window-buttons {
+      gap: 2px;
+      padding-left: 6px;
+    }
+
+    .win-btn {
+      width: 20px;
+      height: 18px;
+      padding: 0;
+      border: 1px solid #5b6b3b;
+      color: #243311;
+      background: linear-gradient(180deg, #f6f6ef, #b7c48a);
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      cursor: default;
+    }
+
+    .win-btn.close {
+      border-color: #743521;
+      color: #fff;
+      background: linear-gradient(180deg, #ffb39a, #d84024 55%, #9f1f13);
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-bar {
+      display: flex;
+      gap: 18px;
+      min-height: 20px;
+      padding: 3px 9px;
+      border-bottom: 1px solid var(--lw-border);
+      background: var(--lw-bg);
+      cursor: default;
+    }
+
+    .tab-toolbar {
+      display: flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 5px 10px 4px;
+      border-bottom: 1px solid var(--lw-border);
+      background: linear-gradient(180deg, var(--lw-toolbar-top), var(--lw-toolbar-bot));
+    }
+
+    .tab-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 29px;
+      min-width: 112px;
+      padding: 4px 9px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--lw-text);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .tab-button:hover {
+      border-color: var(--lw-border-light);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .tab-button.active {
+      border-color: #8e8e8e;
+      background: #fff;
+      font-weight: 700;
+    }
+
+    .tab-separator {
+      width: 1px;
+      height: 22px;
+      margin: 0 7px;
+      background: var(--lw-border-light);
+    }
+
+    .toolbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      color: #15933a;
+      font-size: 21px;
+      font-style: italic;
+      font-weight: 400;
+      cursor: default;
+    }
+
+    .toolbar-logo .lime-icon {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+    }
+
+    .app-body {
+      position: relative;
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      width: 180px;
+      min-width: 180px;
+      background: var(--lw-sidebar-bg);
+      border-right: 1px solid var(--lw-border);
+      overflow: auto;
+    }
+
+    .side-section {
+      border-bottom: 1px solid var(--lw-border);
+    }
+
+    .side-header {
+      padding: 3px 6px;
+      border-top: 1px solid #ffe884;
+      border-bottom: 1px solid #b98a00;
+      background: linear-gradient(180deg, #ffe77a, #ffc822 62%, #e5aa00);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      cursor: default;
+    }
+
+    .side-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 20px;
+      padding: 2px 7px;
+      cursor: default;
+    }
+
+    .side-item.clickable {
+      cursor: pointer;
+    }
+
+    .side-item.clickable:hover {
+      background: var(--lw-blue-light);
+    }
+
+    .side-item.active {
+      background: var(--lw-blue-sel);
+      color: #fff;
+    }
+
+    .side-icon {
+      width: 17px;
+      text-align: center;
+    }
+
+    .side-back {
+      margin-top: auto;
+      padding: 8px 10px 10px;
+    }
+
+    .retro-button {
+      min-height: 24px;
+      padding: 3px 12px;
+      border: 1px solid #8f8f8f;
+      border-radius: 2px;
+      color: var(--lw-text);
+      background: linear-gradient(180deg, #fff, #d8d8d8);
+      box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+    }
+
+    .retro-button:active:not(.disabled) {
+      background: linear-gradient(180deg, #c9c9c9, #f2f2f2);
+      box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    .side-back .retro-button {
+      width: 100%;
+    }
+
+    .content {
+      display: flex;
+      flex: 1;
+      min-width: 0;
+      flex-direction: column;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .search-panel {
+      display: flex;
+      min-height: 0;
+      flex: 1;
+      flex-direction: column;
+      background: #fff;
+    }
+
+    .search-tabbar {
+      display: flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 4px 8px;
+      border-bottom: 1px solid var(--lw-border-light);
+      background: #f7f7f7;
+    }
+
+    .mobile-filter {
+      display: none;
+      margin-right: 7px;
+      padding: 2px 8px;
+    }
+
+    .search-label {
+      display: inline-flex;
+      min-width: 180px;
+      max-width: 100%;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid #c65353;
+      background: #4d8bdc;
+      color: #fff;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .search-close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-right: 4px;
+      border-right: 1px solid rgba(0, 0, 0, 0.15);
+      background: #c65353;
+      color: #fff;
+      font-size: 10px;
+      cursor: default;
+    }
+
+    .search-label-text {
+      overflow: hidden;
+      padding-right: 6px;
+      text-overflow: ellipsis;
+    }
+
+    .warning {
+      min-height: 29px;
+      margin: 6px 8px 0;
+      padding: 5px 8px;
+      border: 1px solid var(--lw-yellow-border);
+      background: linear-gradient(180deg, #fff7c7, #ffc429);
+      color: #654600;
+      font-weight: 700;
+    }
+
+    .warning a {
+      margin-left: 8px;
+      color: #8f6500;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .table-wrap {
+      min-height: 165px;
+      flex: 1;
+      margin: 8px 8px 0;
+      overflow: auto;
+      border: 1px solid var(--lw-border);
+      background:
+        repeating-linear-gradient(
+          180deg,
+          #fff 0,
+          #fff 20px,
+          #ece8dd 20px,
+          #ece8dd 21px,
+          #f8f6f0 21px,
+          #f8f6f0 41px,
+          #ece8dd 41px,
+          #ece8dd 42px
+        );
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      height: 21px;
+      overflow: hidden;
+      padding: 2px 5px;
+      border-right: 1px solid #ddd;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      border-bottom: 1px solid #c6c6c6;
+      background: linear-gradient(180deg, #fff, #e6e6e6);
+      color: var(--lw-text);
+      font-weight: 400;
+      cursor: default;
+    }
+
+    tbody tr {
+      opacity: 0;
+      animation: rowFadeIn 0.4s ease forwards;
+      cursor: pointer;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8f6f0;
+    }
+
+    tbody tr:hover {
+      background: var(--lw-blue-light);
+    }
+
+    tbody tr.selected {
+      background: var(--lw-blue-sel);
+      color: #fff;
+    }
+
+    @keyframes rowFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .quality-cell {
+      width: 80px;
+      color: #d4a400;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    .star-empty {
+      color: #ccc;
+    }
+
+    .num-cell {
+      width: 30px;
+      text-align: center;
+    }
+
+    .license-cell {
+      width: 55px;
+      text-align: center;
+    }
+
+    .name-cell {
+      min-width: 210px;
+    }
+
+    .type-cell {
+      width: 45px;
+      text-align: center;
+    }
+
+    .size-cell {
+      width: 70px;
+      text-align: right;
+    }
+
+    .size-green {
+      color: var(--lw-green-dark);
+      font-weight: 700;
+    }
+
+    .speed-cell {
+      width: 90px;
+    }
+
+    .bitrate-cell {
+      width: 50px;
+      text-align: center;
+    }
+
+    .file-name {
+      display: inline-flex;
+      max-width: 100%;
+      align-items: center;
+      gap: 5px;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .file-name span:last-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .actions-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      min-height: 67px;
+      padding: 7px 16px;
+      border-bottom: 1px solid var(--lw-border);
+      background: #efefef;
+    }
+
+    .action-button {
+      display: inline-flex;
+      min-width: 76px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      border: 0;
+      background: transparent;
+      color: var(--lw-text);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .action-button .action-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .action-button.disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .action-button.junk {
+      margin-left: auto;
+    }
+
+    .downloads-panel {
+      display: flex;
+      min-height: 122px;
+      max-height: 31%;
+      flex-direction: column;
+      border-top: 2px solid var(--lw-border);
+      background: #f2f2f2;
+    }
+
+    .downloads-header {
+      min-height: 19px;
+      padding: 3px 8px;
+      border-bottom: 1px solid var(--lw-border);
+      font-weight: 700;
+      cursor: default;
+    }
+
+    .downloads-wrap {
+      flex: 1;
+      overflow: auto;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          #fff 0,
+          #fff 19px,
+          #ece8dd 19px,
+          #ece8dd 20px,
+          #f8f6f0 20px,
+          #f8f6f0 39px,
+          #ece8dd 39px,
+          #ece8dd 40px
+        );
+    }
+
+    .downloads-wrap th,
+    .downloads-wrap td {
+      height: 20px;
+    }
+
+    .progress {
+      height: 14px;
+      border: 1px solid #999;
+      background: #e0e0e0;
+    }
+
+    .progress-fill {
+      display: block;
+      height: 100%;
+      color: #fff;
+      font-size: 9px;
+      line-height: 12px;
+      text-align: center;
+      background: linear-gradient(180deg, #90c8f0, #5090d0, #3070b0);
+    }
+
+    .progress-fill.complete {
+      background: linear-gradient(180deg, #a8e050, #7db72f, #5a9a10);
+    }
+
+    .download-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      min-height: 42px;
+      padding: 4px 10px;
+      border-top: 1px solid var(--lw-border-light);
+      background: #efefef;
+    }
+
+    .download-tool {
+      display: inline-flex;
+      min-width: 54px;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      border: 0;
+      background: transparent;
+      color: #4d4d4d;
+      cursor: default;
+    }
+
+    .download-tool .action-icon {
+      font-size: 18px;
+      filter: grayscale(1);
+      opacity: 0.78;
+    }
+
+    .section-panel {
+      display: none;
+      min-height: 0;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+      background: #fff;
+      color: var(--lw-text);
+      font-size: 11px;
+      line-height: 1.25;
+      padding: 0;
+    }
+
+    .section-panel.visible {
+      display: flex;
+    }
+
+    .section-panel a {
+      color: var(--lw-green-dark);
+      text-decoration: underline;
+    }
+
+    .section-panel a:hover {
+      color: #2d6400;
+    }
+
+    .section-table-wrap {
+      min-height: 148px;
+      flex: 1;
+    }
+
+    .detail-key {
+      width: 140px;
+      color: #555;
+      font-weight: 700;
+    }
+
+    .detail-value {
+      white-space: normal;
+    }
+
+    .detail-status {
+      width: 110px;
+      color: var(--lw-green-dark);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .section-copy {
+      margin: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--lw-border);
+      background: #f8f6f0;
+      line-height: 1.6;
+      overflow: auto;
+    }
+
+    .section-copy p {
+      max-width: 880px;
+      margin: 0 0 8px;
+    }
+
+    .section-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-actions {
+      min-height: 58px;
+      border-top: 1px solid var(--lw-border);
+    }
+
+    .section-actions .action-button {
+      color: var(--lw-text);
+      text-decoration: none;
+    }
+
+    .section-panel tbody tr.selected a,
+    .section-panel tbody tr.selected .contact-label,
+    .section-panel tbody tr.selected .detail-status {
+      color: #fff;
+    }
+
+    .contact-list {
+      display: contents;
+    }
+
+    .contact-row {
+      display: table-row;
+    }
+
+    .contact-label {
+      color: #555;
+      font-weight: 600;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-top: 1px solid var(--lw-border);
+      background: linear-gradient(180deg, #f7f7f7, #dadada);
+      color: var(--lw-text-gray);
+      font-size: 10px;
+      cursor: default;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lw-green);
+      box-shadow: 0 0 0 1px #386b00;
+    }
+
+    .signal {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 14px;
+    }
+
+    .signal i {
+      display: block;
+      width: 4px;
+      background: var(--lw-green);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+    }
+
+    .signal i:nth-child(1) {
+      height: 4px;
+    }
+
+    .signal i:nth-child(2) {
+      height: 7px;
+    }
+
+    .signal i:nth-child(3) {
+      height: 10px;
+    }
+
+    .signal i:nth-child(4) {
+      height: 13px;
+    }
+
+    .status-link {
+      flex: 1;
+      min-width: 120px;
+      color: var(--lw-green-dark);
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    .media-player {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      color: #000;
+    }
+
+    .media-controls {
+      letter-spacing: 4px;
+      cursor: default;
+    }
+
+    .player-label {
+      min-width: 116px;
+      padding: 1px 7px;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      background: #f8f8f8;
+      color: #000;
+      text-align: center;
+    }
+
+    #tooltip {
+      position: fixed;
+      z-index: 12000;
+      display: none;
+      max-width: min(380px, calc(100vw - 24px));
+      padding: 8px 10px;
+      border: 1px solid #000;
+      background: #ffffe1;
+      color: #000;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.22);
+      font-size: 11px;
+      line-height: 1.45;
+      pointer-events: none;
+    }
+
+    .tip-title {
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .tip-hash {
+      display: block;
+      margin-top: 5px;
+      color: #777;
+      font-family: "Courier New", monospace;
+      font-size: 9px;
+      overflow-wrap: anywhere;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 900px) {
+      #app-frame {
+        top: 18%;
+        width: 62%;
+        height: 60%;
+        min-width: 360px;
+      }
+
+      .actions-row {
+        gap: 14px;
+      }
+
+      .download-actions {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #app-frame {
+        top: 17%;
+        width: 88%;
+        height: 61%;
+        min-width: 0;
+      }
+
+      #hero-image {
+        object-position: 50% 50%;
+      }
+
+      #limewire-app {
+        font-size: 10.5px;
+      }
+
+      .toolbar-logo {
+        display: none;
+      }
+
+      .tab-toolbar {
+        overflow-x: auto;
+        padding-right: 4px;
+      }
+
+      .tab-button {
+        min-width: max-content;
+      }
+
+      .sidebar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+        display: none;
+        box-shadow: 5px 0 16px rgba(0, 0, 0, 0.24);
+      }
+
+      .sidebar.mobile-open {
+        display: flex;
+      }
+
+      .mobile-filter {
+        display: inline-block;
+      }
+
+      .hide-mobile {
+        display: none;
+      }
+
+      .warning {
+        margin: 5px 6px 0;
+      }
+
+      .table-wrap {
+        margin: 6px 6px 0;
+      }
+
+      .actions-row {
+        min-height: 58px;
+        gap: 8px;
+        padding: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+
+      .action-button {
+        min-width: 54px;
+        font-size: 10px;
+      }
+
+      .action-button .action-icon {
+        font-size: 18px;
+      }
+
+      .downloads-panel {
+        min-height: 104px;
+      }
+
+      .download-actions {
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+
+      .section-panel {
+        padding: 0;
+      }
+
+      .status-bar {
+        gap: 7px;
+        overflow: hidden;
+      }
+
+      .status-link,
+      .player-label {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .title-bar {
+        padding-right: 3px;
+      }
+
+      .window-buttons {
+        display: none;
+      }
+
+      .menu-bar {
+        gap: 12px;
+      }
+
+      .search-label {
+        min-width: 0;
+      }
+
+      .num-cell {
+        width: 28px;
+      }
+
+      .type-cell {
+        width: 42px;
+      }
+
+      .size-cell {
+        width: 60px;
+      }
+
+      .speed-cell {
+        width: 72px;
+      }
+
+      .actions-row {
+        align-items: stretch;
+      }
+
+      .downloads-panel {
+        min-height: 86px;
+        max-height: 24%;
+      }
+
+      .download-actions {
+        display: none;
+      }
+
+      .section-actions {
+        overflow-x: auto;
+        align-items: center;
+      }
+
+      .section-table-wrap {
+        min-height: 120px;
+      }
+
+      .speed-cell {
+        display: none;
+      }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      tbody tr {
+        animation: none;
+        opacity: 1;
+      }
+
+      #zoom-wrapper {
+        transition: none;
+      }
+
+      #hero-scene.aku-active #aku-aku {
+        animation: none;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <div id="hero-container" aria-label="Scroll or click to enter VibeWire">
+    <div id="hero-scene">
+      <div id="zoom-wrapper">
+        <div id="hero-bg">
+          <img id="hero-image" src="images/new/vibesvibesvibes-website-click-for-vibes.png" alt="" draggable="false">
+        </div>
+        <div id="app-frame">
+          <div id="limewire-app">
+            <div class="title-bar">
+              <div class="title-left">
+                <span class="lime-icon" aria-hidden="true"></span>
+                <span class="title-text">vibesonvibesonvibes.com v2.1.337 - Connected to Network</span>
+              </div>
+              <div class="window-buttons" aria-hidden="true">
+                <button class="win-btn" type="button">_</button>
+                <button class="win-btn" type="button">□</button>
+                <button class="win-btn close" type="button">×</button>
+              </div>
+            </div>
+
+            <div class="menu-bar">
+              <span>File</span>
+              <span>View</span>
+              <span>Tools</span>
+              <span>Help</span>
+            </div>
+
+            <div class="tab-toolbar" role="tablist" aria-label="VibeWire sections">
+              <button class="tab-button active" id="tab-projects" type="button" role="tab" aria-selected="true" data-section="projects">
+                <span aria-hidden="true">🔍</span>
+                <span>Search / Share</span>
+              </button>
+              <span class="tab-separator" aria-hidden="true"></span>
+              <button class="tab-button" id="tab-contact" type="button" role="tab" aria-selected="false" data-section="contact">
+                <span aria-hidden="true">🌐</span>
+                <span>Connect</span>
+              </button>
+              <div class="toolbar-logo" aria-hidden="true">
+                <span class="lime-icon"></span>
+                <span>VibeWire</span>
+              </div>
+            </div>
+
+            <div class="app-body">
+              <aside class="sidebar" id="sidebar" aria-label="Filters">
+                <div class="side-section">
+                  <div class="side-header">Category</div>
+                  <div class="side-item clickable active" data-category="All"><span class="side-icon">📂</span><span>All (6)</span></div>
+                  <div class="side-item clickable" data-category="Agents"><span class="side-icon">🤖</span><span>Agents</span></div>
+                  <div class="side-item clickable" data-category="Infra"><span class="side-icon">🔧</span><span>Infrastructure</span></div>
+                  <div class="side-item clickable" data-category="Websites"><span class="side-icon">🌐</span><span>Websites</span></div>
+                  <div class="side-item clickable" data-category="Apps"><span class="side-icon">📦</span><span>Apps</span></div>
+                </div>
+
+                <div class="side-section">
+                  <div class="side-header">Tech Stack</div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>All (15)</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>Python</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>FastAPI</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>Next.js</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>Claude API</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>Telegram Bot API</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>Tailscale</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>HTML / CSS / JS</span></div>
+                </div>
+
+                <div class="side-section">
+                  <div class="side-header">Builder</div>
+                  <div class="side-item"><span class="side-icon">▣</span><span>All (1)</span></div>
+                  <div class="side-item"><span class="side-icon">▣</span><strong>Jacob Kowalewski</strong></div>
+                </div>
+
+                <div class="side-back">
+                  <button class="retro-button" type="button" id="back-search">Back To Search</button>
+                </div>
+              </aside>
+
+              <main class="content">
+                <section class="search-panel" id="projects-section" aria-label="Vibecoded apps">
+                  <div class="search-tabbar">
+                    <button class="retro-button mobile-filter" type="button" id="mobile-filter">☰ Filter</button>
+                    <div class="search-label">
+                      <span class="search-close">×</span>
+                      <span class="search-label-text" id="search-title">Vibecoded Apps (6)</span>
+                    </div>
+                  </div>
+                  <div class="warning">Things that I have vibecoded that I use on, more or less, a daily basis.</div>
+                  <div class="table-wrap">
+                    <table aria-label="VibeWire search results">
+                      <colgroup>
+                        <col class="quality-cell hide-mobile">
+                        <col class="num-cell">
+                        <col class="license-cell hide-mobile">
+                        <col class="name-cell">
+                        <col class="type-cell">
+                        <col class="size-cell">
+                        <col class="speed-cell">
+                        <col class="bitrate-cell hide-mobile">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th class="quality-cell hide-mobile">Readiness</th>
+                          <th class="num-cell">#</th>
+                          <th class="license-cell hide-mobile">Usable</th>
+                          <th>Name</th>
+                          <th class="type-cell">Type</th>
+                          <th class="size-cell">Size</th>
+                          <th class="speed-cell">Speed</th>
+                          <th class="bitrate-cell hide-mobile">Bitrate</th>
+                        </tr>
+                      </thead>
+                      <tbody id="results-body"></tbody>
+                    </table>
+                  </div>
+
+                  <div class="actions-row" id="actions-row">
+                    <button class="action-button" type="button" id="download-button">
+                      <span class="action-icon">⬇️</span>
+                      <span>Download</span>
+                    </button>
+                    <button class="action-button" type="button" id="browse-button">
+                      <span class="action-icon">🔍</span>
+                      <span>Browse Host</span>
+                    </button>
+                    <button class="action-button disabled" type="button" disabled>
+                      <span class="action-icon">🛑</span>
+                      <span>Stop Search</span>
+                    </button>
+                    <button class="action-button disabled junk" type="button" disabled>
+                      <span class="action-icon">🗑️</span>
+                      <span>Junk</span>
+                    </button>
+                  </div>
+                </section>
+
+                <section class="section-panel" id="contact-section" aria-label="Connect">
+                  <div class="search-tabbar">
+                    <div class="search-label">
+                      <span class="search-close">×</span>
+                      <span class="search-label-text">Connect Peers (3)</span>
+                    </div>
+                  </div>
+                  <div class="warning">🌐&nbsp;Connection quality: Excellent. These verified peers open in a new tab.</div>
+                  <div class="table-wrap section-table-wrap">
+                    <table aria-label="Connect contacts">
+                      <colgroup>
+                        <col style="width:90px">
+                        <col>
+                        <col style="width:100px">
+                        <col style="width:80px">
+                        <col style="width:70px">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th>Peer</th>
+                          <th>Address</th>
+                          <th>Protocol</th>
+                          <th>Status</th>
+                          <th>Speed</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="selected">
+                          <td class="contact-label">GitHub</td>
+                          <td><a href="https://github.com/polski-sklep" target="_blank" rel="noopener noreferrer">github.com/polski-sklep</a></td>
+                          <td>git</td>
+                          <td class="detail-status">Online</td>
+                          <td>T3</td>
+                        </tr>
+                        <tr>
+                          <td class="contact-label">X / Twitter</td>
+                          <td><a href="https://x.com/overtonlimbo" target="_blank" rel="noopener noreferrer">x.com/overtonlimbo</a></td>
+                          <td>social</td>
+                          <td class="detail-status">Online</td>
+                          <td>T1</td>
+                        </tr>
+                        <tr>
+                          <td class="contact-label">LinkedIn</td>
+                          <td><a href="https://www.linkedin.com/in/jacobkowalewski/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jacobkowalewski</a></td>
+                          <td>profile</td>
+                          <td class="detail-status">Online</td>
+                          <td>T3</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="actions-row section-actions">
+                    <a class="action-button" href="https://github.com/polski-sklep" target="_blank" rel="noopener noreferrer">
+                      <span class="action-icon">🔍</span>
+                      <span>Browse Host</span>
+                    </a>
+                    <a class="action-button" href="https://x.com/overtonlimbo" target="_blank" rel="noopener noreferrer">
+                      <span class="action-icon">📡</span>
+                      <span>Ping</span>
+                    </a>
+                    <button class="action-button disabled" type="button" disabled>
+                      <span class="action-icon">🛑</span>
+                      <span>Stop Search</span>
+                    </button>
+                    <button class="action-button disabled junk" type="button" disabled>
+                      <span class="action-icon">🗑️</span>
+                      <span>Junk</span>
+                    </button>
+                  </div>
+                </section>
+              </main>
+            </div>
+
+            <div class="downloads-panel" id="downloads-panel">
+              <div class="downloads-header">Downloads</div>
+              <div class="downloads-wrap">
+                <table aria-label="Downloads">
+                  <colgroup>
+                    <col style="width:35%">
+                    <col style="width:10%">
+                    <col style="width:20%">
+                    <col style="width:15%">
+                    <col style="width:10%">
+                    <col style="width:10%">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Size</th>
+                      <th>Status</th>
+                      <th>Progress</th>
+                      <th>Speed</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="downloads-body"></tbody>
+                </table>
+              </div>
+              <div class="download-actions" id="download-actions">
+                <button class="download-tool" type="button"><span class="action-icon">🚫</span><span>Clear</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">🔁</span><span>Resume</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">⏸</span><span>Pause</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">⚙</span><span>Launch</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">📂</span><span>Explore</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">🧹</span><span>Clear Inactive</span></button>
+              </div>
+            </div>
+
+            <div class="status-bar">
+              <span class="dot"></span>
+              <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="status-cluster">⬆ 1 @ 79 KB/s</span>
+              <span class="status-cluster">⬇ 0 @ 0 KB/s</span>
+              <a class="status-link">Support vibecoding and open protocols. Get VibeWire PRO.</a>
+              <span class="media-player">
+                <span class="media-controls">◀◀ ▶ ▶▶</span>
+                <span class="player-label">VibeWire Media Player</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img id="aku-aku" src="images/aku-aku.png" alt="" draggable="false" aria-hidden="true">
+    </div>
+  </div>
+
+  <div id="tooltip" role="tooltip"></div>
+
+  <script>
+    const GITHUB_HOST = "https://github.com/polski-sklep";
+
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    const apps = [
+      {
+        name: "committee_orchestrator_v2.1_multiagent_crypto.py",
+        quality: 5,
+        num: 6,
+        license: "✅",
+        type: "py",
+        size: "14.2 MB",
+        sizeColor: true,
+        speed: "T3 or Higher",
+        bitrate: "271",
+        icon: "🤖",
+        category: "Agents",
+        desc: "14-agent Python/FastAPI orchestration system for crypto investment analysis. Charlie Munger contrarian agent, structural guardrails gate, 9-step pipeline. pgvector + Notion integration.",
+        tech: "Python, FastAPI, Next.js, pgvector, Claude API",
+        url: "https://github.com/polski-sklep/aiic",
+        hash: "a3f7c9e2b1d456789abcdef0123456789abcdef0"
+      },
+      {
+        name: "ai_job_search_claude_framework_v1.0.zip",
+        quality: 5,
+        num: 5,
+        license: "✅",
+        type: "zip",
+        size: "1.0 MB",
+        sizeColor: true,
+        speed: "T3 or Higher",
+        bitrate: "128",
+        icon: "💼",
+        category: "Agents",
+        desc: "AI-powered job application framework built on Claude Code. Fork it, fill in your profile, evaluate roles, tailor CVs, write cover letters, and prepare for interviews.",
+        tech: "Claude Code, Markdown, job search automation",
+        url: "https://github.com/polski-sklep/ai-job-search",
+        hash: "b8e4d2f1a3c567890bcdef1234567890abcdef12"
+      },
+      {
+        name: "ai_curriculum_ingest_v1.4_spaced_rep.py",
+        quality: 4,
+        num: 5,
+        license: "✅",
+        type: "py",
+        size: "3.1 MB",
+        sizeColor: false,
+        speed: "T3 or Higher",
+        bitrate: "128",
+        icon: "📚",
+        category: "Infra",
+        desc: "AI curriculum ingestion pipeline. Twitter links, URLs, text, screenshots via Telegram bot. SHA-256 dedup, systemd service.",
+        tech: "Python, Claude API, Telegram Bot API, systemd",
+        url: "https://github.com/polski-sklep/ai-curriculum-ingest",
+        hash: "c1f8a4b2d3e678901cdef2345678901abcdef234"
+      },
+      {
+        name: "telegram_contact_graph_v1.0.py",
+        quality: 4,
+        num: 4,
+        license: "✅",
+        type: "py",
+        size: "2.4 MB",
+        sizeColor: false,
+        speed: "T1",
+        bitrate: "128",
+        icon: "🛰️",
+        category: "Infra",
+        desc: "Telegram contact graph extractor for rebuilding a personal network from direct messages, replies, mentions, shared groups, and recent interaction context.",
+        tech: "Python, Telethon, Telegram API, JSON",
+        url: "https://github.com/polski-sklep/telegram-contact-graph",
+        hash: "e5b3c4d2f6a789013ef45678901234abcdef5678"
+      },
+      {
+        name: "fitness_tracker_power_score_v1.0.zip",
+        quality: 4,
+        num: 4,
+        license: "✅",
+        type: "zip",
+        size: "6.4 MB",
+        sizeColor: false,
+        speed: "Tailscale",
+        bitrate: "128",
+        icon: "🏋️",
+        category: "Apps",
+        desc: "Single-user fitness tracker. Telegram bot intake, Claude workout parsing, FastAPI/Postgres storage, HTMX dashboard, and a personal Power Score model.",
+        tech: "Python, FastAPI, HTMX, Postgres, Claude API, Tailscale",
+        url: "https://github.com/polski-sklep/fitness-tracker",
+        hash: "f6c4d5e3a7b890124f5678901234abcdef6789a"
+      },
+      {
+        name: "vibesonvibesonvibes_portfolio_site.html",
+        quality: 5,
+        num: 3,
+        license: "✅",
+        type: "html",
+        size: "42 KB",
+        sizeColor: true,
+        speed: "Broadband",
+        bitrate: "∞",
+        icon: "🌐",
+        category: "Websites",
+        desc: "This site. LimeWire-themed portfolio. Self-referential. Recursive.",
+        tech: "HTML, CSS, JavaScript, Vibes",
+        url: "https://github.com/polski-sklep/vibesonvibesonvibes-website",
+        hash: "d4a2b3c1e5f678902def3456789012abcdef3456"
+      }
+    ];
+
+    const state = {
+      locked: false,
+      selectedIndex: 0,
+      filter: "All",
+      targetProgress: 0,
+      renderedProgress: 0,
+      heroFrame: 0,
+      heroClicks: 0,
+      heroScrollIntent: 0,
+      heroReverseIntent: 0,
+      heroReverseScrolls: 0,
+      heroReverseTimer: 0,
+      heroReturnCooldownUntil: 0,
+      autoEntering: false,
+      downloads: [
+        {
+          name: "committee_orchestrator_v2.1.py",
+          size: "14.2 MB",
+          status: "Downloading from 7 hosts",
+          progress: 0,
+          speed: "79 KB/s",
+          time: "2:15:32",
+          complete: false
+        },
+        {
+          name: "ai_job_search_claude_framework.zip",
+          size: "1.0 MB",
+          status: "Complete",
+          progress: 100,
+          speed: "",
+          time: "",
+          complete: true
+        }
+      ]
+    };
+
+    const HERO_LOCK_PROGRESS = 0.86;
+    const AUTO_ENTER_SCROLL_PROGRESS = 0.02;
+    const AUTO_ENTER_WHEEL_INTENT = 120;
+    const RETURN_TO_HERO_WHEEL_INTENT = 1100;
+    const RETURN_TO_HERO_SCROLLS = 4;
+
+    const heroContainer = document.getElementById("hero-container");
+    const heroScene = document.getElementById("hero-scene");
+    const zoomWrapper = document.getElementById("zoom-wrapper");
+    const appFrame = document.getElementById("app-frame");
+    const sidebar = document.getElementById("sidebar");
+    const projectsSection = document.getElementById("projects-section");
+    const contactSection = document.getElementById("contact-section");
+    const downloadsPanel = document.getElementById("downloads-panel");
+    const actionsRow = document.getElementById("actions-row");
+    const resultsBody = document.getElementById("results-body");
+    const downloadsBody = document.getElementById("downloads-body");
+    const searchTitle = document.getElementById("search-title");
+    const tooltip = document.getElementById("tooltip");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function stars(count) {
+      let output = "";
+      for (let i = 0; i < 5; i += 1) {
+        output += i < count ? "★" : "<span class=\"star-empty\">★</span>";
+      }
+      return output;
+    }
+
+    function visibleApps() {
+      return state.filter === "All" ? apps : apps.filter((app) => app.category === state.filter);
+    }
+
+    function selectedApp() {
+      return apps[state.selectedIndex] || apps[0];
+    }
+
+    function projectUrl(app) {
+      return app.url || GITHUB_HOST;
+    }
+
+    function openSelectedProject() {
+      window.open(projectUrl(selectedApp()), "_blank", "noopener,noreferrer");
+    }
+
+    function renderResults() {
+      const filtered = visibleApps();
+      searchTitle.textContent = `Vibecoded Apps (${filtered.length})`;
+      if (!filtered.some((app) => apps.indexOf(app) === state.selectedIndex)) {
+        state.selectedIndex = apps.indexOf(filtered[0] || apps[0]);
+      }
+
+      resultsBody.innerHTML = filtered.map((app, i) => {
+        const appIndex = apps.indexOf(app);
+        const selected = appIndex === state.selectedIndex ? " selected" : "";
+        const sizeClass = app.sizeColor ? "size-cell size-green" : "size-cell";
+        return `
+          <tr class="${selected}" data-index="${appIndex}" title="Double-click to browse this GitHub host" style="animation-delay:${i * 0.06}s">
+            <td class="quality-cell hide-mobile">${stars(app.quality)}</td>
+            <td class="num-cell">${app.num}</td>
+            <td class="license-cell hide-mobile">${app.license}</td>
+            <td>
+              <span class="file-name"><span>${app.icon}</span><span>${escapeHtml(app.name)}</span></span>
+            </td>
+            <td class="type-cell">${escapeHtml(app.type)}</td>
+            <td class="${sizeClass}">${escapeHtml(app.size)}</td>
+            <td class="speed-cell">${escapeHtml(app.speed)}</td>
+            <td class="bitrate-cell hide-mobile">${escapeHtml(app.bitrate)}</td>
+          </tr>
+        `;
+      }).join("");
+
+      resultsBody.querySelectorAll("tr").forEach((row) => {
+        row.addEventListener("click", () => selectRow(Number(row.dataset.index)));
+        row.addEventListener("dblclick", () => {
+          selectRow(Number(row.dataset.index));
+          openSelectedProject();
+        });
+        row.addEventListener("mouseenter", (event) => showTooltip(Number(row.dataset.index), event));
+        row.addEventListener("mousemove", moveTooltip);
+        row.addEventListener("mouseleave", hideTooltip);
+      });
+    }
+
+    function selectRow(index) {
+      state.selectedIndex = index;
+      resultsBody.querySelectorAll("tr").forEach((row) => {
+        row.classList.toggle("selected", Number(row.dataset.index) === index);
+      });
+    }
+
+    function showTooltip(index, event) {
+      const app = apps[index];
+      tooltip.innerHTML = `
+        <div class="tip-title">${app.icon} ${escapeHtml(app.name)}</div>
+        <div><strong>Size:</strong> ${escapeHtml(app.size)} &nbsp; <strong>Type:</strong> ${escapeHtml(app.type)}</div>
+        <div><strong>Sources:</strong> ${app.num} peers &nbsp; <strong>Speed:</strong> ${escapeHtml(app.speed)}</div>
+        <div><strong>Host:</strong> GitHub &nbsp; <strong>Action:</strong> double-click to browse</div>
+        <div><strong>Stack:</strong> ${escapeHtml(app.tech)}</div>
+        <div>${escapeHtml(app.desc)}</div>
+        <span class="tip-hash">SHA1 ${escapeHtml(app.hash)}</span>
+      `;
+      tooltip.style.display = "block";
+      moveTooltip(event);
+    }
+
+    function moveTooltip(event) {
+      const offset = 15;
+      const box = tooltip.getBoundingClientRect();
+      let x = event.clientX + offset;
+      let y = event.clientY + offset;
+      if (x + box.width > window.innerWidth - 8) {
+        x = event.clientX - box.width - offset;
+      }
+      if (y + box.height > window.innerHeight - 8) {
+        y = event.clientY - box.height - offset;
+      }
+      tooltip.style.left = `${Math.max(8, x)}px`;
+      tooltip.style.top = `${Math.max(8, y)}px`;
+    }
+
+    function hideTooltip() {
+      tooltip.style.display = "none";
+    }
+
+    function renderDownloads() {
+      downloadsBody.innerHTML = state.downloads.map((download) => `
+        <tr>
+          <td>${escapeHtml(download.name)}</td>
+          <td>${escapeHtml(download.size)}</td>
+          <td>${escapeHtml(download.status)}</td>
+          <td>
+            <div class="progress">
+              <span class="progress-fill ${download.complete ? "complete" : ""}" style="width:${download.progress}%">${download.progress}%</span>
+            </div>
+          </td>
+          <td>${escapeHtml(download.speed)}</td>
+          <td>${escapeHtml(download.time)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function filterCategory(category) {
+      state.filter = category;
+      document.querySelectorAll(".side-item.clickable").forEach((item) => {
+        item.classList.toggle("active", item.dataset.category === category);
+      });
+      sidebar.classList.remove("mobile-open");
+      renderResults();
+    }
+
+    function resetFilter() {
+      filterCategory("All");
+    }
+
+    function showSection(section, shouldUpdateHash = true) {
+      const isProjects = section === "projects";
+      const isContact = section === "contact";
+
+      projectsSection.classList.toggle("hidden", !isProjects);
+      contactSection.classList.toggle("visible", isContact);
+      sidebar.classList.toggle("hidden", !isProjects);
+      downloadsPanel.classList.toggle("hidden", !isProjects);
+      actionsRow.classList.toggle("hidden", !isProjects);
+
+      document.querySelectorAll(".tab-button").forEach((tab) => {
+        const active = tab.dataset.section === section;
+        tab.classList.toggle("active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      if (shouldUpdateHash) {
+        const hash = section === "contact" ? "#app/network" : "#app/search";
+        history.replaceState(null, "", hash);
+      }
+    }
+
+    function lockApp(section = "projects") {
+      if (state.locked) {
+        showSection(section);
+        return;
+      }
+
+      state.locked = true;
+      state.autoEntering = false;
+      resetHeroIntents();
+      heroScene.classList.remove("aku-active");
+      document.body.appendChild(appFrame);
+      appFrame.style.setProperty("--app-clip", "0%");
+      appFrame.style.setProperty("--app-scale", "1");
+      appFrame.classList.add("locked");
+      appFrame.style.transform = "none";
+      zoomWrapper.style.transform = "none";
+      heroContainer.style.display = "none";
+      document.body.style.overflow = "hidden";
+      document.body.style.background = "#ece9d8";
+      window.scrollTo(0, 0);
+      showSection(section);
+    }
+
+    function resetHeroIntents() {
+      state.heroClicks = 0;
+      state.heroScrollIntent = 0;
+      state.heroReverseIntent = 0;
+      state.heroReverseScrolls = 0;
+      if (state.heroReverseTimer) {
+        clearTimeout(state.heroReverseTimer);
+        state.heroReverseTimer = 0;
+      }
+    }
+
+    function returnToHero() {
+      if (!state.locked) {
+        return;
+      }
+
+      state.locked = false;
+      state.autoEntering = false;
+      resetHeroIntents();
+      heroScene.classList.remove("aku-active");
+      hideTooltip();
+      if (state.heroFrame) {
+        cancelAnimationFrame(state.heroFrame);
+        state.heroFrame = 0;
+      }
+
+      heroContainer.style.display = "";
+      zoomWrapper.appendChild(appFrame);
+      appFrame.classList.remove("locked");
+      appFrame.style.transform = "";
+      appFrame.style.setProperty("--app-clip", "100%");
+      appFrame.style.setProperty("--app-scale", "1");
+      document.body.style.overflow = "";
+      document.body.style.background = "#000";
+      state.targetProgress = 0;
+      state.renderedProgress = 0;
+      state.heroReturnCooldownUntil = performance.now() + 850;
+      paintHero(0);
+      window.scrollTo(0, 0);
+
+      if (location.hash.startsWith("#app")) {
+        history.replaceState(null, "", `${location.pathname}${location.search}`);
+      }
+    }
+
+    function easeInOutCubic(value) {
+      return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
+    }
+
+    function startAutoEnter(section = "projects") {
+      if (state.locked || state.autoEntering) {
+        return;
+      }
+
+      state.autoEntering = true;
+      state.heroClicks = 0;
+      state.heroScrollIntent = 0;
+      heroScene.classList.remove("aku-active");
+      void heroScene.offsetWidth;
+      heroScene.classList.add("aku-active");
+      if (state.heroFrame) {
+        cancelAnimationFrame(state.heroFrame);
+        state.heroFrame = 0;
+      }
+
+      const startProgress = Math.max(state.renderedProgress, scrollProgress());
+      const endProgress = HERO_LOCK_PROGRESS + 0.02;
+      const duration = 1100;
+      const startTime = performance.now();
+
+      function step(now) {
+        if (state.locked) {
+          return;
+        }
+
+        const elapsed = Math.min(1, (now - startTime) / duration);
+        const eased = easeInOutCubic(elapsed);
+        state.renderedProgress = lerp(startProgress, endProgress, eased);
+        state.targetProgress = state.renderedProgress;
+        paintHero(state.renderedProgress);
+
+        if (!state.locked && elapsed < 1) {
+          state.heroFrame = requestAnimationFrame(step);
+        } else if (!state.locked) {
+          lockApp(section);
+        }
+      }
+
+      state.heroFrame = requestAnimationFrame(step);
+    }
+
+    function handleHeroClick() {
+      if (state.locked) {
+        return;
+      }
+
+      state.heroClicks += 1;
+      if (state.heroClicks >= 2) {
+        startAutoEnter(hashToSection() || "projects");
+      }
+    }
+
+    function handleHeroWheel(event) {
+      if (state.locked) {
+        if (event.deltaY < 0 && !canScrollUpFrom(event.target)) {
+          event.preventDefault();
+          state.heroReverseIntent += Math.abs(event.deltaY) + Math.abs(event.deltaX);
+          if (Math.abs(event.deltaY) > 24) {
+            state.heroReverseScrolls += 1;
+          }
+          if (state.heroReverseTimer) {
+            clearTimeout(state.heroReverseTimer);
+          }
+          state.heroReverseTimer = setTimeout(() => {
+            state.heroReverseIntent = 0;
+            state.heroReverseScrolls = 0;
+            state.heroReverseTimer = 0;
+          }, 900);
+
+          if (
+            state.heroReverseIntent >= RETURN_TO_HERO_WHEEL_INTENT ||
+            state.heroReverseScrolls >= RETURN_TO_HERO_SCROLLS
+          ) {
+            returnToHero();
+          }
+        } else if (event.deltaY > 0) {
+          state.heroReverseIntent = 0;
+          state.heroReverseScrolls = 0;
+        }
+        return;
+      }
+
+      if (performance.now() < state.heroReturnCooldownUntil) {
+        event.preventDefault();
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      if (state.autoEntering) {
+        event.preventDefault();
+        return;
+      }
+
+      event.preventDefault();
+      if (event.deltaY <= 0) {
+        return;
+      }
+
+      state.heroScrollIntent += Math.abs(event.deltaY) + Math.abs(event.deltaX);
+      if (state.heroScrollIntent >= AUTO_ENTER_WHEEL_INTENT) {
+        startAutoEnter("projects");
+      }
+    }
+
+    function canScrollUpFrom(target) {
+      let node = target instanceof Element ? target : null;
+      while (node && node !== document.body) {
+        const style = window.getComputedStyle(node);
+        const canScroll = /(auto|scroll)/.test(style.overflowY) && node.scrollHeight > node.clientHeight + 2;
+        if (canScroll && node.scrollTop > 2) {
+          return true;
+        }
+        node = node.parentElement;
+      }
+      return false;
+    }
+
+    function smoothStep(edge0, edge1, value) {
+      const x = Math.min(1, Math.max(0, (value - edge0) / (edge1 - edge0)));
+      return x * x * (3 - 2 * x);
+    }
+
+    function lerp(start, end, amount) {
+      return start + (end - start) * amount;
+    }
+
+    function scrollProgress() {
+      const maxScroll = heroContainer.offsetHeight - window.innerHeight;
+      return Math.min(1, Math.max(0, window.scrollY / Math.max(1, maxScroll)));
+    }
+
+    function paintHero(progress) {
+      const cameraMove = smoothStep(0.08, HERO_LOCK_PROGRESS, progress);
+      const scale = lerp(1, 3.35, cameraMove);
+      zoomWrapper.style.transform = `translateZ(0) scale3d(${scale}, ${scale}, 1)`;
+      appFrame.style.setProperty("--app-clip", "100%");
+      appFrame.style.setProperty("--app-scale", "1");
+
+      if (progress > HERO_LOCK_PROGRESS) {
+        lockApp("projects");
+      }
+    }
+
+    function animateHero() {
+      if (state.locked || state.autoEntering) {
+        state.heroFrame = 0;
+        return;
+      }
+
+      const delta = state.targetProgress - state.renderedProgress;
+      if (Math.abs(delta) < 0.001) {
+        state.renderedProgress = state.targetProgress;
+        state.heroFrame = 0;
+      } else {
+        state.renderedProgress += delta * 0.14;
+        state.heroFrame = requestAnimationFrame(animateHero);
+      }
+      paintHero(state.renderedProgress);
+    }
+
+    function updateZoom(immediate = false) {
+      if (state.locked || state.autoEntering) {
+        return;
+      }
+
+      if (performance.now() < state.heroReturnCooldownUntil) {
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      state.targetProgress = scrollProgress();
+      if (!immediate && state.targetProgress >= AUTO_ENTER_SCROLL_PROGRESS) {
+        startAutoEnter("projects");
+        return;
+      }
+      if (immediate) {
+        state.renderedProgress = state.targetProgress;
+        paintHero(state.renderedProgress);
+        return;
+      }
+      if (!state.heroFrame) {
+        state.heroFrame = requestAnimationFrame(animateHero);
+      }
+    }
+
+    function hashToSection() {
+      if (location.hash === "#app/network") {
+        return "contact";
+      }
+      if (location.hash === "#app" || location.hash === "#app/search") {
+        return "projects";
+      }
+      if (location.hash.startsWith("#app/")) {
+        return "projects";
+      }
+      return "";
+    }
+
+    function addSelectedDownload() {
+      const app = apps[state.selectedIndex] || apps[0];
+      const existing = state.downloads.some((download) => download.name === app.name);
+      if (!existing) {
+        state.downloads.unshift({
+          name: app.name,
+          size: app.size,
+          status: `Downloading from ${Math.max(2, app.num)} hosts`,
+          progress: 0,
+          speed: "79 KB/s",
+          time: "2:15:32",
+          complete: false
+        });
+      }
+      renderDownloads();
+    }
+
+    function tickDownloads() {
+      state.downloads = state.downloads.map((download) => {
+        if (download.complete) {
+          return download;
+        }
+        const nextProgress = Math.min(100, download.progress + Math.floor(Math.random() * 3));
+        const complete = nextProgress >= 100;
+        const hosts = Math.floor(2 + Math.random() * 8);
+        const speed = `${Math.floor(42 + Math.random() * 140)} KB/s`;
+        return {
+          ...download,
+          progress: nextProgress,
+          complete,
+          status: complete ? "Complete" : `Downloading from ${hosts} hosts`,
+          speed: complete ? "" : speed,
+          time: complete ? "" : download.time
+        };
+      });
+      renderDownloads();
+    }
+
+    function initEvents() {
+      window.addEventListener("scroll", updateZoom, { passive: true });
+      window.addEventListener("wheel", handleHeroWheel, { passive: false });
+      window.addEventListener("resize", updateZoom);
+      heroScene.addEventListener("click", handleHeroClick);
+      document.querySelectorAll(".tab-button").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const section = tab.dataset.section;
+          if (!state.locked) {
+            lockApp(section);
+          } else {
+            showSection(section);
+          }
+        });
+      });
+      document.querySelectorAll(".side-item.clickable").forEach((item) => {
+        item.addEventListener("click", () => filterCategory(item.dataset.category));
+      });
+      document.getElementById("back-search").addEventListener("click", resetFilter);
+      document.getElementById("mobile-filter").addEventListener("click", () => sidebar.classList.toggle("mobile-open"));
+      document.getElementById("download-button").addEventListener("click", addSelectedDownload);
+      document.getElementById("browse-button").addEventListener("click", openSelectedProject);
+      window.addEventListener("hashchange", () => {
+        const section = hashToSection();
+        if (section) {
+          lockApp(section);
+        }
+      });
+    }
+
+    function init() {
+      renderResults();
+      renderDownloads();
+      initEvents();
+      const section = hashToSection();
+      if (section) {
+        lockApp(section);
+      } else {
+        window.scrollTo(0, 0);
+        state.targetProgress = 0;
+        state.renderedProgress = 0;
+        paintHero(0);
+      }
+      setInterval(tickDownloads, 3000);
+    }
+
+    init();
+  </script>
+</body>
+</html>
