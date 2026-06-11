@@ -124,6 +124,8 @@ Asset:
 
 `images/aku-aku.png`
 
+The same asset is also used as the browser favicon / nav icon and Apple touch icon.
+
 Behaviour:
 
 - Aku Aku appears around 17% into the zoom process.
@@ -623,6 +625,7 @@ Major interaction changes made during the build:
 - Added auto-enter after two clicks anywhere on the hero.
 - Added return-to-hero behaviour after sufficient upward scrolling.
 - Added Aku Aku during the zoom moment.
+- Made Aku Aku the browser nav icon / favicon.
 - Removed the failed DOM `Click for Vibes` overlay.
 - Edited the hero image itself to carry the `Click for Vibes` message.
 - Removed About tab and About section entirely.
