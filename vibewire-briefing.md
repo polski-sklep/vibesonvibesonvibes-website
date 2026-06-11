@@ -447,7 +447,7 @@ Initial rows:
    - Progress: `43%`
    - Speed: `Tailscale`
 
-These progress bars are static and correspond approximately to the project readiness ratings while using less sterile, non-round percentages.
+These progress bars are static, correspond approximately to the project readiness ratings, use less sterile non-round percentages, and are color-coded by relative readiness.
 
 The action buttons include:
 
