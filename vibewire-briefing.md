@@ -303,7 +303,7 @@ Metadata:
 
 Description:
 
-`14-agent Python/FastAPI orchestration system for crypto investment analysis. Charlie Munger contrarian agent, structural guardrails gate, 9-step pipeline. pgvector + Notion integration.`
+`A self-hosted AI investment committee that evaluates crypto projects through 15 specialized agents — analyzing tokenomics, on-chain data, technical structure, governance, and risk in parallel, then stress-testing the bull case through adversarial review before issuing a BUY/PASS/WATCH/VETO recommendation. Tracks every recommendation against actual price performance to measure whether its calls are right.`
 
 Tech:
 
@@ -332,7 +332,7 @@ Metadata:
 
 Description:
 
-`AI curriculum ingestion pipeline. Twitter links, URLs, text, screenshots via Telegram bot. SHA-256 dedup, systemd service.`
+`A Telegram bot that turns anything you send it — tweets, articles, screenshots, PDFs — into structured, Claude-analysed notes filed automatically into a self-building AI/ML curriculum in your Obsidian vault. It then quizzes you on what you've collected using spaced repetition.`
 
 Tech:
 
@@ -361,7 +361,7 @@ Metadata:
 
 Description:
 
-`Telegram contact graph extractor for rebuilding a personal network from direct messages, replies, mentions, shared groups, and recent interaction context.`
+`An LLM pipeline that turns raw Telegram history into a structured, categorised contact CRM in Notion — describing each contact's affiliation, evidence-backed summary, and warmth without fabricating, with user ground truth and human review overriding the model where needed.`
 
 Tech:
 
@@ -390,7 +390,7 @@ Metadata:
 
 Description:
 
-`Single-user fitness tracker. Telegram bot intake, Claude workout parsing, FastAPI/Postgres storage, HTMX dashboard, and a personal Power Score model.`
+`Telegram bot that ingests your strength and cycling sessions as free-text or screenshots, extracts structured data via Claude, and stores it in a Postgres database. Generates weekly summaries and serves a dashboard with a custom Power Score, PR detection, and muscle-group heatmap, all accessible privately over Tailscale.`
 
 Tech:
 
