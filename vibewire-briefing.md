@@ -447,7 +447,7 @@ Initial rows:
    - Progress: `43%`
    - Speed: `Tailscale`
 
-These progress bars are static, correspond approximately to the project readiness ratings, use less sterile non-round percentages, and are color-coded by relative readiness.
+These progress bars are static, correspond approximately to the project readiness ratings, use less sterile non-round percentages, and use the original LimeWire-style blue progress treatment.
 
 The action buttons include:
 

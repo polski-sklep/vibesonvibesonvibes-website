@@ -748,19 +748,11 @@
     }
 
     .progress-fill.complete {
-      background: linear-gradient(180deg, #a8e050, #7db72f, #5a9a10);
+      background: linear-gradient(180deg, #65b7ff 0%, #2f94f4 48%, #1679d7 100%);
     }
 
-    .progress-fill.readiness-high {
-      background: linear-gradient(180deg, #b9dc65, #7db72f 55%, #4f8f14);
-    }
-
-    .progress-fill.readiness-mid {
-      background: linear-gradient(180deg, #ffe47a, #dfa82d 55%, #ad7210);
-    }
-
-    .progress-fill.readiness-low {
-      background: linear-gradient(180deg, #ff9a76, #dc5a42 55%, #9c2d25);
+    .progress-fill.readiness {
+      background: linear-gradient(180deg, #65b7ff 0%, #2f94f4 48%, #1679d7 100%);
     }
 
     .download-actions {
@@ -1745,15 +1737,9 @@
       tooltip.style.display = "none";
     }
 
-    function readinessClass(progress) {
-      if (progress >= 70) return "readiness-high";
-      if (progress >= 55) return "readiness-mid";
-      return "readiness-low";
-    }
-
     function renderDownloads() {
       downloadsBody.innerHTML = state.downloads.map((download) => {
-        const fillClass = download.kind === "readiness" ? readinessClass(download.progress) : (download.complete ? "complete" : "");
+        const fillClass = download.kind === "readiness" ? "readiness" : (download.complete ? "complete" : "");
         return `
         <tr>
           <td>${escapeHtml(download.name)}</td>
