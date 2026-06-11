@@ -208,7 +208,7 @@ The page includes:
 
 The search result label is dynamic:
 
-`Vibecoded Apps (6)`
+`Vibecoded Apps (4)`
 
 The number changes based on the active filter.
 
@@ -250,27 +250,28 @@ The left sidebar uses classic category filters.
 
 Functional category filters:
 
-- `All (6)`
+- `All (4)`
 - `Agents`
 - `Infrastructure`
-- `Websites`
 - `Apps`
 
-Decorative / contextual filter groups:
+Functional and contextual filter groups:
 
 - `Tech Stack`
 - `Builder`
 
 Tech Stack items include:
 
-- `All (15)`
-- `Python`
-- `FastAPI`
-- `Next.js`
-- `Claude API`
-- `Telegram Bot API`
-- `Tailscale`
-- `HTML / CSS / JS`
+- `All (4)`
+- `Python (4)`
+- `Claude API (3)`
+- `FastAPI (2)`
+- `Telegram API (2)`
+- `Postgres / pgvector (2)`
+- `HTMX (1)`
+- `Tailscale (1)`
+- `Telethon (1)`
+- `Next.js (1)`
 
 Builder includes:
 
@@ -281,7 +282,7 @@ There is also a `Back To Search` control for resetting the active filter.
 
 ## Project Data
 
-The current project list contains six real rows. The previous placeholder rows were removed for launch.
+The current project list contains four real rows. The previous placeholder rows, AI job search row, and self-referential website row were removed for launch.
 
 ### committee_orchestrator_v2.1_multiagent_crypto.py
 
@@ -311,35 +312,6 @@ Tech:
 URL:
 
 `https://github.com/polski-sklep/aiic`
-
-### ai_job_search_claude_framework_v1.0.zip
-
-Displayed as:
-
-`💼 ai_job_search_claude_framework_v1.0.zip`
-
-Metadata:
-
-- Category: `Agents`
-- Readiness: 5 stars
-- Number: `5`
-- Usable: `✅`
-- Type: `zip`
-- Size: `1.0 MB`
-- Speed: `T3 or Higher`
-- Bitrate: `128`
-
-Description:
-
-`AI-powered job application framework built on Claude Code. Fork it, fill in your profile, evaluate roles, tailor CVs, write cover letters, and prepare for interviews.`
-
-Tech:
-
-`Claude Code, Markdown, job search automation`
-
-URL:
-
-`https://github.com/polski-sklep/ai-job-search`
 
 ### ai_curriculum_ingest_v1.4_spaced_rep.py
 
@@ -410,7 +382,7 @@ Metadata:
 - Category: `Apps`
 - Readiness: 4 stars
 - Number: `4`
-- Usable: `✅`
+- Usable: empty
 - Type: `zip`
 - Size: `6.4 MB`
 - Speed: `Tailscale`
@@ -427,35 +399,6 @@ Tech:
 URL:
 
 `https://github.com/polski-sklep/fitness-tracker`
-
-### vibesonvibesonvibes_portfolio_site.html
-
-Displayed as:
-
-`🌐 vibesonvibesonvibes_portfolio_sit...`
-
-Metadata:
-
-- Category: `Websites`
-- Readiness: 5 stars
-- Number: `3`
-- Usable: `✅`
-- Type: `html`
-- Size: `42 KB`
-- Speed: `Broadband`
-- Bitrate: `∞`
-
-Description:
-
-`This site. LimeWire-themed portfolio. Self-referential. Recursive.`
-
-Tech:
-
-`HTML, CSS, JavaScript, Vibes`
-
-URL:
-
-`https://github.com/polski-sklep/vibesonvibesonvibes-website`
 
 ## Project Linking Behaviour
 
@@ -487,8 +430,8 @@ Initial rows:
    - Speed: starts around `79 KB/s`
    - Time: `2:15:32`
 
-2. `ai_job_search_claude_framework.zip`
-   - Size: `1.0 MB`
+2. `ai_curriculum_ingest_v1.4.py`
+   - Size: `3.1 MB`
    - Status: `Complete`
    - Progress: `100%`
 

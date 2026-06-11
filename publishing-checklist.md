@@ -49,13 +49,11 @@ Every visible project row now points to an individual `polski-sklep` GitHub repo
 Current target URLs:
 
 - `https://github.com/polski-sklep/aiic`
-- `https://github.com/polski-sklep/ai-job-search`
 - `https://github.com/polski-sklep/ai-curriculum-ingest`
 - `https://github.com/polski-sklep/telegram-contact-graph`
 - `https://github.com/polski-sklep/fitness-tracker`
-- `https://github.com/polski-sklep/vibesonvibesonvibes-website`
 
-The four newly created project repos and `ai-job-search` were verified as publicly reachable on June 10, 2026. The self-referential website repo URL still needs to be created or changed before final launch. The newly created repos are currently empty, so the remaining project-link task is to push first commits with useful READMEs before launch.
+These project repos were verified as publicly reachable on June 10, 2026. The remaining project-link task is to keep their READMEs useful enough that visitors who double-click a row land somewhere meaningful.
 
 ## Routes To Test
 
