@@ -426,28 +426,28 @@ Initial rows:
 1. `committee_orchestrator_v2.1.py`
    - Size: `14.2 MB`
    - Status: `Readiness 4/5`
-   - Progress: `80%`
+   - Progress: `81%`
    - Speed: `T3+`
 
 2. `ai_curriculum_ingest_v1.4.py`
    - Size: `3.1 MB`
    - Status: `Readiness 4/5`
-   - Progress: `80%`
+   - Progress: `78%`
    - Speed: `T3+`
 
 3. `telegram_contact_graph_v1.0.py`
    - Size: `2.4 MB`
    - Status: `Readiness 3/5`
-   - Progress: `60%`
+   - Progress: `62%`
    - Speed: `T1`
 
 4. `fitness_tracker_power_score_v1.0.zip`
    - Size: `6.4 MB`
    - Status: `Readiness 2/5`
-   - Progress: `40%`
+   - Progress: `43%`
    - Speed: `Tailscale`
 
-These progress bars are static and correspond directly to the project readiness ratings.
+These progress bars are static and correspond approximately to the project readiness ratings while using less sterile, non-round percentages.
 
 The action buttons include:
 
