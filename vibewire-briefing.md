@@ -293,7 +293,7 @@ Displayed as:
 Metadata:
 
 - Category: `Agents`
-- Readiness: 5 stars
+- Readiness: 4 stars
 - Number: `6`
 - Usable: `✅`
 - Type: `py`
@@ -351,7 +351,7 @@ Displayed as:
 Metadata:
 
 - Category: `Infrastructure`
-- Readiness: 4 stars
+- Readiness: 3 stars
 - Number: `4`
 - Usable: `✅`
 - Type: `py`
@@ -380,7 +380,7 @@ Displayed as:
 Metadata:
 
 - Category: `Apps`
-- Readiness: 4 stars
+- Readiness: 2 stars
 - Number: `4`
 - Usable: empty
 - Type: `zip`
@@ -419,23 +419,35 @@ Project browsing behaviours:
 
 ## Downloads Panel
 
-The Search / Share page includes a fake LimeWire-style download queue.
+The Search / Share page includes a fake LimeWire-style downloads panel, now repurposed as a readiness meter for the four visible projects.
 
 Initial rows:
 
 1. `committee_orchestrator_v2.1.py`
    - Size: `14.2 MB`
-   - Status: `Downloading from 7 hosts`
-   - Progress: starts low and increments
-   - Speed: starts around `79 KB/s`
-   - Time: `2:15:32`
+   - Status: `Readiness 4/5`
+   - Progress: `80%`
+   - Speed: `T3+`
 
 2. `ai_curriculum_ingest_v1.4.py`
    - Size: `3.1 MB`
-   - Status: `Complete`
-   - Progress: `100%`
+   - Status: `Readiness 4/5`
+   - Progress: `80%`
+   - Speed: `T3+`
 
-The download progress updates periodically to create the feeling of an active network client.
+3. `telegram_contact_graph_v1.0.py`
+   - Size: `2.4 MB`
+   - Status: `Readiness 3/5`
+   - Progress: `60%`
+   - Speed: `T1`
+
+4. `fitness_tracker_power_score_v1.0.zip`
+   - Size: `6.4 MB`
+   - Status: `Readiness 2/5`
+   - Progress: `40%`
+   - Speed: `Tailscale`
+
+These progress bars are static and correspond directly to the project readiness ratings.
 
 The action buttons include:
 
@@ -470,9 +482,9 @@ Current peers:
 - Status: `Online`
 - Speed: `T3`
 
-### X / Twitter
+### X
 
-- Peer: `X / Twitter`
+- Peer: `X`
 - Address: `x.com/overtonlimbo`
 - Protocol: `social`
 - Status: `Online`
@@ -493,7 +505,7 @@ Connect actions:
 - `Stop Search`
 - `Junk`
 
-`Browse Host` opens GitHub. `Ping` opens X / Twitter. Email has been removed from the site.
+`Browse Host` opens GitHub. `Ping` opens X. Email has been removed from the site.
 
 ## Removed About Page
 

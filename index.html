@@ -750,6 +750,10 @@
       background: linear-gradient(180deg, #a8e050, #7db72f, #5a9a10);
     }
 
+    .progress-fill.readiness {
+      background: linear-gradient(180deg, #b9dc65, #7db72f 55%, #4f8f14);
+    }
+
     .download-actions {
       display: flex;
       align-items: center;
@@ -1348,7 +1352,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="selected">
+                        <tr>
                           <td class="contact-label">GitHub</td>
                           <td><a href="https://github.com/polski-sklep" target="_blank" rel="noopener noreferrer">github.com/polski-sklep</a></td>
                           <td>git</td>
@@ -1356,7 +1360,7 @@
                           <td>T3</td>
                         </tr>
                         <tr>
-                          <td class="contact-label">X / Twitter</td>
+                          <td class="contact-label">X</td>
                           <td><a href="https://x.com/overtonlimbo" target="_blank" rel="noopener noreferrer">x.com/overtonlimbo</a></td>
                           <td>social</td>
                           <td class="detail-status">Online</td>
@@ -1459,7 +1463,7 @@
     const apps = [
       {
         name: "committee_orchestrator_v2.1_multiagent_crypto.py",
-        quality: 5,
+        quality: 4,
         num: 6,
         license: "✅",
         type: "py",
@@ -1493,7 +1497,7 @@
       },
       {
         name: "telegram_contact_graph_v1.0.py",
-        quality: 4,
+        quality: 3,
         num: 4,
         license: "✅",
         type: "py",
@@ -1510,7 +1514,7 @@
       },
       {
         name: "fitness_tracker_power_score_v1.0.zip",
-        quality: 4,
+        quality: 2,
         num: 4,
         license: "",
         type: "zip",
@@ -1547,20 +1551,42 @@
         {
           name: "committee_orchestrator_v2.1.py",
           size: "14.2 MB",
-          status: "Downloading from 7 hosts",
-          progress: 0,
-          speed: "79 KB/s",
-          time: "2:15:32",
-          complete: false
+          status: "Readiness 4/5",
+          progress: 80,
+          speed: "T3+",
+          time: "",
+          kind: "readiness",
+          static: true
         },
         {
           name: "ai_curriculum_ingest_v1.4.py",
           size: "3.1 MB",
-          status: "Complete",
-          progress: 100,
-          speed: "",
+          status: "Readiness 4/5",
+          progress: 80,
+          speed: "T3+",
           time: "",
-          complete: true
+          kind: "readiness",
+          static: true
+        },
+        {
+          name: "telegram_contact_graph_v1.0.py",
+          size: "2.4 MB",
+          status: "Readiness 3/5",
+          progress: 60,
+          speed: "T1",
+          time: "",
+          kind: "readiness",
+          static: true
+        },
+        {
+          name: "fitness_tracker_power_score_v1.0.zip",
+          size: "6.4 MB",
+          status: "Readiness 2/5",
+          progress: 40,
+          speed: "Tailscale",
+          time: "",
+          kind: "readiness",
+          static: true
         }
       ]
     };
@@ -1711,20 +1737,23 @@
     }
 
     function renderDownloads() {
-      downloadsBody.innerHTML = state.downloads.map((download) => `
+      downloadsBody.innerHTML = state.downloads.map((download) => {
+        const fillClass = download.kind === "readiness" ? "readiness" : (download.complete ? "complete" : "");
+        return `
         <tr>
           <td>${escapeHtml(download.name)}</td>
           <td>${escapeHtml(download.size)}</td>
           <td>${escapeHtml(download.status)}</td>
           <td>
             <div class="progress">
-              <span class="progress-fill ${download.complete ? "complete" : ""}" style="width:${download.progress}%">${download.progress}%</span>
+              <span class="progress-fill ${fillClass}" style="width:${download.progress}%">${download.progress}%</span>
             </div>
           </td>
           <td>${escapeHtml(download.speed)}</td>
           <td>${escapeHtml(download.time)}</td>
         </tr>
-      `).join("");
+      `;
+      }).join("");
     }
 
     function filterSidebar(type, value, label) {
@@ -2061,7 +2090,7 @@
 
     function tickDownloads() {
       state.downloads = state.downloads.map((download) => {
-        if (download.complete) {
+        if (download.complete || download.static) {
           return download;
         }
         const nextProgress = Math.min(100, download.progress + Math.floor(Math.random() * 3));
