@@ -297,7 +297,7 @@ Metadata:
 - Number: `6`
 - Usable: `✅`
 - Type: `py`
-- Size: `14.2 MB`
+- Size: `1.3 MB`
 - Speed: `T3 or Higher`
 - Bitrate: `271`
 
@@ -326,7 +326,7 @@ Metadata:
 - Number: `5`
 - Usable: `✅`
 - Type: `py`
-- Size: `3.1 MB`
+- Size: `212 KB`
 - Speed: `T3 or Higher`
 - Bitrate: `128`
 
@@ -355,7 +355,7 @@ Metadata:
 - Number: `4`
 - Usable: `✅`
 - Type: `py`
-- Size: `2.4 MB`
+- Size: `184 KB`
 - Speed: `T1`
 - Bitrate: `128`
 
@@ -384,7 +384,7 @@ Metadata:
 - Number: `4`
 - Usable: empty
 - Type: `zip`
-- Size: `6.4 MB`
+- Size: `776 KB`
 - Speed: `Tailscale`
 - Bitrate: `128`
 
@@ -424,25 +424,25 @@ The Search / Share page includes a fake LimeWire-style downloads panel, now repu
 Initial rows:
 
 1. `committee_orchestrator_v2.1.py`
-   - Size: `14.2 MB`
+   - Size: `1.3 MB`
    - Status: `Readiness 4/5`
    - Progress: `81%`
    - Speed: `T3+`
 
 2. `ai_curriculum_ingest_v1.4.py`
-   - Size: `3.1 MB`
+   - Size: `212 KB`
    - Status: `Readiness 4/5`
    - Progress: `78%`
    - Speed: `T3+`
 
 3. `telegram_contact_graph_v1.0.py`
-   - Size: `2.4 MB`
+   - Size: `184 KB`
    - Status: `Readiness 3/5`
    - Progress: `62%`
    - Speed: `T1`
 
 4. `fitness_tracker_power_score_v1.0.zip`
-   - Size: `6.4 MB`
+   - Size: `776 KB`
    - Status: `Readiness 2/5`
    - Progress: `43%`
    - Speed: `Tailscale`
