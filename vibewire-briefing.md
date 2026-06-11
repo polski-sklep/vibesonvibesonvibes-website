@@ -332,7 +332,7 @@ Metadata:
 
 Description:
 
-`A Telegram bot that turns anything you send it — tweets, articles, screenshots, PDFs — into structured, Claude-analysed notes filed automatically into a self-building AI/ML curriculum in your Obsidian vault. It then quizzes you on what you've collected using spaced repetition.`
+`A dynamic, self-building AI curriculum that keeps you current with the fast-moving world of AI: send a Telegram bot any tweet, article, screenshot, or PDF, and it extracts the content, analyses it with Claude, and files it as a structured note in your Obsidian vault. That curriculum then becomes a working reference you can draw on while building and deploying AI apps, turning everyday development into proactive, compounding learning.`
 
 Tech:
 
