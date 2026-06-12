@@ -35,18 +35,25 @@ The intended feeling is that the visitor is being pulled from a nostalgic deskto
 
 ## Hero
 
-The hero currently uses the PNG asset:
+The hero was originally based on the PNG asset:
 
 `images/new/vibesvibesvibes-website-click-for-vibes.png`
 
-This image replaced earlier lower-quality hero experiments. It is based on the higher-resolution image in the `images/new` folder and includes a raster edit inside the computer monitor:
+This image replaced earlier lower-quality hero experiments, remains the Open Graph image, and is kept as the rollback source. It is based on the higher-resolution image in the `images/new` folder and includes a raster edit inside the computer monitor:
 
 - The original Windows text was modified.
 - `Microsoft` was changed to `Click for`.
 - `Windows` was changed to `Vibes`.
 - The `95` remains visible, creating a playful `Click for Vibes95` effect.
 
-The hero is intentionally image-only. All previous DOM overlays over the hero image were removed.
+The live hero now uses a layered animation kit under `images/hero-layers/`. The original hero is split into a base plate plus positioned sprite layers:
+
+- Sliding Capri-Sun straws.
+- Rotating Sims plumbob crystals.
+- A small plane crossing the London skyline behind tower/crane occluders.
+- Static cover patches that preserve the original visual stacking.
+
+The hero remains image-led. All previous text/overlay experiments over the hero image were removed.
 
 Removed hero experiments include:
 
@@ -619,6 +626,7 @@ Major interaction changes made during the build:
 
 - Removed overlay over hero image.
 - Replaced lower-quality hero with a PNG from `images/new`.
+- Upgraded the hero PNG into layered animation assets from `images/hero-layers`.
 - Adjusted hero positioning so the Windows 95 screen is the center of the zoom target.
 - Reduced low-quality scroll dead space.
 - Added auto-enter after sufficient scroll intent.

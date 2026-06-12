@@ -1,0 +1,140 @@
+{
+ "skyline": {
+  "file": "skyline-strip.png",
+  "x": 292,
+  "y": 36,
+  "w": 1116,
+  "h": 50,
+  "left": 17.4641,
+  "top": 3.8298,
+  "width": 66.7464
+ },
+ "halo_l": {
+  "file": "halo-l.png",
+  "x": 389,
+  "y": 589,
+  "w": 152,
+  "h": 351,
+  "left": 23.2656,
+  "top": 62.6596,
+  "width": 9.0909
+ },
+ "halo_r": {
+  "file": "halo-r.png",
+  "x": 1135,
+  "y": 587,
+  "w": 154,
+  "h": 353,
+  "left": 67.8828,
+  "top": 62.4468,
+  "width": 9.2105
+ },
+ "crystal_l": {
+  "file": "crystal-l.png",
+  "x": 380.7,
+  "y": 607.6,
+  "w": 162,
+  "h": 333,
+  "left": 22.7691,
+  "top": 64.6383,
+  "width": 9.689
+ },
+ "crystal_r": {
+  "file": "crystal-r.png",
+  "x": 1130.2,
+  "y": 604.9,
+  "w": 163,
+  "h": 335,
+  "left": 67.5957,
+  "top": 64.3511,
+  "width": 9.7488
+ },
+ "straw_l": {
+  "file": "straw-l.png",
+  "x": 48,
+  "y": 400,
+  "w": 76,
+  "h": 137,
+  "left": 2.8708,
+  "top": 42.5532,
+  "width": 4.5455
+ },
+ "straw_r": {
+  "file": "straw-r.png",
+  "x": 1549,
+  "y": 383,
+  "w": 80,
+  "h": 139,
+  "left": 92.6435,
+  "top": 40.7447,
+  "width": 4.7847
+ },
+ "hole_l": {
+  "file": "hole-l.png",
+  "x": 103,
+  "y": 516,
+  "w": 36,
+  "h": 48,
+  "left": 6.1603,
+  "top": 54.8936,
+  "width": 2.1531
+ },
+ "hole_r": {
+  "file": "hole-r.png",
+  "x": 1533,
+  "y": 502,
+  "w": 36,
+  "h": 48,
+  "left": 91.6866,
+  "top": 53.4043,
+  "width": 2.1531
+ },
+ "occ_pouch_l": {
+  "file": "occ-pouch-l.png",
+  "x": 378,
+  "y": 620,
+  "w": 56,
+  "h": 320,
+  "left": 22.6077,
+  "top": 65.9574,
+  "width": 3.3493
+ },
+ "occ_tower_l": {
+  "file": "occ-tower-l.png",
+  "x": 498,
+  "y": 638,
+  "w": 54,
+  "h": 302,
+  "left": 29.7847,
+  "top": 67.8723,
+  "width": 3.2297
+ },
+ "occ_tower_r": {
+  "file": "occ-tower-r.png",
+  "x": 1123,
+  "y": 638,
+  "w": 59,
+  "h": 302,
+  "left": 67.1651,
+  "top": 67.8723,
+  "width": 3.5287
+ },
+ "occ_pouch_r": {
+  "file": "occ-pouch-r.png",
+  "x": 1243,
+  "y": 618,
+  "w": 57,
+  "h": 322,
+  "left": 74.3421,
+  "top": 65.7447,
+  "width": 3.4091
+ },
+ "slide_l": {
+  "dx": 10.716,
+  "dy": 11.717
+ },
+ "slide_r": {
+  "dx": -9.986,
+  "dy": 11.604
+ }
+}
