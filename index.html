@@ -103,7 +103,7 @@
       transform: translateZ(0);
     }
 
-    /* Hero animation layers: base -> plane -> skyline -> crystals -> straws -> occluders. */
+    /* Hero animation layers: base -> plane -> skyline -> straws -> occluders. */
     #hero-stage {
       position: absolute;
       left: 51%;
@@ -184,37 +184,6 @@
       left: 17.4641%;
       top: 3.8298%;
       width: 66.7464%;
-    }
-
-    #hl-crystal-l,
-    #hl-crystal-r {
-      transform-origin: 50% 50%;
-      will-change: transform;
-    }
-
-    #hl-crystal-l {
-      left: 22.7691%;
-      top: 64.6383%;
-      width: 9.689%;
-      animation: hero-plumbob-spin 4.6s linear infinite;
-    }
-
-    #hl-crystal-r {
-      left: 67.5957%;
-      top: 64.3511%;
-      width: 9.7488%;
-      animation: hero-plumbob-spin 5.4s linear infinite;
-      animation-delay: -2.1s;
-    }
-
-    @keyframes hero-plumbob-spin {
-      from {
-        transform: perspective(900px) rotateY(0deg);
-      }
-
-      to {
-        transform: perspective(900px) rotateY(360deg);
-      }
     }
 
     #hl-straw-l {
@@ -1413,9 +1382,6 @@
               </svg>
             </div>
             <img class="hl" id="hl-skyline" src="images/hero-layers/skyline-strip.png" alt="" draggable="false">
-
-            <img class="hl" id="hl-crystal-l" src="images/hero-layers/crystal-l.png" alt="" draggable="false">
-            <img class="hl" id="hl-crystal-r" src="images/hero-layers/crystal-r.png" alt="" draggable="false">
 
             <img class="hl" id="hl-straw-l" src="images/hero-layers/straw-l.png" alt="" draggable="false">
             <img class="hl" id="hl-straw-r" src="images/hero-layers/straw-r.png" alt="" draggable="false">
