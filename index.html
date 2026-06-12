@@ -1634,6 +1634,11 @@
         icon: "🤖",
         category: "Agents",
         desc: "A self-hosted AI investment committee that evaluates crypto projects through 15 specialized agents — analyzing tokenomics, on-chain data, technical structure, governance, and risk in parallel, then stress-testing the bull case through adversarial review before issuing a BUY/PASS/WATCH/VETO recommendation. Tracks every recommendation against actual price performance to measure whether its calls are right.",
+        descHighlights: [
+          "15 specialized agents",
+          "stress-testing the bull case through adversarial review",
+          "BUY/PASS/WATCH/VETO"
+        ],
         tech: "Python, FastAPI, Next.js, pgvector, Claude API",
         url: "https://github.com/polski-sklep/aiic",
         hash: "a3f7c9e2b1d456789abcdef0123456789abcdef0"
@@ -1651,6 +1656,11 @@
         icon: "📚",
         category: "Infra",
         desc: "A dynamic, self-building AI curriculum that keeps you current with the fast-moving world of AI: send a Telegram bot any tweet, article, screenshot, or PDF, and it extracts the content, analyses it with Claude, and files it as a structured note in your Obsidian vault. That curriculum then becomes a working reference you can draw on while building and deploying AI apps, turning everyday development into proactive, compounding learning.",
+        descHighlights: [
+          "self-building AI curriculum",
+          "files it as a structured note in your Obsidian vault",
+          "compounding learning"
+        ],
         tech: "Python, Claude API, Telegram Bot API, systemd",
         url: "https://github.com/polski-sklep/ai-curriculum-ingest",
         hash: "c1f8a4b2d3e678901cdef2345678901abcdef234"
@@ -1668,6 +1678,10 @@
         icon: "🛰️",
         category: "Infra",
         desc: "An LLM pipeline that turns raw Telegram history into a structured, categorised contact CRM in Notion — describing each contact's affiliation, evidence-backed summary, and warmth without fabricating, with user ground truth and human review overriding the model where needed.",
+        descHighlights: [
+          "structured, categorised contact CRM in Notion",
+          "without fabricating"
+        ],
         tech: "Python, Telethon, Telegram API, JSON",
         url: "https://github.com/polski-sklep/telegram-contact-graph",
         hash: "e5b3c4d2f6a789013ef45678901234abcdef5678"
@@ -1685,6 +1699,11 @@
         icon: "🏋️",
         category: "Apps",
         desc: "Telegram bot that ingests your strength and cycling sessions as free-text or screenshots, extracts structured data via Claude, and stores it in a Postgres database. Generates weekly summaries and serves a dashboard with a custom Power Score, PR detection, and muscle-group heatmap, all accessible privately over Tailscale.",
+        descHighlights: [
+          "extracts structured data via Claude",
+          "Power Score",
+          "Tailscale"
+        ],
         tech: "Python, FastAPI, HTMX, Postgres, Claude API, Tailscale",
         url: "https://github.com/polski-sklep/fitness-tracker",
         hash: "f6c4d5e3a7b890124f5678901234abcdef6789a"
@@ -1780,6 +1799,30 @@
         .replace(/'/g, "&#39;");
     }
 
+    function renderHighlightedText(value, highlights = []) {
+      const text = String(value);
+      const ranges = [];
+      highlights.forEach((phrase) => {
+        let searchFrom = 0;
+        while (phrase && searchFrom < text.length) {
+          const start = text.indexOf(phrase, searchFrom);
+          if (start === -1) break;
+          const end = start + phrase.length;
+          const overlaps = ranges.some((range) => start < range.end && end > range.start);
+          if (!overlaps) ranges.push({ start, end });
+          searchFrom = end;
+        }
+      });
+      ranges.sort((a, b) => a.start - b.start);
+      let cursor = 0;
+      return ranges.map((range) => {
+        const before = escapeHtml(text.slice(cursor, range.start));
+        const bold = `<strong>${escapeHtml(text.slice(range.start, range.end))}</strong>`;
+        cursor = range.end;
+        return before + bold;
+      }).join("") + escapeHtml(text.slice(cursor));
+    }
+
     function stars(count) {
       let output = "";
       for (let i = 0; i < 5; i += 1) {
@@ -1870,7 +1913,7 @@
         <div><strong>Sources:</strong> ${app.num} peers &nbsp; <strong>Speed:</strong> ${escapeHtml(app.speed)}</div>
         <div><strong>Host:</strong> GitHub &nbsp; <strong>Action:</strong> double-click to browse</div>
         <div><strong>Stack:</strong> ${escapeHtml(app.tech)}</div>
-        <div>${escapeHtml(app.desc)}</div>
+        <div>${renderHighlightedText(app.desc, app.descHighlights)}</div>
         <span class="tip-hash">SHA1 ${escapeHtml(app.hash)}</span>
       `;
       tooltip.style.display = "block";

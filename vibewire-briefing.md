@@ -409,6 +409,15 @@ URL:
 
 `https://github.com/polski-sklep/fitness-tracker`
 
+## Project Description Emphasis
+
+The hover tooltips render selected description phrases in bold:
+
+- AIIC: `15 specialized agents`, `stress-testing the bull case through adversarial review`, `BUY/PASS/WATCH/VETO`
+- AI Curriculum: `self-building AI curriculum`, `files it as a structured note in your Obsidian vault`, `compounding learning`
+- Telegram Contact Graph: `structured, categorised contact CRM in Notion`, `without fabricating`
+- Fitness Tracker: `extracts structured data via Claude`, `Power Score`, `Tailscale`
+
 ## Project Linking Behaviour
 
 Projects are intended to link out to GitHub so people can engage with the work.
