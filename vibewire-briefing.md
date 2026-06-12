@@ -627,6 +627,7 @@ Major interaction changes made during the build:
 - Removed overlay over hero image.
 - Replaced lower-quality hero with a PNG from `images/new`.
 - Upgraded the hero PNG into layered animation assets from `images/hero-layers`.
+- Removed the generated green halo backplates behind the crystals.
 - Adjusted hero positioning so the Windows 95 screen is the center of the zoom target.
 - Reduced low-quality scroll dead space.
 - Added auto-enter after sufficient scroll intent.
