@@ -48,7 +48,7 @@ This image replaced earlier lower-quality hero experiments, remains the Open Gra
 
 The live hero now uses a layered animation kit under `images/hero-layers/`. The original hero is split into a base plate plus positioned sprite layers:
 
-- Sliding Capri-Sun straws.
+- Static Capri-Sun straw sprites restored over the inpainted base plate.
 - Static baked-in Sims plumbob crystals.
 - A small plane crossing the London skyline behind tower/crane occluders.
 - Static cover patches that preserve the original visual stacking.
@@ -629,6 +629,7 @@ Major interaction changes made during the build:
 - Upgraded the hero PNG into layered animation assets from `images/hero-layers`.
 - Removed the generated green halo backplates behind the crystals.
 - Removed the rotating crystal sprites because they doubled over the baked-in crystals.
+- Removed the straw slide animation while keeping the straws visible at rest.
 - Adjusted hero positioning so the Windows 95 screen is the center of the zoom target.
 - Reduced low-quality scroll dead space.
 - Added auto-enter after sufficient scroll intent.
