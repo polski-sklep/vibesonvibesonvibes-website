@@ -444,28 +444,28 @@ Initial rows:
 1. `committee_orchestrator_v2.1.py`
    - Size: `1.3 MB`
    - Status: `Readiness 4/5`
-   - Progress: `81%`
+   - Development Progress: `81%`
    - Speed: `T3+`
 
 2. `ai_curriculum_ingest_v1.4.py`
    - Size: `212 KB`
    - Status: `Readiness 4/5`
-   - Progress: `78%`
+   - Development Progress: `78%`
    - Speed: `T3+`
 
 3. `telegram_contact_graph_v1.0.py`
    - Size: `184 KB`
    - Status: `Readiness 3/5`
-   - Progress: `62%`
+   - Development Progress: `62%`
    - Speed: `T1`
 
 4. `fitness_tracker_power_score_v1.0.zip`
    - Size: `776 KB`
    - Status: `Readiness 2/5`
-   - Progress: `43%`
+   - Development Progress: `43%`
    - Speed: `Tailscale`
 
-These progress bars are static, correspond approximately to the project readiness ratings, use less sterile non-round percentages, and use the original LimeWire-style blue progress treatment.
+These development progress bars are static, correspond approximately to the project readiness ratings, use less sterile non-round percentages, and use the original LimeWire-style blue progress treatment.
 
 The action buttons include:
 
