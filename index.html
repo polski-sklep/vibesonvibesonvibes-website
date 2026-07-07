@@ -823,6 +823,91 @@
       margin-left: auto;
     }
 
+    .downloads-panel {
+      display: flex;
+      min-height: 122px;
+      max-height: 31%;
+      flex-direction: column;
+      border-top: 2px solid var(--lw-border);
+      background: #f2f2f2;
+    }
+
+    .downloads-header {
+      min-height: 19px;
+      padding: 3px 8px;
+      border-bottom: 1px solid var(--lw-border);
+      font-weight: 700;
+      cursor: default;
+    }
+
+    .downloads-wrap {
+      flex: 1;
+      overflow: auto;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          #fff 0,
+          #fff 19px,
+          #ece8dd 19px,
+          #ece8dd 20px,
+          #f8f6f0 20px,
+          #f8f6f0 39px,
+          #ece8dd 39px,
+          #ece8dd 40px
+        );
+    }
+
+    .downloads-wrap th,
+    .downloads-wrap td {
+      height: 20px;
+    }
+
+    .progress {
+      height: 14px;
+      border: 1px solid #999;
+      background: #e0e0e0;
+    }
+
+    .progress-fill {
+      display: block;
+      height: 100%;
+      color: #fff;
+      font-size: 9px;
+      line-height: 12px;
+      text-align: center;
+      background: linear-gradient(180deg, #65b7ff 0%, #2f94f4 48%, #1679d7 100%);
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    .download-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      min-height: 42px;
+      padding: 4px 10px;
+      border-top: 1px solid var(--lw-border-light);
+      background: #efefef;
+    }
+
+    .download-tool {
+      display: inline-flex;
+      min-width: 54px;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      border: 0;
+      background: transparent;
+      color: #4d4d4d;
+      cursor: default;
+    }
+
+    .download-tool .action-icon {
+      font-size: 18px;
+      filter: grayscale(1);
+      opacity: 0.78;
+    }
+
     .section-panel {
       display: none;
       min-height: 0;
@@ -1221,6 +1306,10 @@
         gap: 14px;
       }
 
+      .download-actions {
+        gap: 12px;
+      }
+
     }
 
     @media (max-width: 768px) {
@@ -1300,6 +1389,15 @@
         font-size: 18px;
       }
 
+      .downloads-panel {
+        min-height: 104px;
+      }
+
+      .download-actions {
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+
       .section-panel {
         padding: 0;
       }
@@ -1355,6 +1453,15 @@
 
       .actions-row {
         align-items: stretch;
+      }
+
+      .downloads-panel {
+        min-height: 86px;
+        max-height: 24%;
+      }
+
+      .download-actions {
+        display: none;
       }
 
       .section-actions {
@@ -1627,6 +1734,39 @@
               </main>
             </div>
 
+            <div class="downloads-panel" id="downloads-panel">
+              <div class="downloads-header">Downloads</div>
+              <div class="downloads-wrap">
+                <table aria-label="Downloads">
+                  <colgroup>
+                    <col style="width:35%">
+                    <col style="width:10%">
+                    <col style="width:20%">
+                    <col style="width:20%">
+                    <col style="width:15%">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Size</th>
+                      <th>Status</th>
+                      <th>Development Progress</th>
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="downloads-body"></tbody>
+                </table>
+              </div>
+              <div class="download-actions" id="download-actions">
+                <button class="download-tool" type="button"><span class="action-icon">🚫</span><span>Clear</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">🔁</span><span>Resume</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">⏸</span><span>Pause</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">⚙</span><span>Launch</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">📂</span><span>Explore</span></button>
+                <button class="download-tool" type="button"><span class="action-icon">🧹</span><span>Clear Inactive</span></button>
+              </div>
+            </div>
+
             <div class="status-bar">
               <span class="dot"></span>
               <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -1887,6 +2027,40 @@
       heroReverseTimer: 0,
       heroReturnCooldownUntil: 0,
       autoEntering: false,
+      downloads: [
+        {
+          name: "committee_orchestrator_v2.1.py",
+          size: "1.3 MB",
+          status: "Readiness 4/5",
+          progress: 81,
+          time: "",
+          kind: "readiness"
+        },
+        {
+          name: "ai_curriculum_ingest_v1.4.py",
+          size: "212 KB",
+          status: "Readiness 4/5",
+          progress: 78,
+          time: "",
+          kind: "readiness"
+        },
+        {
+          name: "telegram_contact_graph_v1.0.py",
+          size: "184 KB",
+          status: "Readiness 3/5",
+          progress: 62,
+          time: "",
+          kind: "readiness"
+        },
+        {
+          name: "fitness_tracker_power_score_v1.0.zip",
+          size: "776 KB",
+          status: "Readiness 2/5",
+          progress: 43,
+          time: "",
+          kind: "readiness"
+        }
+      ],
       activeSkill: null
     };
 
@@ -1903,8 +2077,10 @@
     const sidebar = document.getElementById("sidebar");
     const projectsSection = document.getElementById("projects-section");
     const contactSection = document.getElementById("contact-section");
+    const downloadsPanel = document.getElementById("downloads-panel");
     const actionsRow = document.getElementById("actions-row");
     const resultsBody = document.getElementById("results-body");
+    const downloadsBody = document.getElementById("downloads-body");
     const searchTitle = document.getElementById("search-title");
     const resultsWarningText = document.getElementById("results-warning-text");
     const downloadAllSkillsButton = document.getElementById("download-all-skills");
@@ -2364,6 +2540,22 @@
       }
     }
 
+    function renderDownloads() {
+      downloadsBody.innerHTML = state.downloads.map((download) => `
+        <tr>
+          <td>${escapeHtml(download.name)}</td>
+          <td>${escapeHtml(download.size)}</td>
+          <td>${escapeHtml(download.status)}</td>
+          <td>
+            <div class="progress">
+              <span class="progress-fill" style="width:${download.progress}%">${download.progress}%</span>
+            </div>
+          </td>
+          <td>${escapeHtml(download.time)}</td>
+        </tr>
+      `).join("");
+    }
+
     function filterSidebar(type, value, label) {
       state.filterType = type;
       state.filterValue = value;
@@ -2393,6 +2585,7 @@
       projectsSection.classList.toggle("hidden", !isProjects);
       contactSection.classList.toggle("visible", isContact);
       sidebar.classList.toggle("hidden", !isProjects);
+      downloadsPanel.classList.toggle("hidden", !isProjects);
       actionsRow.classList.toggle("hidden", !isProjects);
 
       document.querySelectorAll(".tab-button").forEach((tab) => {
@@ -2758,6 +2951,7 @@
 
     function init() {
       renderResults();
+      renderDownloads();
       initEvents();
       const section = hashToSection();
       if (section) {
