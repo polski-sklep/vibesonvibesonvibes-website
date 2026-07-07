@@ -2547,8 +2547,22 @@
       }
     }
 
+    function isSkillModalOpen() {
+      return skillModal.classList.contains("visible");
+    }
+
     function handleHeroWheel(event) {
       if (state.locked) {
+        if (isSkillModalOpen()) {
+          if (event.target instanceof Element && skillModal.contains(event.target)) {
+            state.heroReverseIntent = 0;
+            state.heroReverseScrolls = 0;
+            return;
+          }
+          event.preventDefault();
+          return;
+        }
+
         if (event.deltaY < 0 && !canScrollUpFrom(event.target)) {
           event.preventDefault();
           state.heroReverseIntent += Math.abs(event.deltaY) + Math.abs(event.deltaX);
