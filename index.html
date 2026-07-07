@@ -753,15 +753,6 @@
       font-weight: 700;
     }
 
-    .speed-cell {
-      width: 90px;
-    }
-
-    .bitrate-cell {
-      width: 50px;
-      text-align: center;
-    }
-
     .file-name {
       display: inline-flex;
       max-width: 100%;
@@ -1113,6 +1104,162 @@
       overflow-wrap: anywhere;
     }
 
+    .skill-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 13000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(0, 0, 0, 0.42);
+    }
+
+    .skill-modal.visible {
+      display: flex;
+    }
+
+    .skill-window {
+      display: flex;
+      width: min(940px, 94vw);
+      max-height: min(760px, 88vh);
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #575757;
+      background: var(--lw-bg);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.32);
+    }
+
+    .skill-window-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 24px;
+      padding: 3px 6px;
+      color: #fff;
+      background: linear-gradient(180deg, #a0b44c 0%, #6e8a28 30%, #5a7a18 70%, #4a6a10 100%);
+      font-weight: 700;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+      cursor: default;
+    }
+
+    .skill-close {
+      width: 20px;
+      height: 18px;
+      border: 1px solid #7f7f7f;
+      background: linear-gradient(180deg, #f5a38f, #d84935);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .skill-content {
+      overflow: auto;
+      padding: 9px;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          #fff 0,
+          #fff 24px,
+          #ece8dd 24px,
+          #ece8dd 25px,
+          #f8f6f0 25px,
+          #f8f6f0 49px
+        );
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .skill-frontmatter {
+      margin-bottom: 9px;
+      padding: 8px;
+      border: 1px solid var(--lw-yellow-border);
+      background: linear-gradient(180deg, #fff7c7, #ffc429);
+      color: #3d2a00;
+      font-weight: 700;
+    }
+
+    .skill-frontmatter h2 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .skill-markdown {
+      padding: 10px 12px;
+      border: 1px solid var(--lw-border);
+      background: rgba(255, 255, 255, 0.88);
+      color: #111;
+    }
+
+    .skill-markdown h1,
+    .skill-markdown h2,
+    .skill-markdown h3 {
+      margin: 12px 0 6px;
+      line-height: 1.2;
+    }
+
+    .skill-markdown h1 {
+      font-size: 20px;
+    }
+
+    .skill-markdown h2 {
+      font-size: 17px;
+      color: #436711;
+    }
+
+    .skill-markdown h3 {
+      font-size: 14px;
+    }
+
+    .skill-markdown p,
+    .skill-markdown ul,
+    .skill-markdown ol,
+    .skill-markdown pre {
+      margin: 0 0 9px;
+    }
+
+    .skill-markdown ul,
+    .skill-markdown ol {
+      padding-left: 23px;
+    }
+
+    .skill-markdown code,
+    .skill-markdown pre {
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+    }
+
+    .skill-markdown code {
+      padding: 1px 3px;
+      background: #ece9d8;
+      border: 1px solid #d1ccb9;
+    }
+
+    .skill-markdown pre {
+      overflow: auto;
+      padding: 8px;
+      border: 1px solid #aaa;
+      background: #f3f3f3;
+      white-space: pre-wrap;
+    }
+
+    .skill-markdown pre code {
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .skill-error {
+      padding: 12px;
+      border: 1px solid #c65353;
+      background: #fff2f0;
+      color: #7b1b12;
+      font-weight: 700;
+    }
+
     .hidden {
       display: none !important;
     }
@@ -1233,6 +1380,15 @@
       .player-label {
         display: none;
       }
+
+      .skill-modal {
+        padding: 8px;
+      }
+
+      .skill-window {
+        width: 100%;
+        max-height: 94vh;
+      }
     }
 
     @media (max-width: 520px) {
@@ -1264,10 +1420,6 @@
         width: 60px;
       }
 
-      .speed-cell {
-        width: 72px;
-      }
-
       .actions-row {
         align-items: stretch;
       }
@@ -1290,9 +1442,6 @@
         min-height: 120px;
       }
 
-      .speed-cell {
-        display: none;
-      }
 
     }
 
@@ -1396,17 +1545,19 @@
               <aside class="sidebar" id="sidebar" aria-label="Filters">
                 <div class="side-section">
                   <div class="side-header">Category</div>
-                  <div class="side-item clickable active" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">📂</span><span>All (4)</span></div>
+                  <div class="side-item clickable active" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">📂</span><span>All (9)</span></div>
                   <div class="side-item clickable" data-filter-type="category" data-filter-value="Agents" data-filter-label="Agents"><span class="side-icon">🤖</span><span>Agents (1)</span></div>
                   <div class="side-item clickable" data-filter-type="category" data-filter-value="Infra" data-filter-label="Infrastructure"><span class="side-icon">🔧</span><span>Infrastructure (2)</span></div>
                   <div class="side-item clickable" data-filter-type="category" data-filter-value="Apps" data-filter-label="Apps"><span class="side-icon">📦</span><span>Apps (1)</span></div>
+                  <div class="side-item clickable" data-filter-type="category" data-filter-value="Skills" data-filter-label="Skills"><span class="side-icon">🧠</span><span>Skills (5)</span></div>
                 </div>
 
                 <div class="side-section">
                   <div class="side-header">Tech Stack</div>
-                  <div class="side-item clickable" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">▣</span><span>All (4)</span></div>
+                  <div class="side-item clickable" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">▣</span><span>All (9)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Python" data-filter-label="Python"><span class="side-icon">▣</span><span>Python (4)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Claude API" data-filter-label="Claude API"><span class="side-icon">▣</span><span>Claude API (3)</span></div>
+                  <div class="side-item clickable" data-filter-type="tech" data-filter-value="Markdown|Prompt" data-filter-label="Markdown / Prompting"><span class="side-icon">▣</span><span>Markdown / Prompting (5)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="FastAPI" data-filter-label="FastAPI"><span class="side-icon">▣</span><span>FastAPI (2)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Telegram" data-filter-label="Telegram API"><span class="side-icon">▣</span><span>Telegram API (2)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Postgres|pgvector" data-filter-label="Postgres / pgvector"><span class="side-icon">▣</span><span>Postgres / pgvector (2)</span></div>
@@ -1433,7 +1584,7 @@
                     <button class="retro-button mobile-filter" type="button" id="mobile-filter">☰ Filter</button>
                     <div class="search-label">
                       <span class="search-close">×</span>
-                      <span class="search-label-text" id="search-title">Vibecoded Apps (4)</span>
+                      <span class="search-label-text" id="search-title">Vibecoded Apps (9)</span>
                     </div>
                   </div>
                   <div class="warning">Things that I have vibecoded that I use on, more or less, a daily basis.</div>
@@ -1446,8 +1597,6 @@
                         <col class="name-cell">
                         <col class="type-cell">
                         <col class="size-cell">
-                        <col class="speed-cell">
-                        <col class="bitrate-cell hide-mobile">
                       </colgroup>
                       <thead>
                         <tr>
@@ -1457,8 +1606,6 @@
                           <th>Name</th>
                           <th class="type-cell">Type</th>
                           <th class="size-cell">Size</th>
-                          <th class="speed-cell">Speed</th>
-                          <th class="bitrate-cell hide-mobile">Bitrate</th>
                         </tr>
                       </thead>
                       <tbody id="results-body"></tbody>
@@ -1497,10 +1644,9 @@
                     <table aria-label="Connect contacts">
                       <colgroup>
                         <col style="width:90px">
-                        <col>
-                        <col style="width:100px">
-                        <col style="width:80px">
-                        <col style="width:70px">
+                      <col>
+                      <col style="width:100px">
+                      <col style="width:80px">
                       </colgroup>
                       <thead>
                         <tr>
@@ -1508,7 +1654,6 @@
                           <th>Address</th>
                           <th>Protocol</th>
                           <th>Status</th>
-                          <th>Speed</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1517,21 +1662,18 @@
                           <td><a href="https://github.com/polski-sklep" target="_blank" rel="noopener noreferrer">github.com/polski-sklep</a></td>
                           <td>git</td>
                           <td class="detail-status">Online</td>
-                          <td>T3</td>
                         </tr>
                         <tr>
                           <td class="contact-label">X</td>
                           <td><a href="https://x.com/overtonlimbo" target="_blank" rel="noopener noreferrer">x.com/overtonlimbo</a></td>
                           <td>social</td>
                           <td class="detail-status">Online</td>
-                          <td>T1</td>
                         </tr>
                         <tr>
                           <td class="contact-label">LinkedIn</td>
                           <td><a href="https://www.linkedin.com/in/jacobkowalewski/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jacobkowalewski</a></td>
                           <td>profile</td>
                           <td class="detail-status">Online</td>
-                          <td>T3</td>
                         </tr>
                       </tbody>
                     </table>
@@ -1566,9 +1708,8 @@
                     <col style="width:35%">
                     <col style="width:10%">
                     <col style="width:20%">
+                    <col style="width:20%">
                     <col style="width:15%">
-                    <col style="width:10%">
-                    <col style="width:10%">
                   </colgroup>
                   <thead>
                     <tr>
@@ -1576,7 +1717,6 @@
                       <th>Size</th>
                       <th>Status</th>
                       <th>Development Progress</th>
-                      <th>Speed</th>
                       <th>Time</th>
                     </tr>
                   </thead>
@@ -1596,8 +1736,8 @@
             <div class="status-bar">
               <span class="dot"></span>
               <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <span class="status-cluster">⬆ 1 @ 79 KB/s</span>
-              <span class="status-cluster">⬇ 0 @ 0 KB/s</span>
+              <span class="status-cluster">⬆ 1 peer</span>
+              <span class="status-cluster">⬇ 0 active</span>
               <a class="status-link">Support vibecoding and open protocols. Get VibeWire PRO.</a>
               <span class="media-player">
                 <span class="media-controls">◀◀ ▶ ▶▶</span>
@@ -1612,6 +1752,15 @@
   </div>
 
   <div id="tooltip" role="tooltip"></div>
+  <div class="skill-modal" id="skill-modal" aria-hidden="true">
+    <div class="skill-window" role="dialog" aria-modal="true" aria-labelledby="skill-modal-title">
+      <div class="skill-window-title">
+        <span id="skill-modal-title">Browse Host</span>
+        <button class="skill-close" type="button" id="skill-modal-close" aria-label="Close">×</button>
+      </div>
+      <div class="skill-content" id="skill-modal-content"></div>
+    </div>
+  </div>
 
   <script>
     const GITHUB_HOST = "https://github.com/polski-sklep";
@@ -1624,7 +1773,7 @@
       {
         name: "committee_orchestrator_v2.1_multiagent_crypto.py",
         quality: 4,
-        num: 6,
+        num: 1,
         license: "✅",
         type: "py",
         size: "1.3 MB",
@@ -1646,7 +1795,7 @@
       {
         name: "ai_curriculum_ingest_v1.4_spaced_rep.py",
         quality: 4,
-        num: 5,
+        num: 2,
         license: "✅",
         type: "py",
         size: "212 KB",
@@ -1668,7 +1817,7 @@
       {
         name: "telegram_contact_graph_v1.0.py",
         quality: 3,
-        num: 4,
+        num: 3,
         license: "✅",
         type: "py",
         size: "184 KB",
@@ -1707,6 +1856,121 @@
         tech: "Python, FastAPI, HTMX, Postgres, Claude API, Tailscale",
         url: "https://github.com/polski-sklep/fitness-tracker",
         hash: "f6c4d5e3a7b890124f5678901234abcdef6789a"
+      },
+      {
+        kind: "skill",
+        slug: "sharpener",
+        name: "sharpener.md",
+        quality: 4,
+        num: 5,
+        license: "✅",
+        type: "skill",
+        size: "268 lines",
+        sizeColor: false,
+        speed: "T3 or Higher",
+        bitrate: "320",
+        icon: "🧠",
+        category: "Skills",
+        desc: "Pressure-tests any idea, decision, or plan before you commit. Structured interrogation forces you to defend your thinking, attacks the weak points, and surfaces the category-killers you missed, then delivers a brief separating real risks from noise. Premortem mode assumes the plan already failed and works backward to find why.",
+        descHighlights: [
+          "Pressure-tests any idea, decision, or plan",
+          "category-killers",
+          "Premortem mode"
+        ],
+        tech: "Markdown, Prompt Engineering, Claude Skill",
+        hash: "skill-sharpener-268l-21577b"
+      },
+      {
+        kind: "skill",
+        slug: "distil",
+        name: "distil.md",
+        quality: 5,
+        num: 6,
+        license: "✅",
+        type: "skill",
+        size: "224 lines",
+        sizeColor: false,
+        speed: "T3 or Higher",
+        bitrate: "256",
+        icon: "🧪",
+        category: "Skills",
+        desc: "Extracts the transferable lessons from any film, book, album, podcast, or game — the ideas you can use, not a plot summary. Anchors to what struck you, then derives lessons cited to specific elements and rated for how tightly bound to the source they are. Outputs a vault-ready note and declines when it does not know the work well enough.",
+        descHighlights: [
+          "transferable lessons",
+          "rated for how tightly bound",
+          "vault-ready note"
+        ],
+        tech: "Markdown, Prompt Engineering, Claude Skill",
+        hash: "skill-distil-224l-19904b"
+      },
+      {
+        kind: "skill",
+        slug: "github-deploy",
+        name: "github-deploy.md",
+        quality: 3,
+        num: 7,
+        license: "✅",
+        type: "skill",
+        size: "449 lines",
+        sizeColor: false,
+        speed: "Broadband",
+        bitrate: "192",
+        icon: "🚀",
+        category: "Skills",
+        desc: "Takes a working local project to a clean, secure, documented GitHub repo — or pushes your latest changes to a live one. Runs security auditing, secret detection, hygiene, docs, and a first-run audit before publishing. Refuses to push on unresolved security findings and never force-pushes on your behalf.",
+        descHighlights: [
+          "clean, secure, documented GitHub repo",
+          "security auditing",
+          "never force-pushes"
+        ],
+        tech: "Markdown, Prompt Engineering, GitHub, Claude Skill",
+        hash: "skill-github-deploy-449l-34748b"
+      },
+      {
+        kind: "skill",
+        slug: "concise",
+        name: "concise.md",
+        quality: 5,
+        num: 8,
+        license: "✅",
+        type: "skill",
+        size: "279 lines",
+        sizeColor: false,
+        speed: "T1",
+        bitrate: "128",
+        icon: "✂️",
+        category: "Skills",
+        desc: "Compresses any prior answer to its shortest form while losing zero information — compression, not summarisation. Strips filler, hedging, and padding while preserving every fact, number, condition, and qualification. Outputs clean bullets with the load-bearing figure bolded, and stops at the information floor rather than cutting content to look shorter.",
+        descHighlights: [
+          "shortest form while losing zero information",
+          "compression, not summarisation",
+          "load-bearing figure bolded"
+        ],
+        tech: "Markdown, Prompt Engineering, Claude Skill",
+        hash: "skill-concise-279l-25859b"
+      },
+      {
+        kind: "skill",
+        slug: "chefit",
+        name: "chefit.md",
+        quality: 3,
+        num: 9,
+        license: "✅",
+        type: "skill",
+        size: "237 lines",
+        sizeColor: false,
+        speed: "T1",
+        bitrate: "128",
+        icon: "🍳",
+        category: "Skills",
+        desc: "A cooking assistant for a professional cook, routed by your opening verb. \"I have:\" builds a dish from only what you list. \"Help me with:\" answers a technique question tersely. \"I am making:\" produces one executable recipe plus numbered upgrades. Optionally consults a flavour-embedding model for non-obvious pairings.",
+        descHighlights: [
+          "professional cook",
+          "\"I have:\"",
+          "flavour-embedding model"
+        ],
+        tech: "Markdown, Prompt Engineering, Cooking, Claude Skill",
+        hash: "skill-chefit-237l-26214b"
       }
     ];
 
@@ -1732,7 +1996,6 @@
           size: "1.3 MB",
           status: "Readiness 4/5",
           progress: 81,
-          speed: "T3+",
           time: "",
           kind: "readiness",
           static: true
@@ -1742,7 +2005,6 @@
           size: "212 KB",
           status: "Readiness 4/5",
           progress: 78,
-          speed: "T3+",
           time: "",
           kind: "readiness",
           static: true
@@ -1752,7 +2014,6 @@
           size: "184 KB",
           status: "Readiness 3/5",
           progress: 62,
-          speed: "T1",
           time: "",
           kind: "readiness",
           static: true
@@ -1762,7 +2023,6 @@
           size: "776 KB",
           status: "Readiness 2/5",
           progress: 43,
-          speed: "Tailscale",
           time: "",
           kind: "readiness",
           static: true
@@ -1789,6 +2049,10 @@
     const downloadsBody = document.getElementById("downloads-body");
     const searchTitle = document.getElementById("search-title");
     const tooltip = document.getElementById("tooltip");
+    const skillModal = document.getElementById("skill-modal");
+    const skillModalTitle = document.getElementById("skill-modal-title");
+    const skillModalContent = document.getElementById("skill-modal-content");
+    const skillModalClose = document.getElementById("skill-modal-close");
 
     function escapeHtml(value) {
       return String(value)
@@ -1853,8 +2117,17 @@
       return app.url || GITHUB_HOST;
     }
 
+    function skillPath(skill) {
+      return `skills/${encodeURIComponent(skill.slug)}.md`;
+    }
+
     function openSelectedProject() {
-      window.open(projectUrl(selectedApp()), "_blank", "noopener,noreferrer");
+      const selected = selectedApp();
+      if (selected.kind === "skill") {
+        openSkillModal(selected);
+        return;
+      }
+      window.open(projectUrl(selected), "_blank", "noopener,noreferrer");
     }
 
     function renderResults() {
@@ -1871,7 +2144,7 @@
         const selected = appIndex === state.selectedIndex ? " selected" : "";
         const sizeClass = app.sizeColor ? "size-cell size-green" : "size-cell";
         return `
-          <tr class="${selected}" data-index="${appIndex}" title="Double-click to browse this GitHub host" style="animation-delay:${i * 0.06}s">
+          <tr class="${selected}" data-index="${appIndex}" title="Double-click to browse this host" style="animation-delay:${i * 0.06}s">
             <td class="quality-cell hide-mobile">${stars(app.quality)}</td>
             <td class="num-cell">${app.num}</td>
             <td class="license-cell hide-mobile">${app.license}</td>
@@ -1880,8 +2153,6 @@
             </td>
             <td class="type-cell">${escapeHtml(app.type)}</td>
             <td class="${sizeClass}">${escapeHtml(app.size)}</td>
-            <td class="speed-cell">${escapeHtml(app.speed)}</td>
-            <td class="bitrate-cell hide-mobile">${escapeHtml(app.bitrate)}</td>
           </tr>
         `;
       }).join("");
@@ -1910,8 +2181,8 @@
       tooltip.innerHTML = `
         <div class="tip-title">${app.icon} ${escapeHtml(app.name)}</div>
         <div><strong>Size:</strong> ${escapeHtml(app.size)} &nbsp; <strong>Type:</strong> ${escapeHtml(app.type)}</div>
-        <div><strong>Sources:</strong> ${app.num} peers &nbsp; <strong>Speed:</strong> ${escapeHtml(app.speed)}</div>
-        <div><strong>Host:</strong> GitHub &nbsp; <strong>Action:</strong> double-click to browse</div>
+        <div><strong>Sources:</strong> ${app.num} peers &nbsp; <strong>Type:</strong> ${escapeHtml(app.type)}</div>
+        <div><strong>Host:</strong> ${app.kind === "skill" ? "Local skill directory" : "GitHub"} &nbsp; <strong>Action:</strong> double-click to browse</div>
         <div><strong>Stack:</strong> ${escapeHtml(app.tech)}</div>
         <div>${renderHighlightedText(app.desc, app.descHighlights)}</div>
         <span class="tip-hash">SHA1 ${escapeHtml(app.hash)}</span>
@@ -1939,6 +2210,154 @@
       tooltip.style.display = "none";
     }
 
+    function parseSkillMarkdown(raw) {
+      const source = String(raw || "");
+      const match = source.match(/^---\n([\s\S]*?)\n---\n?/);
+      const meta = {};
+      let body = source;
+      if (match) {
+        body = source.slice(match[0].length);
+        match[1].split("\n").forEach((line) => {
+          const separator = line.indexOf(":");
+          if (separator === -1 || /^\s/.test(line)) return;
+          const key = line.slice(0, separator).trim();
+          const value = line.slice(separator + 1).trim().replace(/^["']|["']$/g, "");
+          if (key) meta[key] = value;
+        });
+      }
+      return { meta, body };
+    }
+
+    function renderInlineMarkdown(value) {
+      let text = escapeHtml(value);
+      text = text.replace(/`([^`]+)`/g, "<code>$1</code>");
+      text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+      text = text.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      text = text.replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+      return text;
+    }
+
+    function renderList(items, ordered) {
+      const tag = ordered ? "ol" : "ul";
+      return `<${tag}>${items.map((item) => `<li>${renderInlineMarkdown(item)}</li>`).join("")}</${tag}>`;
+    }
+
+    function renderMarkdown(markdown) {
+      const lines = String(markdown || "").replace(/\r\n/g, "\n").split("\n");
+      const blocks = [];
+      let paragraph = [];
+      let listItems = [];
+      let orderedList = false;
+      let inCode = false;
+      let codeLines = [];
+
+      function flushParagraph() {
+        if (!paragraph.length) return;
+        blocks.push(`<p>${renderInlineMarkdown(paragraph.join(" "))}</p>`);
+        paragraph = [];
+      }
+
+      function flushList() {
+        if (!listItems.length) return;
+        blocks.push(renderList(listItems, orderedList));
+        listItems = [];
+      }
+
+      lines.forEach((line) => {
+        if (/^```/.test(line)) {
+          if (inCode) {
+            blocks.push(`<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+            codeLines = [];
+            inCode = false;
+          } else {
+            flushParagraph();
+            flushList();
+            inCode = true;
+          }
+          return;
+        }
+
+        if (inCode) {
+          codeLines.push(line);
+          return;
+        }
+
+        const heading = line.match(/^(#{1,3})\s+(.+)$/);
+        if (heading) {
+          flushParagraph();
+          flushList();
+          const level = heading[1].length;
+          blocks.push(`<h${level}>${renderInlineMarkdown(heading[2])}</h${level}>`);
+          return;
+        }
+
+        const unordered = line.match(/^\s*[-*]\s+(.+)$/);
+        const ordered = line.match(/^\s*\d+\.\s+(.+)$/);
+        if (unordered || ordered) {
+          flushParagraph();
+          const isOrdered = Boolean(ordered);
+          if (listItems.length && orderedList !== isOrdered) {
+            flushList();
+          }
+          orderedList = isOrdered;
+          listItems.push((ordered || unordered)[1]);
+          return;
+        }
+
+        if (!line.trim()) {
+          flushParagraph();
+          flushList();
+          return;
+        }
+
+        paragraph.push(line.trim());
+      });
+
+      if (inCode) {
+        blocks.push(`<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+      }
+      flushParagraph();
+      flushList();
+      return blocks.join("");
+    }
+
+    function closeSkillModal() {
+      skillModal.classList.remove("visible");
+      skillModal.setAttribute("aria-hidden", "true");
+      skillModalContent.innerHTML = "";
+    }
+
+    async function openSkillModal(skill) {
+      hideTooltip();
+      skillModalTitle.textContent = `Browse Host - ${skill.name}`;
+      skillModalContent.innerHTML = `<div class="skill-frontmatter">Connecting to peer... fetching ${escapeHtml(skill.name)}</div>`;
+      skillModal.classList.add("visible");
+      skillModal.setAttribute("aria-hidden", "false");
+
+      try {
+        const response = await fetch(skillPath(skill), { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const parsed = parseSkillMarkdown(await response.text());
+        const title = parsed.meta.name || skill.slug;
+        const description = parsed.meta.description || "Raw skill instructions available on this host.";
+        skillModalContent.innerHTML = `
+          <div class="skill-frontmatter">
+            <h2>${escapeHtml(title)}</h2>
+            <div>${escapeHtml(description)}</div>
+          </div>
+          <div class="skill-markdown">${renderMarkdown(parsed.body)}</div>
+        `;
+      } catch (error) {
+        skillModalContent.innerHTML = `
+          <div class="skill-error">
+            File not found on host. Peer returned no readable SKILL.md for ${escapeHtml(skill.name)}.
+          </div>
+        `;
+      }
+    }
+
     function renderDownloads() {
       downloadsBody.innerHTML = state.downloads.map((download) => {
         const fillClass = download.kind === "readiness" ? "readiness" : (download.complete ? "complete" : "");
@@ -1952,7 +2371,6 @@
               <span class="progress-fill ${fillClass}" style="width:${download.progress}%">${download.progress}%</span>
             </div>
           </td>
-          <td>${escapeHtml(download.speed)}</td>
           <td>${escapeHtml(download.time)}</td>
         </tr>
       `;
@@ -2047,6 +2465,7 @@
       resetHeroIntents();
       heroScene.classList.remove("aku-active");
       hideTooltip();
+      closeSkillModal();
       if (state.heroFrame) {
         cancelAnimationFrame(state.heroFrame);
         state.heroFrame = 0;
@@ -2265,7 +2684,7 @@
       if (location.hash === "#app/network") {
         return "contact";
       }
-      if (location.hash === "#app" || location.hash === "#app/search") {
+      if (location.hash === "#app" || location.hash === "#app/search" || location.hash === "#app/skills") {
         return "projects";
       }
       if (location.hash.startsWith("#app/")) {
@@ -2274,8 +2693,24 @@
       return "";
     }
 
+    function applyHashFilter(wantsSkills = location.hash === "#app/skills") {
+      if (wantsSkills) {
+        filterCategory("Skills");
+        history.replaceState(null, "", "#app/skills");
+      }
+    }
+
     function addSelectedDownload() {
       const app = apps[state.selectedIndex] || apps[0];
+      if (app.kind === "skill") {
+        const link = document.createElement("a");
+        link.href = skillPath(app);
+        link.download = app.name;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        return;
+      }
       const existing = state.downloads.some((download) => download.name === app.name);
       if (!existing) {
         state.downloads.unshift({
@@ -2283,7 +2718,6 @@
           size: app.size,
           status: `Downloading from ${Math.max(2, app.num)} hosts`,
           progress: 0,
-          speed: "79 KB/s",
           time: "2:15:32",
           complete: false
         });
@@ -2299,13 +2733,11 @@
         const nextProgress = Math.min(100, download.progress + Math.floor(Math.random() * 3));
         const complete = nextProgress >= 100;
         const hosts = Math.floor(2 + Math.random() * 8);
-        const speed = `${Math.floor(42 + Math.random() * 140)} KB/s`;
         return {
           ...download,
           progress: nextProgress,
           complete,
           status: complete ? "Complete" : `Downloading from ${hosts} hosts`,
-          speed: complete ? "" : speed,
           time: complete ? "" : download.time
         };
       });
@@ -2336,10 +2768,23 @@
       document.getElementById("mobile-filter").addEventListener("click", () => sidebar.classList.toggle("mobile-open"));
       document.getElementById("download-button").addEventListener("click", addSelectedDownload);
       document.getElementById("browse-button").addEventListener("click", openSelectedProject);
+      skillModalClose.addEventListener("click", closeSkillModal);
+      skillModal.addEventListener("click", (event) => {
+        if (event.target === skillModal) {
+          closeSkillModal();
+        }
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && skillModal.classList.contains("visible")) {
+          closeSkillModal();
+        }
+      });
       window.addEventListener("hashchange", () => {
+        const wantsSkills = location.hash === "#app/skills";
         const section = hashToSection();
         if (section) {
           lockApp(section);
+          applyHashFilter(wantsSkills);
         }
       });
     }
@@ -2350,7 +2795,9 @@
       initEvents();
       const section = hashToSection();
       if (section) {
+        const wantsSkills = location.hash === "#app/skills";
         lockApp(section);
+        applyHashFilter(wantsSkills);
       } else {
         window.scrollTo(0, 0);
         state.targetProgress = 0;
