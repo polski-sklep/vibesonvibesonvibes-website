@@ -637,6 +637,24 @@
       cursor: pointer;
     }
 
+    .warning-button {
+      min-height: 18px;
+      margin-left: 10px;
+      padding: 1px 8px;
+      border: 1px solid #9d7800;
+      border-radius: 2px;
+      background: linear-gradient(180deg, #fffbea, #e6b624);
+      color: #4d3500;
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    .warning-button:active {
+      background: linear-gradient(180deg, #dba711, #fff0a7);
+    }
+
     .table-wrap {
       min-height: 165px;
       flex: 1;
@@ -803,99 +821,6 @@
 
     .action-button.junk {
       margin-left: auto;
-    }
-
-    .downloads-panel {
-      display: flex;
-      min-height: 122px;
-      max-height: 31%;
-      flex-direction: column;
-      border-top: 2px solid var(--lw-border);
-      background: #f2f2f2;
-    }
-
-    .downloads-header {
-      min-height: 19px;
-      padding: 3px 8px;
-      border-bottom: 1px solid var(--lw-border);
-      font-weight: 700;
-      cursor: default;
-    }
-
-    .downloads-wrap {
-      flex: 1;
-      overflow: auto;
-      background:
-        repeating-linear-gradient(
-          180deg,
-          #fff 0,
-          #fff 19px,
-          #ece8dd 19px,
-          #ece8dd 20px,
-          #f8f6f0 20px,
-          #f8f6f0 39px,
-          #ece8dd 39px,
-          #ece8dd 40px
-        );
-    }
-
-    .downloads-wrap th,
-    .downloads-wrap td {
-      height: 20px;
-    }
-
-    .progress {
-      height: 14px;
-      border: 1px solid #999;
-      background: #e0e0e0;
-    }
-
-    .progress-fill {
-      display: block;
-      height: 100%;
-      color: #fff;
-      font-size: 9px;
-      line-height: 12px;
-      text-align: center;
-      background: linear-gradient(180deg, #90c8f0, #5090d0, #3070b0);
-      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
-    }
-
-    .progress-fill.complete {
-      background: linear-gradient(180deg, #65b7ff 0%, #2f94f4 48%, #1679d7 100%);
-    }
-
-    .progress-fill.readiness {
-      background: linear-gradient(180deg, #65b7ff 0%, #2f94f4 48%, #1679d7 100%);
-    }
-
-    .download-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 26px;
-      min-height: 42px;
-      padding: 4px 10px;
-      border-top: 1px solid var(--lw-border-light);
-      background: #efefef;
-    }
-
-    .download-tool {
-      display: inline-flex;
-      min-width: 54px;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      border: 0;
-      background: transparent;
-      color: #4d4d4d;
-      cursor: default;
-    }
-
-    .download-tool .action-icon {
-      font-size: 18px;
-      filter: grayscale(1);
-      opacity: 0.78;
     }
 
     .section-panel {
@@ -1143,6 +1068,26 @@
       cursor: default;
     }
 
+    .skill-title-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: 8px;
+    }
+
+    .skill-download {
+      min-height: 18px;
+      padding: 1px 8px;
+      border: 1px solid #315f0b;
+      border-radius: 2px;
+      background: linear-gradient(180deg, #f9ffe9, #8dcf33);
+      color: #153300;
+      font-size: 10px;
+      font-weight: 700;
+      text-shadow: none;
+      cursor: pointer;
+    }
+
     .skill-close {
       width: 20px;
       height: 18px;
@@ -1276,9 +1221,6 @@
         gap: 14px;
       }
 
-      .download-actions {
-        gap: 12px;
-      }
     }
 
     @media (max-width: 768px) {
@@ -1358,15 +1300,6 @@
         font-size: 18px;
       }
 
-      .downloads-panel {
-        min-height: 104px;
-      }
-
-      .download-actions {
-        overflow-x: auto;
-        justify-content: flex-start;
-      }
-
       .section-panel {
         padding: 0;
       }
@@ -1422,15 +1355,6 @@
 
       .actions-row {
         align-items: stretch;
-      }
-
-      .downloads-panel {
-        min-height: 86px;
-        max-height: 24%;
-      }
-
-      .download-actions {
-        display: none;
       }
 
       .section-actions {
@@ -1587,7 +1511,10 @@
                       <span class="search-label-text" id="search-title">Vibecoded Apps (9)</span>
                     </div>
                   </div>
-                  <div class="warning">Things that I have vibecoded that I use on, more or less, a daily basis.</div>
+                  <div class="warning" id="results-warning">
+                    <span id="results-warning-text">Things that I have vibecoded that I use on, more or less, a daily basis.</span>
+                    <button class="warning-button" type="button" id="download-all-skills" hidden>Download all skills</button>
+                  </div>
                   <div class="table-wrap">
                     <table aria-label="VibeWire search results">
                       <colgroup>
@@ -1700,39 +1627,6 @@
               </main>
             </div>
 
-            <div class="downloads-panel" id="downloads-panel">
-              <div class="downloads-header">Downloads</div>
-              <div class="downloads-wrap">
-                <table aria-label="Downloads">
-                  <colgroup>
-                    <col style="width:35%">
-                    <col style="width:10%">
-                    <col style="width:20%">
-                    <col style="width:20%">
-                    <col style="width:15%">
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Size</th>
-                      <th>Status</th>
-                      <th>Development Progress</th>
-                      <th>Time</th>
-                    </tr>
-                  </thead>
-                  <tbody id="downloads-body"></tbody>
-                </table>
-              </div>
-              <div class="download-actions" id="download-actions">
-                <button class="download-tool" type="button"><span class="action-icon">🚫</span><span>Clear</span></button>
-                <button class="download-tool" type="button"><span class="action-icon">🔁</span><span>Resume</span></button>
-                <button class="download-tool" type="button"><span class="action-icon">⏸</span><span>Pause</span></button>
-                <button class="download-tool" type="button"><span class="action-icon">⚙</span><span>Launch</span></button>
-                <button class="download-tool" type="button"><span class="action-icon">📂</span><span>Explore</span></button>
-                <button class="download-tool" type="button"><span class="action-icon">🧹</span><span>Clear Inactive</span></button>
-              </div>
-            </div>
-
             <div class="status-bar">
               <span class="dot"></span>
               <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -1756,7 +1650,10 @@
     <div class="skill-window" role="dialog" aria-modal="true" aria-labelledby="skill-modal-title">
       <div class="skill-window-title">
         <span id="skill-modal-title">Browse Host</span>
-        <button class="skill-close" type="button" id="skill-modal-close" aria-label="Close">×</button>
+        <span class="skill-title-actions">
+          <button class="skill-download" type="button" id="skill-modal-download">Download .md</button>
+          <button class="skill-close" type="button" id="skill-modal-close" aria-label="Close">×</button>
+        </span>
       </div>
       <div class="skill-content" id="skill-modal-content"></div>
     </div>
@@ -1990,44 +1887,7 @@
       heroReverseTimer: 0,
       heroReturnCooldownUntil: 0,
       autoEntering: false,
-      downloads: [
-        {
-          name: "committee_orchestrator_v2.1.py",
-          size: "1.3 MB",
-          status: "Readiness 4/5",
-          progress: 81,
-          time: "",
-          kind: "readiness",
-          static: true
-        },
-        {
-          name: "ai_curriculum_ingest_v1.4.py",
-          size: "212 KB",
-          status: "Readiness 4/5",
-          progress: 78,
-          time: "",
-          kind: "readiness",
-          static: true
-        },
-        {
-          name: "telegram_contact_graph_v1.0.py",
-          size: "184 KB",
-          status: "Readiness 3/5",
-          progress: 62,
-          time: "",
-          kind: "readiness",
-          static: true
-        },
-        {
-          name: "fitness_tracker_power_score_v1.0.zip",
-          size: "776 KB",
-          status: "Readiness 2/5",
-          progress: 43,
-          time: "",
-          kind: "readiness",
-          static: true
-        }
-      ]
+      activeSkill: null
     };
 
     const HERO_LOCK_PROGRESS = 0.86;
@@ -2043,16 +1903,17 @@
     const sidebar = document.getElementById("sidebar");
     const projectsSection = document.getElementById("projects-section");
     const contactSection = document.getElementById("contact-section");
-    const downloadsPanel = document.getElementById("downloads-panel");
     const actionsRow = document.getElementById("actions-row");
     const resultsBody = document.getElementById("results-body");
-    const downloadsBody = document.getElementById("downloads-body");
     const searchTitle = document.getElementById("search-title");
+    const resultsWarningText = document.getElementById("results-warning-text");
+    const downloadAllSkillsButton = document.getElementById("download-all-skills");
     const tooltip = document.getElementById("tooltip");
     const skillModal = document.getElementById("skill-modal");
     const skillModalTitle = document.getElementById("skill-modal-title");
     const skillModalContent = document.getElementById("skill-modal-content");
     const skillModalClose = document.getElementById("skill-modal-close");
+    const skillModalDownload = document.getElementById("skill-modal-download");
 
     function escapeHtml(value) {
       return String(value)
@@ -2121,6 +1982,24 @@
       return `skills/${encodeURIComponent(skill.slug)}.md`;
     }
 
+    function skillEntries() {
+      return apps.filter((app) => app.kind === "skill");
+    }
+
+    function triggerDownload(href, filename) {
+      const link = document.createElement("a");
+      link.href = href;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+
+    function downloadSkill(skill) {
+      if (!skill || skill.kind !== "skill") return;
+      triggerDownload(skillPath(skill), skill.name);
+    }
+
     function openSelectedProject() {
       const selected = selectedApp();
       if (selected.kind === "skill") {
@@ -2135,6 +2014,11 @@
       searchTitle.textContent = state.filterValue === "All"
         ? `Vibecoded Apps (${filtered.length})`
         : `${state.filterLabel} (${filtered.length})`;
+      const isSkillsView = state.filterType === "category" && state.filterValue === "Skills";
+      resultsWarningText.textContent = isSkillsView
+        ? "Download the raw SKILL.md files individually, or grab the whole skills pack as a ZIP."
+        : "Things that I have vibecoded that I use on, more or less, a daily basis.";
+      downloadAllSkillsButton.hidden = !isSkillsView;
       if (!filtered.some((app) => apps.indexOf(app) === state.selectedIndex)) {
         state.selectedIndex = apps.indexOf(filtered[0] || apps[0]);
       }
@@ -2208,6 +2092,126 @@
 
     function hideTooltip() {
       tooltip.style.display = "none";
+    }
+
+    function makeCrcTable() {
+      const table = new Uint32Array(256);
+      for (let i = 0; i < 256; i += 1) {
+        let c = i;
+        for (let j = 0; j < 8; j += 1) {
+          c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+        }
+        table[i] = c >>> 0;
+      }
+      return table;
+    }
+
+    const CRC_TABLE = makeCrcTable();
+
+    function crc32(bytes) {
+      let crc = 0xffffffff;
+      bytes.forEach((byte) => {
+        crc = CRC_TABLE[(crc ^ byte) & 0xff] ^ (crc >>> 8);
+      });
+      return (crc ^ 0xffffffff) >>> 0;
+    }
+
+    function pushUint16(parts, value) {
+      parts.push(value & 0xff, (value >>> 8) & 0xff);
+    }
+
+    function pushUint32(parts, value) {
+      parts.push(value & 0xff, (value >>> 8) & 0xff, (value >>> 16) & 0xff, (value >>> 24) & 0xff);
+    }
+
+    function createZip(files) {
+      const encoder = new TextEncoder();
+      const localParts = [];
+      const centralParts = [];
+      let offset = 0;
+
+      files.forEach((file) => {
+        const nameBytes = encoder.encode(file.name);
+        const dataBytes = encoder.encode(file.content);
+        const crc = crc32(dataBytes);
+        const localHeader = [];
+
+        pushUint32(localHeader, 0x04034b50);
+        pushUint16(localHeader, 20);
+        pushUint16(localHeader, 0);
+        pushUint16(localHeader, 0);
+        pushUint16(localHeader, 0);
+        pushUint16(localHeader, 0);
+        pushUint32(localHeader, crc);
+        pushUint32(localHeader, dataBytes.length);
+        pushUint32(localHeader, dataBytes.length);
+        pushUint16(localHeader, nameBytes.length);
+        pushUint16(localHeader, 0);
+        localParts.push(new Uint8Array(localHeader), nameBytes, dataBytes);
+
+        const centralHeader = [];
+        pushUint32(centralHeader, 0x02014b50);
+        pushUint16(centralHeader, 20);
+        pushUint16(centralHeader, 20);
+        pushUint16(centralHeader, 0);
+        pushUint16(centralHeader, 0);
+        pushUint16(centralHeader, 0);
+        pushUint16(centralHeader, 0);
+        pushUint32(centralHeader, crc);
+        pushUint32(centralHeader, dataBytes.length);
+        pushUint32(centralHeader, dataBytes.length);
+        pushUint16(centralHeader, nameBytes.length);
+        pushUint16(centralHeader, 0);
+        pushUint16(centralHeader, 0);
+        pushUint16(centralHeader, 0);
+        pushUint16(centralHeader, 0);
+        pushUint32(centralHeader, 0);
+        pushUint32(centralHeader, offset);
+        centralParts.push(new Uint8Array(centralHeader), nameBytes);
+
+        offset += localHeader.length + nameBytes.length + dataBytes.length;
+      });
+
+      const centralSize = centralParts.reduce((sum, part) => sum + part.length, 0);
+      const end = [];
+      pushUint32(end, 0x06054b50);
+      pushUint16(end, 0);
+      pushUint16(end, 0);
+      pushUint16(end, files.length);
+      pushUint16(end, files.length);
+      pushUint32(end, centralSize);
+      pushUint32(end, offset);
+      pushUint16(end, 0);
+
+      return new Blob([...localParts, ...centralParts, new Uint8Array(end)], { type: "application/zip" });
+    }
+
+    async function downloadAllSkills() {
+      const skills = skillEntries();
+      const originalText = downloadAllSkillsButton.textContent;
+      downloadAllSkillsButton.disabled = true;
+      downloadAllSkillsButton.textContent = "Packing...";
+
+      try {
+        const files = await Promise.all(skills.map(async (skill) => {
+          const response = await fetch(skillPath(skill), { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error(`Missing ${skill.name}`);
+          }
+          return {
+            name: skill.name,
+            content: await response.text()
+          };
+        }));
+        const blobUrl = URL.createObjectURL(createZip(files));
+        triggerDownload(blobUrl, "vibesonvibesonvibes-skills.zip");
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      } catch (error) {
+        resultsWarningText.textContent = "Could not pack every skill file. Try downloading the selected skill instead.";
+      } finally {
+        downloadAllSkillsButton.disabled = false;
+        downloadAllSkillsButton.textContent = originalText;
+      }
     }
 
     function parseSkillMarkdown(raw) {
@@ -2325,10 +2329,12 @@
       skillModal.classList.remove("visible");
       skillModal.setAttribute("aria-hidden", "true");
       skillModalContent.innerHTML = "";
+      state.activeSkill = null;
     }
 
     async function openSkillModal(skill) {
       hideTooltip();
+      state.activeSkill = skill;
       skillModalTitle.textContent = `Browse Host - ${skill.name}`;
       skillModalContent.innerHTML = `<div class="skill-frontmatter">Connecting to peer... fetching ${escapeHtml(skill.name)}</div>`;
       skillModal.classList.add("visible");
@@ -2356,25 +2362,6 @@
           </div>
         `;
       }
-    }
-
-    function renderDownloads() {
-      downloadsBody.innerHTML = state.downloads.map((download) => {
-        const fillClass = download.kind === "readiness" ? "readiness" : (download.complete ? "complete" : "");
-        return `
-        <tr>
-          <td>${escapeHtml(download.name)}</td>
-          <td>${escapeHtml(download.size)}</td>
-          <td>${escapeHtml(download.status)}</td>
-          <td>
-            <div class="progress">
-              <span class="progress-fill ${fillClass}" style="width:${download.progress}%">${download.progress}%</span>
-            </div>
-          </td>
-          <td>${escapeHtml(download.time)}</td>
-        </tr>
-      `;
-      }).join("");
     }
 
     function filterSidebar(type, value, label) {
@@ -2406,7 +2393,6 @@
       projectsSection.classList.toggle("hidden", !isProjects);
       contactSection.classList.toggle("visible", isContact);
       sidebar.classList.toggle("hidden", !isProjects);
-      downloadsPanel.classList.toggle("hidden", !isProjects);
       actionsRow.classList.toggle("hidden", !isProjects);
 
       document.querySelectorAll(".tab-button").forEach((tab) => {
@@ -2717,45 +2703,10 @@
     function addSelectedDownload() {
       const app = apps[state.selectedIndex] || apps[0];
       if (app.kind === "skill") {
-        const link = document.createElement("a");
-        link.href = skillPath(app);
-        link.download = app.name;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
+        downloadSkill(app);
         return;
       }
-      const existing = state.downloads.some((download) => download.name === app.name);
-      if (!existing) {
-        state.downloads.unshift({
-          name: app.name,
-          size: app.size,
-          status: `Downloading from ${Math.max(2, app.num)} hosts`,
-          progress: 0,
-          time: "2:15:32",
-          complete: false
-        });
-      }
-      renderDownloads();
-    }
-
-    function tickDownloads() {
-      state.downloads = state.downloads.map((download) => {
-        if (download.complete || download.static) {
-          return download;
-        }
-        const nextProgress = Math.min(100, download.progress + Math.floor(Math.random() * 3));
-        const complete = nextProgress >= 100;
-        const hosts = Math.floor(2 + Math.random() * 8);
-        return {
-          ...download,
-          progress: nextProgress,
-          complete,
-          status: complete ? "Complete" : `Downloading from ${hosts} hosts`,
-          time: complete ? "" : download.time
-        };
-      });
-      renderDownloads();
+      window.open(projectUrl(app), "_blank", "noopener,noreferrer");
     }
 
     function initEvents() {
@@ -2781,7 +2732,9 @@
       document.getElementById("back-search").addEventListener("click", resetFilter);
       document.getElementById("mobile-filter").addEventListener("click", () => sidebar.classList.toggle("mobile-open"));
       document.getElementById("download-button").addEventListener("click", addSelectedDownload);
+      downloadAllSkillsButton.addEventListener("click", downloadAllSkills);
       document.getElementById("browse-button").addEventListener("click", openSelectedProject);
+      skillModalDownload.addEventListener("click", () => downloadSkill(state.activeSkill));
       skillModalClose.addEventListener("click", closeSkillModal);
       skillModal.addEventListener("click", (event) => {
         if (event.target === skillModal) {
@@ -2805,7 +2758,6 @@
 
     function init() {
       renderResults();
-      renderDownloads();
       initEvents();
       const section = hashToSection();
       if (section) {
@@ -2818,7 +2770,6 @@
         state.renderedProgress = 0;
         paintHero(0);
       }
-      setInterval(tickDownloads, 3000);
     }
 
     init();
