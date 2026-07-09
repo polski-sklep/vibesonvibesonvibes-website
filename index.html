@@ -1576,19 +1576,19 @@
               <aside class="sidebar" id="sidebar" aria-label="Filters">
                 <div class="side-section">
                   <div class="side-header">Category</div>
-                  <div class="side-item clickable active" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">📂</span><span>All (9)</span></div>
+                  <div class="side-item clickable active" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">📂</span><span>All (10)</span></div>
                   <div class="side-item clickable" data-filter-type="category" data-filter-value="Agents" data-filter-label="Agents"><span class="side-icon">🤖</span><span>Agents (1)</span></div>
                   <div class="side-item clickable" data-filter-type="category" data-filter-value="Infra" data-filter-label="Infrastructure"><span class="side-icon">🔧</span><span>Infrastructure (2)</span></div>
                   <div class="side-item clickable" data-filter-type="category" data-filter-value="Apps" data-filter-label="Apps"><span class="side-icon">📦</span><span>Apps (1)</span></div>
-                  <div class="side-item clickable" data-filter-type="category" data-filter-value="Skills" data-filter-label="Skills"><span class="side-icon">🧠</span><span>Skills (5)</span></div>
+                  <div class="side-item clickable" data-filter-type="category" data-filter-value="Skills" data-filter-label="Skills"><span class="side-icon">🧠</span><span>Skills (6)</span></div>
                 </div>
 
                 <div class="side-section">
                   <div class="side-header">Tech Stack</div>
-                  <div class="side-item clickable" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">▣</span><span>All (9)</span></div>
+                  <div class="side-item clickable" data-filter-type="category" data-filter-value="All" data-filter-label="All"><span class="side-icon">▣</span><span>All (10)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Python" data-filter-label="Python"><span class="side-icon">▣</span><span>Python (4)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Claude API" data-filter-label="Claude API"><span class="side-icon">▣</span><span>Claude API (3)</span></div>
-                  <div class="side-item clickable" data-filter-type="tech" data-filter-value="Markdown|Prompt" data-filter-label="Markdown / Prompting"><span class="side-icon">▣</span><span>Markdown / Prompting (5)</span></div>
+                  <div class="side-item clickable" data-filter-type="tech" data-filter-value="Markdown|Prompt" data-filter-label="Markdown / Prompting"><span class="side-icon">▣</span><span>Markdown / Prompting (6)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="FastAPI" data-filter-label="FastAPI"><span class="side-icon">▣</span><span>FastAPI (2)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Telegram" data-filter-label="Telegram API"><span class="side-icon">▣</span><span>Telegram API (2)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Postgres|pgvector" data-filter-label="Postgres / pgvector"><span class="side-icon">▣</span><span>Postgres / pgvector (2)</span></div>
@@ -1615,7 +1615,7 @@
                     <button class="retro-button mobile-filter" type="button" id="mobile-filter">☰ Filter</button>
                     <div class="search-label">
                       <span class="search-close">×</span>
-                      <span class="search-label-text" id="search-title">Vibecoded Apps (9)</span>
+                      <span class="search-label-text" id="search-title">Vibecoded Apps (10)</span>
                     </div>
                   </div>
                   <div class="warning" id="results-warning">
@@ -1910,9 +1910,9 @@
         category: "Skills",
         desc: "Pressure-tests any idea, decision, or plan before you commit. Structured interrogation forces you to defend your thinking, attacks the weak points, and surfaces the category-killers you missed, then delivers a brief separating real risks from noise. Premortem mode assumes the plan already failed and works backward to find why.",
         descHighlights: [
-          "Pressure-tests any idea, decision, or plan",
-          "category-killers",
-          "Premortem mode"
+          "before you commit",
+          "category-killers you missed",
+          "Premortem mode assumes the plan already failed"
         ],
         tech: "Markdown, Prompt Engineering, Claude Skill",
         hash: "skill-sharpener-268l-21577b"
@@ -1931,21 +1931,46 @@
         bitrate: "256",
         icon: "🧪",
         category: "Skills",
-        desc: "Extracts the transferable lessons from any film, book, album, podcast, or game — the ideas you can use, not a plot summary. Anchors to what struck you, then derives lessons cited to specific elements and rated for how tightly bound to the source they are. Outputs a vault-ready note and declines when it does not know the work well enough.",
+        desc: "Extracts the transferable lessons from any film, book, album, podcast, or game: the ideas you can use, not a plot summary. Anchors to what struck you, then derives lessons cited to specific elements and rated for how tightly bound to the source they are. Outputs a vault-ready note and declines when it does not know the work well enough.",
         descHighlights: [
-          "transferable lessons",
-          "rated for how tightly bound",
-          "vault-ready note"
+          "the ideas you can use, not a plot summary",
+          "cited to specific elements",
+          "declines when it does not know the work well enough"
         ],
         tech: "Markdown, Prompt Engineering, Claude Skill",
         hash: "skill-distil-224l-19904b"
       },
       {
         kind: "skill",
+        slug: "unpack",
+        name: "unpack.md",
+        quality: 4,
+        num: 7,
+        license: "✅",
+        type: "skill",
+        size: "152 lines",
+        sizeColor: false,
+        speed: "T3",
+        bitrate: "192",
+        icon: "📖",
+        category: "Skills",
+        desc: "Start with two sentences that surface the actual hook, not a neutral summary. If it grabs you, pull the lever for two paragraphs, then a full treatment with a visualisation where it helps, then the mechanics, the foundations, the primary sources. Works on a paper, an article, a link, or a bare concept. You hold every gate, the language stays plain until the depth demands otherwise, and each pull goes exponentially deeper rather than louder.",
+        descHighlights: [
+          "two sentences that surface the actual hook",
+          "a full treatment with a visualisation where it helps",
+          "paper, an article, a link, or a bare concept",
+          "You hold every gate",
+          "each pull goes exponentially deeper rather than louder"
+        ],
+        tech: "Markdown, Prompt Engineering, Research, Claude Skill",
+        hash: "skill-unpack-152l-17513b"
+      },
+      {
+        kind: "skill",
         slug: "github-deploy",
         name: "github-deploy.md",
         quality: 3,
-        num: 7,
+        num: 8,
         license: "✅",
         type: "skill",
         size: "449 lines",
@@ -1954,11 +1979,12 @@
         bitrate: "192",
         icon: "🚀",
         category: "Skills",
-        desc: "Takes a working local project to a clean, secure, documented GitHub repo — or pushes your latest changes to a live one. Runs security auditing, secret detection, hygiene, docs, and a first-run audit before publishing. Refuses to push on unresolved security findings and never force-pushes on your behalf.",
+        desc: "Takes a working local project to a clean, secure, documented GitHub repo, or pushes your latest changes to a live one. Runs security auditing, secret detection, hygiene, docs, and a first-run audit before publishing. Refuses to push on unresolved security findings and never force-pushes on your behalf.",
         descHighlights: [
           "clean, secure, documented GitHub repo",
-          "security auditing",
-          "never force-pushes"
+          "security auditing, secret detection",
+          "Refuses to push on unresolved security findings",
+          "never force-pushes on your behalf"
         ],
         tech: "Markdown, Prompt Engineering, GitHub, Claude Skill",
         hash: "skill-github-deploy-449l-34748b"
@@ -1968,7 +1994,7 @@
         slug: "concise",
         name: "concise.md",
         quality: 5,
-        num: 8,
+        num: 9,
         license: "✅",
         type: "skill",
         size: "279 lines",
@@ -1977,11 +2003,12 @@
         bitrate: "128",
         icon: "✂️",
         category: "Skills",
-        desc: "Compresses any prior answer to its shortest form while losing zero information — compression, not summarisation. Strips filler, hedging, and padding while preserving every fact, number, condition, and qualification. Outputs clean bullets with the load-bearing figure bolded, and stops at the information floor rather than cutting content to look shorter.",
+        desc: "Compresses any prior answer to its shortest form while losing zero information. This is compression, not summarisation. It strips filler, hedging, and padding while preserving every fact, number, condition, and qualification, outputs clean bullets with the load-bearing figure bolded, and stops at the information floor rather than cutting content to look shorter.",
         descHighlights: [
           "shortest form while losing zero information",
           "compression, not summarisation",
-          "load-bearing figure bolded"
+          "preserving every fact, number, condition, and qualification",
+          "information floor"
         ],
         tech: "Markdown, Prompt Engineering, Claude Skill",
         hash: "skill-concise-279l-25859b"
@@ -1991,7 +2018,7 @@
         slug: "chefit",
         name: "chefit.md",
         quality: 3,
-        num: 9,
+        num: 10,
         license: "✅",
         type: "skill",
         size: "237 lines",
@@ -2000,11 +2027,12 @@
         bitrate: "128",
         icon: "🍳",
         category: "Skills",
-        desc: "A cooking assistant for a professional cook, routed by your opening verb. \"I have:\" builds a dish from only what you list. \"Help me with:\" answers a technique question tersely. \"I am making:\" produces one executable recipe plus numbered upgrades. Optionally consults a flavour-embedding model for non-obvious pairings.",
+        desc: "A cooking assistant for a cook, routed by your opening verb. \"I have:\" builds a dish from only what you list. \"Help me with:\" answers a technique question tersely. \"I am making:\" produces one executable recipe plus numbered upgrades. Optionally consults a flavour-embedding model for non-obvious pairings.",
         descHighlights: [
-          "professional cook",
-          "\"I have:\"",
-          "flavour-embedding model"
+          "\"I have:\" builds a dish from only what you list",
+          "\"Help me with:\" answers a technique question tersely",
+          "\"I am making:\" produces one executable recipe plus numbered upgrades",
+          "non-obvious pairings"
         ],
         tech: "Markdown, Prompt Engineering, Cooking, Claude Skill",
         hash: "skill-chefit-237l-26214b"
