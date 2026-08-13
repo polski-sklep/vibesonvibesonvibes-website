@@ -21,16 +21,16 @@ Verified by: imported baseline from Codex attachment; fill unresolved fields bef
 | Version | v2.1 |
 | Status | Deployed, running |
 | Readiness (site) | 4/5 |
-| Agent count | <<FILL: exact integer, counted from the deployed agent directory>> |
-| Agent roster | <<FILL: list every agent by name and one-line role>> |
-| Meta-agents | <<FILL: which agents are excluded from Notion learnings writeback>> |
-| Governance layer | Governance Chief + adjudication layer - <<FILL: shipped / staged / removed>> |
-| Pipeline steps | <<FILL: integer - was 9>> |
+| Agent count | 15 |
+| Agent roster | Tokenomics, Governance, On-Chain, Tech/Infra, Competitive Intel, Field Intel, Legal/Regulatory, Technical Analyst, Maturation Scorer, Devil's Advocate, Risk Officer, Portfolio Manager, Report Writer, Ray, Chair |
+| Meta-agents | Excluded from scoring: Report Writer, Ray, Chair, Technical Analyst |
+| Governance layer | Chair decision layer; Risk Officer has veto authority; Chair can override veto with documented reasoning |
+| Pipeline steps | Knowledge retrieval -> parallel data gathering -> sequential adversarial synthesis -> report -> independent review -> chair decision |
 | Output verdicts | BUY / PASS / WATCH / VETO |
-| Report sections | <<FILL: integer - was 24>> |
+| Report sections | 24 |
 | Evaluations run | <<FILL: count to date>> |
 | Scope | L1s, L2s, infrastructure and middleware, not only DeFi |
-| README status | Draft README reviewed 2026-08-13; still contains placeholders for counts, full roster, invocation, sample output and license |
+| README status | Public README updated 2026-08-13 with current committee, scoring, calibration and setup details |
 
 Stack: Python, FastAPI, SQLAlchemy, asyncpg, PostgreSQL + pgvector, Docker Compose,
 Anthropic API (primary), OpenAI (fallback), Notion API, DeFiLlama, Binance.
@@ -52,12 +52,22 @@ Design decisions worth stating publicly:
 - Institutional memory is injected through `mandates.md`, `risk_policy.md`,
   `thesis.md` and `trusted_accounts.md`.
 
-README-confirmed agents, not yet a complete roster:
-- Ray - macro framing and mental models.
-- Risk Officer - downside enumeration and severity ranking.
-- Devil's Advocate - adversarial case against the thesis.
-- Field Intel - signal from tracked accounts.
-- Governance Chief - adjudicates disagreement between agents.
+README-confirmed agents:
+- Tokenomics - token design, supply and emissions.
+- Governance - decentralisation quality and voting.
+- On-Chain - network health, usage and flows.
+- Tech/Infra - technical soundness.
+- Competitive Intel - market positioning.
+- Field Intel - community and sentiment.
+- Legal/Regulatory - compliance exposure.
+- Technical Analyst - entry zones, support/resistance levels and orderbook.
+- Maturation Scorer - growth trajectory.
+- Devil's Advocate - contrarian challenge.
+- Risk Officer - downside, fragility and veto authority.
+- Portfolio Manager - diversification fit and sizing.
+- Report Writer - 24-section report.
+- Ray - independent macro/cycle contrarian pass.
+- Chair - final decision.
 
 Known limitations to state honestly:
 - `init.sql` only runs on a fresh Postgres volume. Existing databases need
