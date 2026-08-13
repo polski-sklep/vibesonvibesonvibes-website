@@ -687,6 +687,7 @@
       overflow: hidden;
       padding: 2px 5px;
       border-right: 1px solid #ddd;
+      border-bottom: 1px solid #e3e0d7;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -705,20 +706,33 @@
     tbody tr {
       opacity: 0;
       animation: rowFadeIn 0.4s ease forwards;
+      background: #fffdf7;
       cursor: pointer;
     }
 
     tbody tr:nth-child(even) {
-      background: #f8f6f0;
+      background: #f2f5fb;
     }
 
     tbody tr:hover {
-      background: var(--lw-blue-light);
+      background: #d8e9ff;
+      outline: 1px solid #82aee5;
+      outline-offset: -1px;
     }
 
     tbody tr.selected {
       background: var(--lw-blue-sel);
       color: #fff;
+    }
+
+    tbody tr.selected td {
+      border-bottom-color: #2c60b8;
+      border-right-color: #8fb5ef;
+    }
+
+    tbody tr.selected:hover {
+      background: #2f72cf;
+      outline-color: #174f9e;
     }
 
     @keyframes rowFadeIn {
@@ -1089,20 +1103,32 @@
       position: fixed;
       z-index: 12000;
       display: none;
-      max-width: min(380px, calc(100vw - 24px));
-      padding: 8px 10px;
+      max-width: min(430px, calc(100vw - 24px));
+      padding: 7px 9px;
       border: 1px solid #000;
       background: #ffffe1;
       color: #000;
       box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.22);
       font-size: 11px;
-      line-height: 1.45;
+      line-height: 1.35;
       pointer-events: none;
     }
 
     .tip-title {
       margin-bottom: 4px;
       font-weight: 700;
+    }
+
+    .tip-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2px 12px;
+      margin-bottom: 5px;
+    }
+
+    .tip-desc {
+      padding-top: 5px;
+      border-top: 1px solid #d8d3a6;
     }
 
     .tip-hash {
@@ -2208,7 +2234,7 @@
         const selected = appIndex === state.selectedIndex ? " selected" : "";
         const sizeClass = app.sizeColor ? "size-cell size-green" : "size-cell";
         return `
-          <tr class="${selected}" data-index="${appIndex}" title="Double-click to browse this host" style="animation-delay:${i * 0.06}s">
+          <tr class="${selected}" data-index="${appIndex}" style="animation-delay:${i * 0.025}s">
             <td class="quality-cell hide-mobile">${stars(app.quality)}</td>
             <td class="num-cell">${app.num}</td>
             <td class="license-cell hide-mobile">${app.license}</td>
@@ -2244,11 +2270,14 @@
       const app = apps[index];
       tooltip.innerHTML = `
         <div class="tip-title">${app.icon} ${escapeHtml(app.name)}</div>
-        <div><strong>Size:</strong> ${escapeHtml(app.size)} &nbsp; <strong>Type:</strong> ${escapeHtml(app.type)}</div>
-        <div><strong>Sources:</strong> ${app.num} peers &nbsp; <strong>Type:</strong> ${escapeHtml(app.type)}</div>
-        <div><strong>Host:</strong> ${app.kind === "skill" ? "Local skill directory" : "GitHub"} &nbsp; <strong>Action:</strong> double-click to browse</div>
+        <div class="tip-meta">
+          <span><strong>Size:</strong> ${escapeHtml(app.size)}</span>
+          <span><strong>Type:</strong> ${escapeHtml(app.type)}</span>
+          <span><strong>Sources:</strong> ${app.num} peers</span>
+          <span><strong>Host:</strong> ${app.kind === "skill" ? "Skill file" : "GitHub"}</span>
+        </div>
         <div><strong>Stack:</strong> ${escapeHtml(app.tech)}</div>
-        <div>${renderHighlightedText(app.desc, app.descHighlights)}</div>
+        <div class="tip-desc">${renderHighlightedText(app.desc, app.descHighlights)}</div>
         <span class="tip-hash">SHA1 ${escapeHtml(app.hash)}</span>
       `;
       tooltip.style.display = "block";
