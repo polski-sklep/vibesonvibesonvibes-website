@@ -15,7 +15,8 @@ Verified by: imported baseline from Codex attachment; fill unresolved fields bef
 
 | Field | Value |
 |---|---|
-| Repo | `polski-sklep/committee-orchestrator` (renamed from `aiic`) |
+| Public repo | `polski-sklep/aiic` |
+| Intended repo name | `polski-sklep/committee-orchestrator` - not currently public; do not link until created/renamed |
 | Site entry | `committee_orchestrator_v2.1_multiagent_crypto.py` |
 | Version | v2.1 |
 | Status | Deployed, running |
