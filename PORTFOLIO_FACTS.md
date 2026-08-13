@@ -28,17 +28,35 @@ Verified by: imported baseline from Codex attachment; fill unresolved fields bef
 | Output verdicts | BUY / PASS / WATCH / VETO |
 | Report sections | <<FILL: integer - was 24>> |
 | Evaluations run | <<FILL: count to date>> |
+| Scope | L1s, L2s, infrastructure and middleware, not only DeFi |
+| README status | Draft README reviewed 2026-08-13; still contains placeholders for counts, full roster, invocation, sample output and license |
 
 Stack: Python, FastAPI, SQLAlchemy, asyncpg, PostgreSQL + pgvector, Docker Compose,
 Anthropic API (primary), OpenAI (fallback), Notion API, DeFiLlama, Binance.
 
 Deployment: Hetzner VPS, Docker Compose, `restart: unless-stopped`, Tailscale-only access.
 
+Problem statement worth stating publicly:
+- Early-stage crypto research is inconsistent when the same analyst asks different
+  questions on different days.
+- The committee exists to ask adversarial questions every time, in a consistent
+  order, and record why it concluded what it concluded.
+
 Design decisions worth stating publicly:
 - Postgres + pgvector as the knowledge store; Notion as the human-readable layer only.
 - Agent personas as markdown files, so behaviour changes without touching Python.
 - Three model tiers (FAST / BALANCED / STRONG) routed per agent by task cost.
 - Structural gate before the committee runs, to reject malformed inputs early.
+- Governance layer adjudicates disagreement rather than averaging it away.
+- Institutional memory is injected through `mandates.md`, `risk_policy.md`,
+  `thesis.md` and `trusted_accounts.md`.
+
+README-confirmed agents, not yet a complete roster:
+- Ray - macro framing and mental models.
+- Risk Officer - downside enumeration and severity ranking.
+- Devil's Advocate - adversarial case against the thesis.
+- Field Intel - signal from tracked accounts.
+- Governance Chief - adjudicates disagreement between agents.
 
 Known limitations to state honestly:
 - `init.sql` only runs on a fresh Postgres volume. Existing databases need
