@@ -1130,16 +1130,6 @@
       padding-top: 5px;
       border-top: 1px solid #d8d3a6;
     }
-
-    .tip-hash {
-      display: block;
-      margin-top: 5px;
-      color: #777;
-      font-family: "Courier New", monospace;
-      font-size: 9px;
-      overflow-wrap: anywhere;
-    }
-
     .skill-modal {
       position: fixed;
       inset: 0;
@@ -1621,7 +1611,6 @@
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="HTMX" data-filter-label="HTMX"><span class="side-icon">▣</span><span>HTMX (1)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Tailscale" data-filter-label="Tailscale"><span class="side-icon">▣</span><span>Tailscale (1)</span></div>
                   <div class="side-item clickable" data-filter-type="tech" data-filter-value="Telethon" data-filter-label="Telethon"><span class="side-icon">▣</span><span>Telethon (1)</span></div>
-                  <div class="side-item clickable" data-filter-type="tech" data-filter-value="Next.js" data-filter-label="Next.js"><span class="side-icon">▣</span><span>Next.js (1)</span></div>
                 </div>
 
                 <div class="side-section">
@@ -1845,15 +1834,14 @@
         bitrate: "271",
         icon: "🤖",
         category: "Agents",
-        desc: "A self-hosted AI investment committee that evaluates crypto projects through 15 specialized agents — analyzing tokenomics, on-chain data, technical structure, governance, and risk in parallel, then stress-testing the bull case through adversarial review before issuing a BUY/PASS/WATCH/VETO recommendation. Tracks every recommendation against actual price performance to measure whether its calls are right.",
+        desc: "A self-hosted AI investment committee that evaluates crypto projects through specialized agents — analyzing tokenomics, on-chain data, technical structure, governance, and risk in parallel, then stress-testing the bull case through adversarial review before issuing a BUY/PASS/WATCH/VETO recommendation. Tracks every recommendation against actual price performance to measure whether its calls are right.",
         descHighlights: [
-          "15 specialized agents",
+          "specialized agents",
           "stress-testing the bull case through adversarial review",
           "BUY/PASS/WATCH/VETO"
         ],
-        tech: "Python, FastAPI, Next.js, pgvector, Claude API",
-        url: "https://github.com/polski-sklep/aiic",
-        hash: "a3f7c9e2b1d456789abcdef0123456789abcdef0"
+        tech: "Python, FastAPI, pgvector, Claude API",
+        url: "https://github.com/polski-sklep/committee-orchestrator"
       },
       {
         name: "ai_curriculum_ingest_v1.4_spaced_rep.py",
@@ -1874,8 +1862,7 @@
           "compounding learning"
         ],
         tech: "Python, Claude API, Telegram Bot API, systemd",
-        url: "https://github.com/polski-sklep/ai-curriculum-ingest",
-        hash: "c1f8a4b2d3e678901cdef2345678901abcdef234"
+        url: "https://github.com/polski-sklep/ai-curriculum-ingest"
       },
       {
         name: "telegram_contact_graph_v1.0.py",
@@ -1895,8 +1882,7 @@
           "without fabricating"
         ],
         tech: "Python, Telethon, Telegram API, JSON",
-        url: "https://github.com/polski-sklep/telegram-contact-graph",
-        hash: "e5b3c4d2f6a789013ef45678901234abcdef5678"
+        url: "https://github.com/polski-sklep/telegram-contact-graph"
       },
       {
         name: "fitness_tracker_power_score_v1.0.zip",
@@ -1917,8 +1903,7 @@
           "Tailscale"
         ],
         tech: "Python, FastAPI, HTMX, Postgres, Claude API, Tailscale",
-        url: "https://github.com/polski-sklep/fitness-tracker",
-        hash: "f6c4d5e3a7b890124f5678901234abcdef6789a"
+        url: "https://github.com/polski-sklep/fitness-tracker"
       },
       {
         kind: "skill",
@@ -1940,8 +1925,7 @@
           "category-killers you missed",
           "Premortem mode assumes the plan already failed"
         ],
-        tech: "Markdown, Prompt Engineering, Claude Skill",
-        hash: "skill-sharpener-268l-21577b"
+        tech: "Markdown, Prompt Engineering, Claude Skill"
       },
       {
         kind: "skill",
@@ -1963,8 +1947,7 @@
           "cited to specific elements",
           "declines when it does not know the work well enough"
         ],
-        tech: "Markdown, Prompt Engineering, Claude Skill",
-        hash: "skill-distil-224l-19904b"
+        tech: "Markdown, Prompt Engineering, Claude Skill"
       },
       {
         kind: "skill",
@@ -1988,8 +1971,7 @@
           "You hold every gate",
           "each pull goes exponentially deeper rather than louder"
         ],
-        tech: "Markdown, Prompt Engineering, Research, Claude Skill",
-        hash: "skill-unpack-152l-17513b"
+        tech: "Markdown, Prompt Engineering, Research, Claude Skill"
       },
       {
         kind: "skill",
@@ -2012,8 +1994,7 @@
           "Refuses to push on unresolved security findings",
           "never force-pushes on your behalf"
         ],
-        tech: "Markdown, Prompt Engineering, GitHub, Claude Skill",
-        hash: "skill-github-deploy-449l-34748b"
+        tech: "Markdown, Prompt Engineering, GitHub, Claude Skill"
       },
       {
         kind: "skill",
@@ -2036,8 +2017,7 @@
           "preserving every fact, number, condition, and qualification",
           "information floor"
         ],
-        tech: "Markdown, Prompt Engineering, Claude Skill",
-        hash: "skill-concise-279l-25859b"
+        tech: "Markdown, Prompt Engineering, Claude Skill"
       }
     ];
 
@@ -2062,7 +2042,8 @@
           name: "committee_orchestrator_v2.1.py",
           size: "1.3 MB",
           status: "Readiness 4/5",
-          progress: 81,
+          progress: 80,
+          label: "4/5",
           time: "",
           kind: "readiness"
         },
@@ -2070,7 +2051,8 @@
           name: "ai_curriculum_ingest_v1.4.py",
           size: "212 KB",
           status: "Readiness 4/5",
-          progress: 78,
+          progress: 80,
+          label: "4/5",
           time: "",
           kind: "readiness"
         },
@@ -2078,7 +2060,8 @@
           name: "telegram_contact_graph_v1.0.py",
           size: "184 KB",
           status: "Readiness 3/5",
-          progress: 62,
+          progress: 60,
+          label: "3/5",
           time: "",
           kind: "readiness"
         },
@@ -2086,7 +2069,8 @@
           name: "fitness_tracker_power_score_v1.0.zip",
           size: "776 KB",
           status: "Readiness 2/5",
-          progress: 43,
+          progress: 40,
+          label: "2/5",
           time: "",
           kind: "readiness"
         }
@@ -2273,12 +2257,11 @@
         <div class="tip-meta">
           <span><strong>Size:</strong> ${escapeHtml(app.size)}</span>
           <span><strong>Type:</strong> ${escapeHtml(app.type)}</span>
-          <span><strong>Sources:</strong> ${app.num} peers</span>
+          <span><strong>Readiness:</strong> ${app.quality}/5</span>
           <span><strong>Host:</strong> ${app.kind === "skill" ? "Skill file" : "GitHub"}</span>
         </div>
         <div><strong>Stack:</strong> ${escapeHtml(app.tech)}</div>
         <div class="tip-desc">${renderHighlightedText(app.desc, app.descHighlights)}</div>
-        <span class="tip-hash">SHA1 ${escapeHtml(app.hash)}</span>
       `;
       tooltip.style.display = "block";
       moveTooltip(event);
@@ -2581,7 +2564,7 @@
           <td>${escapeHtml(download.status)}</td>
           <td>
             <div class="progress">
-              <span class="progress-fill" style="width:${download.progress}%">${download.progress}%</span>
+              <span class="progress-fill" style="width:${download.progress}%">${escapeHtml(download.label)}</span>
             </div>
           </td>
           <td>${escapeHtml(download.time)}</td>
