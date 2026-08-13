@@ -170,7 +170,22 @@ Line counts must be regenerated with `wc -l` on publish, not copied forward.
 
 ---
 
-## 6. vibesonvibesonvibes-website
+## 6. GitHub repo cards
+
+These are the public GitHub repository descriptions shown on the `polski-sklep`
+profile.
+
+| Repo | Description |
+|---|---|
+| `polski-sklep/aiic` | Multi-agent AI investment committee for crypto project evaluation, scoring and calibration. |
+| `polski-sklep/ai-curriculum-ingest` | Telegram bot that turns links, screenshots and notes into a self-building AI learning curriculum. |
+| `polski-sklep/telegram-contact-graph` | LLM pipeline that turns Telegram history into a structured contact CRM in Notion. |
+| `polski-sklep/fitness-tracker` | Single-user fitness tracker with Telegram intake, Claude extraction, Power Score and HTMX dashboard. |
+| `polski-sklep/vibesonvibesonvibes-website` | Retro VibeWire portfolio for vibecoded apps, agents and downloadable Claude skills. |
+
+---
+
+## 7. vibesonvibesonvibes-website
 
 | Field | Value |
 |---|---|
