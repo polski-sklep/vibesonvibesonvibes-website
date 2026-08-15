@@ -2236,7 +2236,7 @@
     function openSelectedProject() {
       const selected = selectedApp();
       if (selected.kind === "skill") {
-        openSkillModal(selected);
+        window.open(skillPath(selected), "_blank", "noopener,noreferrer");
         return;
       }
       window.open(projectUrl(selected), "_blank", "noopener,noreferrer");
