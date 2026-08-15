@@ -20,6 +20,7 @@
   <meta name="twitter:title" content="VibeWire PRO 4.20.69">
   <meta name="twitter:description" content="A chaotic retro internet portfolio disguised as a LimeWire-era app for vibecoded projects, agents, and useful personal systems.">
   <meta name="twitter:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.png">
+  <link rel="preload" as="image" href="images/hero-layers/hero-base.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -68,7 +69,7 @@
     #hero-container {
       position: relative;
       height: 100vh;
-      background: #000;
+      background: #07111a;
       cursor: pointer;
     }
 
@@ -78,7 +79,9 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      background: #000;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(38, 84, 112, 0.4), transparent 35%),
+        linear-gradient(180deg, #08121c 0%, #030508 100%);
     }
 
     #zoom-wrapper {
@@ -98,7 +101,9 @@
       inset: 0;
       z-index: 1;
       overflow: hidden;
-      background-color: #000;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(34, 72, 92, 0.42), transparent 34%),
+        linear-gradient(180deg, #08121c 0%, #020406 100%);
       backface-visibility: hidden;
       transform: translateZ(0);
     }
@@ -114,9 +119,15 @@
       min-width: 100%;
       min-height: 100%;
       aspect-ratio: 1672 / 940;
+      opacity: 0;
       pointer-events: none;
       user-select: none;
       backface-visibility: hidden;
+      transition: opacity 180ms ease-out;
+    }
+
+    #hero-scene.hero-ready #hero-stage {
+      opacity: 1;
     }
 
     #hero-stage .hl {
@@ -1525,7 +1536,7 @@
       <div id="zoom-wrapper">
         <div id="hero-bg">
           <div id="hero-stage" aria-hidden="true">
-            <img id="hero-base" src="images/hero-layers/hero-base.png" alt="" draggable="false">
+            <img id="hero-base" src="images/hero-layers/hero-base.png" alt="" draggable="false" decoding="sync" fetchpriority="high">
 
             <div class="hl hero-plane-band">
               <svg class="hero-plane" viewBox="0 0 56 20" xmlns="http://www.w3.org/2000/svg">
@@ -2106,6 +2117,36 @@
     const skillModalContent = document.getElementById("skill-modal-content");
     const skillModalClose = document.getElementById("skill-modal-close");
     const skillModalDownload = document.getElementById("skill-modal-download");
+
+    function markHeroReady() {
+      heroScene.classList.add("hero-ready");
+    }
+
+    function prepareHeroReveal() {
+      const heroImages = Array.from(document.querySelectorAll("#hero-stage img"));
+      if (!heroImages.length) {
+        markHeroReady();
+        return;
+      }
+
+      const revealFallback = setTimeout(markHeroReady, 2500);
+
+      const imageReady = (image) => {
+        if (image.complete && image.naturalWidth > 0) {
+          return image.decode ? image.decode().catch(() => {}) : Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
+          image.addEventListener("load", resolve, { once: true });
+          image.addEventListener("error", resolve, { once: true });
+        }).then(() => (image.decode ? image.decode().catch(() => {}) : undefined));
+      };
+
+      Promise.all(heroImages.map(imageReady)).then(() => {
+        clearTimeout(revealFallback);
+        requestAnimationFrame(markHeroReady);
+      });
+    }
 
     function escapeHtml(value) {
       return String(value)
@@ -2970,6 +3011,7 @@
     function init() {
       renderResults();
       renderDownloads();
+      prepareHeroReveal();
       initEvents();
       const section = hashToSection();
       if (section) {
