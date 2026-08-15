@@ -2275,8 +2275,7 @@
       }).join("");
 
       resultsBody.querySelectorAll("tr").forEach((row) => {
-        row.addEventListener("click", () => selectRow(Number(row.dataset.index)));
-        row.addEventListener("dblclick", () => {
+        row.addEventListener("click", () => {
           selectRow(Number(row.dataset.index));
           openSelectedProject();
         });
