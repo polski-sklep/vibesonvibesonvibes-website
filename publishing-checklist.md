@@ -10,7 +10,7 @@ Why:
 - Netlify gives HTTPS automatically.
 - Namescheap domains are easy to point at Netlify.
 - No analytics are enabled by default.
-- Hash routes like `#app/search` and `#app/network` work without server routing.
+- Clean routes like `/apps/` work through Netlify redirects; legacy hash routes like `#app/search` and `#app/network` still work.
 
 ## Domain
 
@@ -58,6 +58,7 @@ These project repos were verified as publicly reachable on June 10, 2026. The re
 ## Routes To Test
 
 - `https://vibesonvibesonvibes.com/`
+- `https://vibesonvibesonvibes.com/apps/`
 - `https://vibesonvibesonvibes.com/#app/search`
 - `https://vibesonvibesonvibes.com/#app/network`
 

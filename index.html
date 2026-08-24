@@ -2673,8 +2673,7 @@
       });
 
       if (shouldUpdateHash) {
-        const hash = section === "contact" ? "#app/network" : "#app/search";
-        history.replaceState(null, "", hash);
+        replaceRoute(section);
       }
     }
 
@@ -2742,8 +2741,9 @@
       paintHero(0);
       window.scrollTo(0, 0);
 
-      if (location.hash.startsWith("#app")) {
-        history.replaceState(null, "", `${location.pathname}${location.search}`);
+      if (isAppRoute()) {
+        const rootRoute = supportsCleanRoutes() ? "/" : `${location.pathname}${location.search}`;
+        history.replaceState(null, "", rootRoute);
       }
     }
 
@@ -2951,9 +2951,38 @@
       }
     }
 
+    function supportsCleanRoutes() {
+      return location.protocol === "http:" || location.protocol === "https:";
+    }
+
+    function normalizedPath() {
+      return location.pathname.replace(/\/+$/, "") || "/";
+    }
+
+    function isAppRoute() {
+      return location.hash.startsWith("#app") || normalizedPath() === "/apps";
+    }
+
+    function replaceRoute(section) {
+      if (supportsCleanRoutes() && section === "projects") {
+        history.replaceState(null, "", "/apps/");
+        return;
+      }
+      if (supportsCleanRoutes() && section === "contact") {
+        history.replaceState(null, "", "/#app/network");
+        return;
+      }
+
+      const hash = section === "contact" ? "#app/network" : "#app/search";
+      history.replaceState(null, "", hash);
+    }
+
     function hashToSection() {
       if (location.hash === "#app/network") {
         return "contact";
+      }
+      if (normalizedPath() === "/apps") {
+        return "projects";
       }
       if (location.hash === "#app" || location.hash === "#app/search" || location.hash === "#app/skills") {
         return "projects";
@@ -2968,6 +2997,8 @@
       if (wantsSkills) {
         filterCategory("Skills");
         history.replaceState(null, "", "#app/skills");
+      } else if (location.hash === "#app/search" && supportsCleanRoutes()) {
+        history.replaceState(null, "", "/apps/");
       }
     }
 
