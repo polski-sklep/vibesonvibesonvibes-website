@@ -2,9 +2,9 @@
   publish = "."
 
 [[redirects]]
-  from = "/apps"
-  to = "/apps/"
-  status = 301
+  from = "/apps/"
+  to = "/index.html"
+  status = 200
 
 [[redirects]]
   from = "/apps/*"
