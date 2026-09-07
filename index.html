@@ -95,9 +95,10 @@
       transform-origin: 50% 38%;
       transform: translateZ(0) scale3d(1, 1, 1);
       backface-visibility: hidden;
-      contain: layout paint style;
+      /* Avoid paint containment + permanent will-change: after display/zoom
+         cycles Chromium can keep an empty compositor tile (blank hero). */
+      contain: layout style;
       isolation: isolate;
-      will-change: transform;
     }
 
     #hero-bg {
@@ -2808,8 +2809,13 @@
       appFrame.style.setProperty("--app-scale", "1");
       appFrame.classList.add("locked");
       appFrame.style.transform = "none";
-      zoomWrapper.style.transform = "none";
-      heroContainer.style.display = "none";
+      // Keep hero mounted under the fullscreen app. Hiding it with display:none
+      // after a zoom was leaving a blank/dark hero on the 2nd+ Close/Escape.
+      zoomWrapper.style.transform = "translateZ(0) scale3d(1, 1, 1)";
+      heroContainer.style.display = "";
+      heroContainer.style.visibility = "hidden";
+      heroContainer.style.pointerEvents = "none";
+      heroContainer.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "hidden";
       document.body.style.background = "#ece9d8";
       window.scrollTo(0, 0);
@@ -2827,15 +2833,42 @@
       }
     }
 
-    function returnToHero() {
-      if (!state.locked) {
-        return;
+    function restoreHeroSurface() {
+      heroScene.classList.remove("aku-active");
+      heroScene.classList.add("hero-ready");
+
+      heroContainer.style.display = "";
+      heroContainer.style.visibility = "";
+      heroContainer.style.pointerEvents = "";
+      heroContainer.removeAttribute("aria-hidden");
+
+      // Force a clean identity transform so a prior zoom layer cannot stick.
+      zoomWrapper.style.transform = "translateZ(0) scale3d(1, 1, 1)";
+      void zoomWrapper.offsetWidth;
+
+      const stage = document.getElementById("hero-stage");
+      if (stage) {
+        stage.style.transition = "none";
+        stage.style.opacity = "1";
+        void stage.offsetWidth;
+        stage.style.removeProperty("transition");
+        stage.style.removeProperty("opacity");
       }
 
+      document.querySelectorAll("#hero-stage img").forEach((image) => {
+        if (image.decode) {
+          image.decode().catch(() => {});
+        }
+      });
+    }
+
+    function returnToHero() {
+      const wasLocked = state.locked;
+
+      // Always restore a visible interactive hero (idempotent / safe to repeat).
       state.locked = false;
       state.autoEntering = false;
       resetHeroIntents();
-      heroScene.classList.remove("aku-active");
       hideTooltip();
       closeSkillModal();
       if (state.heroFrame) {
@@ -2843,8 +2876,9 @@
         state.heroFrame = 0;
       }
 
-      heroContainer.style.display = "";
-      zoomWrapper.appendChild(appFrame);
+      if (appFrame.parentElement !== zoomWrapper) {
+        zoomWrapper.appendChild(appFrame);
+      }
       appFrame.classList.remove("locked");
       appFrame.style.transform = "";
       appFrame.style.setProperty("--app-clip", "100%");
@@ -2853,11 +2887,15 @@
       document.body.style.background = "#000";
       state.targetProgress = 0;
       state.renderedProgress = 0;
-      state.heroReturnCooldownUntil = performance.now() + 850;
+      if (wasLocked) {
+        state.heroReturnCooldownUntil = performance.now() + 850;
+      }
+
+      restoreHeroSurface();
       paintHero(0);
       window.scrollTo(0, 0);
 
-      if (isAppRoute()) {
+      if (wasLocked && isAppRoute()) {
         const rootRoute = supportsCleanRoutes() ? "/" : `${location.pathname}${location.search}`;
         history.replaceState(null, "", rootRoute);
       }
