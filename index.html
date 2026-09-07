@@ -15,12 +15,16 @@
   <meta property="og:title" content="VibeWire PRO 4.20.69">
   <meta property="og:description" content="A chaotic retro internet portfolio disguised as a LimeWire-era app for vibecoded projects, agents, and useful personal systems.">
   <meta property="og:url" content="https://vibesonvibesonvibes.com/">
-  <meta property="og:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.png">
+  <meta property="og:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1672">
+  <meta property="og:image:height" content="940">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VibeWire PRO 4.20.69">
   <meta name="twitter:description" content="A chaotic retro internet portfolio disguised as a LimeWire-era app for vibecoded projects, agents, and useful personal systems.">
-  <meta name="twitter:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.png">
-  <link rel="preload" as="image" href="images/hero-layers/hero-base.png" fetchpriority="high">
+  <meta name="twitter:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.webp">
+  <link rel="preload" as="image" href="images/hero-layers/hero-base.avif" type="image/avif" fetchpriority="high">
+  <link rel="preload" as="image" href="images/hero-layers/hero-base.webp" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -136,6 +140,7 @@
       height: auto;
     }
 
+    #hero-base-picture,
     #hero-base {
       position: absolute;
       inset: 0;
@@ -143,6 +148,25 @@
       height: 100%;
       display: block;
     }
+
+    #hero-base-picture img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: fill;
+    }
+
+    .results-empty {
+      text-align: center;
+      color: var(--lw-text-gray);
+      font-style: italic;
+      padding: 18px 12px;
+    }
+
+    .results-empty td {
+      border: none;
+    }
+
 
     .hero-plane-band {
       left: 17.4641%;
@@ -409,6 +433,7 @@
       color: #fff;
       background: linear-gradient(180deg, #ffb39a, #d84024 55%, #9f1f13);
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+      cursor: pointer;
     }
 
     .menu-bar {
@@ -1079,12 +1104,14 @@
       height: 13px;
     }
 
-    .status-link {
+    .status-link,
+    .status-badge {
       flex: 1;
       min-width: 120px;
       color: var(--lw-green-dark);
       text-align: center;
-      text-decoration: underline;
+      text-decoration: none;
+      cursor: default;
     }
 
     .media-player {
@@ -1612,7 +1639,11 @@
       <div id="zoom-wrapper">
         <div id="hero-bg">
           <div id="hero-stage" aria-hidden="true">
-            <img id="hero-base" src="images/hero-layers/hero-base.png" alt="" draggable="false" decoding="sync" fetchpriority="high">
+            <picture id="hero-base-picture">
+              <source srcset="images/hero-layers/hero-base.avif" type="image/avif">
+              <source srcset="images/hero-layers/hero-base.webp" type="image/webp">
+              <img id="hero-base" src="images/hero-layers/hero-base.png" alt="" draggable="false" decoding="sync" fetchpriority="high" width="1672" height="940">
+            </picture>
 
             <div class="hl hero-plane-band">
               <svg class="hero-plane" viewBox="0 0 56 20" xmlns="http://www.w3.org/2000/svg">
@@ -1645,10 +1676,10 @@
                 <span class="lime-icon" aria-hidden="true"></span>
                 <span class="title-text">vibesonvibesonvibes.com v2.1.337 - Connected to Network</span>
               </div>
-              <div class="window-buttons" aria-hidden="true">
-                <button class="win-btn" type="button">_</button>
-                <button class="win-btn" type="button">□</button>
-                <button class="win-btn close" type="button">×</button>
+              <div class="window-buttons">
+                <button class="win-btn" type="button" aria-label="Minimize" title="Minimize (decorative)" tabindex="-1">_</button>
+                <button class="win-btn" type="button" aria-label="Maximize" title="Maximize (decorative)" tabindex="-1">□</button>
+                <button class="win-btn close" type="button" id="win-close" aria-label="Close" title="Return to hero">×</button>
               </div>
             </div>
 
@@ -1757,11 +1788,11 @@
                       <span class="action-icon">🔍</span>
                       <span>Browse Host</span>
                     </button>
-                    <button class="action-button disabled" type="button" disabled>
+                    <button class="action-button disabled" type="button" disabled aria-hidden="true" title="Stop Search (period UI — disabled)">
                       <span class="action-icon">🛑</span>
                       <span>Stop Search</span>
                     </button>
-                    <button class="action-button disabled junk" type="button" disabled>
+                    <button class="action-button disabled junk" type="button" disabled aria-hidden="true" title="Junk (period UI — disabled)">
                       <span class="action-icon">🗑️</span>
                       <span>Junk</span>
                     </button>
@@ -1823,11 +1854,11 @@
                       <span class="action-icon">📡</span>
                       <span>Ping</span>
                     </a>
-                    <button class="action-button disabled" type="button" disabled>
+                    <button class="action-button disabled" type="button" disabled aria-hidden="true" title="Stop Search (period UI — disabled)">
                       <span class="action-icon">🛑</span>
                       <span>Stop Search</span>
                     </button>
-                    <button class="action-button disabled junk" type="button" disabled>
+                    <button class="action-button disabled junk" type="button" disabled aria-hidden="true" title="Junk (period UI — disabled)">
                       <span class="action-icon">🗑️</span>
                       <span>Junk</span>
                     </button>
@@ -1874,8 +1905,8 @@
               <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <span class="status-cluster">⬆ 1 peer</span>
               <span class="status-cluster">⬇ 0 active</span>
-              <a class="status-link">Support vibecoding and open protocols. Get VibeWire PRO.</a>
-              <span class="media-player">
+              <span class="status-link status-badge" title="VibeWire PRO (decorative badge)">Support vibecoding and open protocols. Get VibeWire PRO.</span>
+              <span class="media-player" aria-hidden="true" title="VibeWire Media Player (decorative)">
                 <span class="media-controls">◀◀ ▶ ▶▶</span>
                 <span class="player-label">VibeWire Media Player</span>
               </span>
@@ -2358,6 +2389,15 @@
       downloadAllSkillsButton.hidden = !isSkillsView;
       if (!filtered.some((app) => apps.indexOf(app) === state.selectedIndex)) {
         state.selectedIndex = apps.indexOf(filtered[0] || apps[0]);
+      }
+
+      if (!filtered.length) {
+        resultsBody.innerHTML = `
+          <tr class="results-empty">
+            <td colspan="6">No vibes matched this filter. Try All, or pick another category / tech.</td>
+          </tr>
+        `;
+        return;
       }
 
       resultsBody.innerHTML = filtered.map((app, i) => {
@@ -3112,6 +3152,7 @@
       document.getElementById("download-button").addEventListener("click", addSelectedDownload);
       downloadAllSkillsButton.addEventListener("click", downloadAllSkills);
       document.getElementById("browse-button").addEventListener("click", openSelectedProject);
+      document.getElementById("win-close").addEventListener("click", returnToHero);
       skillModalDownload.addEventListener("click", () => downloadSkill(state.activeSkill));
       skillModalClose.addEventListener("click", closeSkillModal);
       skillModal.addEventListener("click", (event) => {
@@ -3120,8 +3161,12 @@
         }
       });
       window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && skillModal.classList.contains("visible")) {
-          closeSkillModal();
+        if (event.key === "Escape") {
+          if (skillModal.classList.contains("visible")) {
+            closeSkillModal();
+          } else if (state.locked) {
+            returnToHero();
+          }
         }
       });
       window.addEventListener("hashchange", () => {
