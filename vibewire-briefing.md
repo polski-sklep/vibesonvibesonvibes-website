@@ -217,7 +217,7 @@ The page includes:
 
 The search result label is dynamic:
 
-`Vibecoded Apps (4)`
+`Vibecoded Apps (9)`
 
 The number changes based on the active filter.
 
