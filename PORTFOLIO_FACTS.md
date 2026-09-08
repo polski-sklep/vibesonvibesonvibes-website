@@ -155,15 +155,13 @@ Known open bug to disclose rather than hide:
 | Field | Value |
 |---|---|
 | Repo | `polski-sklep/skills` - <<FILL: created? y/n>> |
-| Site entries | sharpener, distil, unpack, github-deploy, concise |
-| Excluded | life-map (personally revealing - stays private, permanently) |
+| Site entries | sharpener, distil, concise |
+| Excluded | life-map (personally revealing - stays private, permanently); unpack and github-deploy removed from site |
 
 | Skill | Lines | Site rating |
 |---|---|---|
 | sharpener | 268 | 4/5 |
 | distil | 224 | 5/5 |
-| unpack | 152 | 4/5 |
-| github-deploy | 449 | 3/5 |
 | concise | 279 | 5/5 |
 
 Line counts must be regenerated with `wc -l` on publish, not copied forward.
@@ -181,6 +179,8 @@ profile.
 | `polski-sklep/ai-curriculum-ingest` | Telegram bot that turns links, screenshots and notes into a self-building AI learning curriculum. |
 | `polski-sklep/telegram-contact-graph` | LLM pipeline that turns Telegram history into a structured contact CRM in Notion. |
 | `polski-sklep/fitness-tracker` | Single-user fitness tracker with Telegram intake, Claude extraction, Power Score and HTMX dashboard. |
+| `polski-sklep/nutrai` | Telegram nutrition tracker with USDA-backed nutrients (no invented values). |
+| `polski-sklep/pop` | Telegram bot that makes podcast listening a conscious choice (48h lock + Spotify check). |
 | `polski-sklep/vibesonvibesonvibes-website` | Retro VibeWire portfolio for vibecoded apps, agents and downloadable Claude skills. |
 
 ---
