@@ -2377,6 +2377,18 @@
       window.open(projectUrl(selected), "_blank", "noopener,noreferrer");
     }
 
+    function openConnectSection() {
+      if (!state.locked) {
+        lockApp("contact");
+      } else {
+        showSection("contact");
+      }
+    }
+
+    function openOrgGitHub() {
+      window.open(GITHUB_HOST, "_blank", "noopener,noreferrer");
+    }
+
     function renderResults() {
       const filtered = visibleApps();
       searchTitle.textContent = state.filterValue === "All"
@@ -3113,7 +3125,9 @@
     }
 
     function isAppRoute() {
-      return location.hash.startsWith("#app") || normalizedPath() === "/apps";
+      return location.hash.startsWith("#app")
+        || location.hash === "#connect"
+        || normalizedPath() === "/apps";
     }
 
     function replaceRoute(section) {
@@ -3122,16 +3136,20 @@
         return;
       }
       if (supportsCleanRoutes() && section === "contact") {
-        history.replaceState(null, "", "/#app/network");
+        history.replaceState(null, "", "/#connect");
         return;
       }
 
-      const hash = section === "contact" ? "#app/network" : "#app/search";
+      const hash = section === "contact" ? "#connect" : "#app/search";
       history.replaceState(null, "", hash);
     }
 
     function hashToSection() {
-      if (location.hash === "#app/network") {
+      if (
+        location.hash === "#app/network"
+        || location.hash === "#app/connect"
+        || location.hash === "#connect"
+      ) {
         return "contact";
       }
       if (normalizedPath() === "/apps") {
@@ -3156,12 +3174,7 @@
     }
 
     function addSelectedDownload() {
-      const app = apps[state.selectedIndex] || apps[0];
-      if (app.kind === "skill") {
-        downloadSkill(app);
-        return;
-      }
-      window.open(projectUrl(app), "_blank", "noopener,noreferrer");
+      openOrgGitHub();
     }
 
     function initEvents() {
@@ -3188,7 +3201,7 @@
       document.getElementById("mobile-filter").addEventListener("click", () => sidebar.classList.toggle("mobile-open"));
       document.getElementById("download-button").addEventListener("click", addSelectedDownload);
       downloadAllSkillsButton.addEventListener("click", downloadAllSkills);
-      document.getElementById("browse-button").addEventListener("click", openSelectedProject);
+      document.getElementById("browse-button").addEventListener("click", openConnectSection);
       document.getElementById("win-close").addEventListener("click", returnToHero);
       skillModalDownload.addEventListener("click", () => downloadSkill(state.activeSkill));
       skillModalClose.addEventListener("click", closeSkillModal);
