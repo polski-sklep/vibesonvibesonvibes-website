@@ -81,7 +81,7 @@ Known limitations to state honestly:
 | Field | Value |
 |---|---|
 | Repo | `polski-sklep/ai-curriculum-ingest` |
-| Site entry | `curriculum_ingest_v1.4.py` |
+| Site entry | `ai_curriculum_ingest_v1.4.py` |
 | Version | v1.4 |
 | Status | <<FILL: active / dormant / archived>> |
 | Readiness (site) | 4/5 |
@@ -102,7 +102,7 @@ Site claims v1.4. Resolve before publishing anything else.
 |---|---|
 | Public repo | `polski-sklep/telegram-contact-graph` |
 | Private repo | `polski-sklep/telegram-bd-scraper` (NEVER public) |
-| Site entry | `contact_graph_v1.0.py` |
+| Site entry | `telegram_contact_graph_v1.0.py` |
 | Version | v1.0 |
 | Readiness (site) | 3/5 |
 | Contacts processed | 1637 (500 frozen + 1137 open) - <<FILL: confirm current>> |
