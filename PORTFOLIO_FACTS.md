@@ -17,7 +17,7 @@ Verified by: imported baseline from Codex attachment; fill unresolved fields bef
 |---|---|
 | Public repo | `polski-sklep/aiic` |
 | Intended repo name | `polski-sklep/committee-orchestrator` - not currently public; do not link until created/renamed |
-| Site entry | `committee_orchestrator_v2.1_multiagent_crypto.py` |
+| Site entry | `AIIC_v2.1.py` |
 | Version | v2.1 |
 | Status | Deployed, running |
 | Readiness (site) | 4/5 |
@@ -81,7 +81,7 @@ Known limitations to state honestly:
 | Field | Value |
 |---|---|
 | Repo | `polski-sklep/ai-curriculum-ingest` |
-| Site entry | `ai_curriculum_ingest_v1.4_spaced_rep.py` |
+| Site entry | `curriculum_ingest_v1.4.py` |
 | Version | v1.4 |
 | Status | <<FILL: active / dormant / archived>> |
 | Readiness (site) | 4/5 |
@@ -102,7 +102,7 @@ Site claims v1.4. Resolve before publishing anything else.
 |---|---|
 | Public repo | `polski-sklep/telegram-contact-graph` |
 | Private repo | `polski-sklep/telegram-bd-scraper` (NEVER public) |
-| Site entry | `telegram_contact_graph_v1.0.py` |
+| Site entry | `contact_graph_v1.0.py` |
 | Version | v1.0 |
 | Readiness (site) | 3/5 |
 | Contacts processed | 1637 (500 frozen + 1137 open) - <<FILL: confirm current>> |
@@ -125,7 +125,7 @@ sanitised code, or remove the site entry.
 | Field | Value |
 |---|---|
 | Repo | `polski-sklep/fitness-tracker` |
-| Site entry | `fitness_tracker_power_score_v1.0.zip` |
+| Site entry | `fitness_tracker_v1.0.zip` |
 | Version | v1.0 (Power Score formula v1.1) |
 | Status | Running locally. Not deployed to VPS. |
 | Readiness (site) | 2/5 |
