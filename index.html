@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <script>
+    // A static site-root base also guides the browser's speculative preloader
+    // on /apps/. Local file previews resolve relative to this HTML instead.
+    if (location.protocol === "file:") {
+      document.querySelector("base").href = new URL(".", location.href).href;
+    }
+  </script>
   <title>VibeWire PRO 4.20.69 - vibesonvibesonvibes.com</title>
   <meta name="description" content="A chaotic retro internet portfolio disguised as VibeWire: browse Jacob Kowalewski's vibecoded apps, agents, and odd useful systems through a Windows 95/LimeWire fever dream.">
   <meta name="robots" content="index, follow">
@@ -23,8 +31,8 @@
   <meta name="twitter:title" content="VibeWire PRO 4.20.69">
   <meta name="twitter:description" content="A chaotic retro internet portfolio disguised as a LimeWire-era app for vibecoded projects, agents, and useful personal systems.">
   <meta name="twitter:image" content="https://vibesonvibesonvibes.com/images/new/vibesvibesvibes-website-click-for-vibes.webp">
-  <link rel="preload" as="image" href="images/hero-layers/hero-base.avif" type="image/avif" fetchpriority="high">
-  <link rel="preload" as="image" href="images/hero-layers/hero-base.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/new/vibesvibesvibes-website-click-for-vibes.avif" type="image/avif" fetchpriority="high">
+  <link rel="preload" as="image" href="images/new/vibesvibesvibes-website-click-for-vibes.webp" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -113,7 +121,7 @@
       transform: translateZ(0);
     }
 
-    /* Hero animation layers: base -> plane -> skyline -> straws -> occluders. */
+    /* Complete static poster beneath an atomic, independently layered animation. */
     #hero-stage {
       position: absolute;
       left: 51%;
@@ -169,105 +177,17 @@
     }
 
 
-    .hero-plane-band {
-      left: 17.4641%;
-      top: 3.8298%;
-      width: 66.7464%;
-      height: 5.3191%;
-      overflow: hidden;
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-      mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-    }
-
-    .hero-plane {
+    #hero-animation {
       position: absolute;
-      left: 100%;
-      top: 32%;
-      width: 2.51%;
-      height: auto;
-      animation: hero-plane-fly 46s linear infinite;
-      will-change: transform;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      pointer-events: none;
     }
 
-    @keyframes hero-plane-fly {
-      0% {
-        transform: translateX(0);
-      }
-
-      84%,
-      100% {
-        transform: translateX(-4150%);
-      }
-    }
-
-    .hero-nav-light {
-      animation: hero-nav-blink 1.3s linear infinite;
-    }
-
-    @keyframes hero-nav-blink {
-      0%,
-      7% {
-        opacity: 1;
-      }
-
-      11%,
-      100% {
-        opacity: 0;
-      }
-    }
-
-    #hl-skyline {
-      left: 17.4641%;
-      top: 3.8298%;
-      width: 66.7464%;
-    }
-
-    #hl-straw-l {
-      left: 2.8708%;
-      top: 42.5532%;
-      width: 4.5455%;
-    }
-
-    #hl-straw-r {
-      left: 92.6435%;
-      top: 40.7447%;
-      width: 4.7847%;
-    }
-
-    #hl-hole-l {
-      left: 6.4593%;
-      top: 55.8511%;
-      width: 1.8541%;
-    }
-
-    #hl-hole-r {
-      left: 91.6866%;
-      top: 54.3617%;
-      width: 1.8541%;
-    }
-
-    #hl-occ-pouch-l {
-      left: 22.6077%;
-      top: 65.9574%;
-      width: 3.3493%;
-    }
-
-    #hl-occ-tower-l {
-      left: 29.7847%;
-      top: 67.8723%;
-      width: 3.2297%;
-    }
-
-    #hl-occ-tower-r {
-      left: 67.1651%;
-      top: 67.8723%;
-      width: 3.5287%;
-    }
-
-    #hl-occ-pouch-r {
-      left: 74.3421%;
-      top: 65.7447%;
-      width: 3.4091%;
+    .hero-animated #hero-animation {
+      display: block;
     }
 
     #aku-aku {
@@ -1641,33 +1561,11 @@
         <div id="hero-bg">
           <div id="hero-stage" aria-hidden="true">
             <picture id="hero-base-picture">
-              <source srcset="images/hero-layers/hero-base.avif" type="image/avif">
-              <source srcset="images/hero-layers/hero-base.webp" type="image/webp">
-              <img id="hero-base" src="images/hero-layers/hero-base.png" alt="" draggable="false" decoding="sync" fetchpriority="high" width="1672" height="940">
+              <source srcset="images/new/vibesvibesvibes-website-click-for-vibes.avif" type="image/avif">
+              <source srcset="images/new/vibesvibesvibes-website-click-for-vibes.webp" type="image/webp">
+              <img id="hero-base" src="images/new/vibesvibesvibes-website-click-for-vibes.png" alt="" draggable="false" decoding="sync" fetchpriority="high" width="1672" height="940">
             </picture>
-
-            <div class="hl hero-plane-band">
-              <svg class="hero-plane" viewBox="0 0 56 20" xmlns="http://www.w3.org/2000/svg">
-                <g fill="#242836" opacity="0.93">
-                  <path d="M1 10.5 Q5 8.6 13 8.4 L45 8.2 Q51 8 55 6.2 L55 8.4 Q50 10.8 44 11 L13 11 Q5 11.2 1 10.5 Z"/>
-                  <path d="M44 8.4 L50 2.4 L53.4 2.4 L48.6 8.3 Z"/>
-                  <path d="M21 9.6 L33 14.6 L29.4 15.4 L17.6 10.6 Z"/>
-                  <path d="M23 8.4 L31 4.6 L33.6 5 L27.4 8.4 Z" opacity="0.85"/>
-                </g>
-                <circle class="hero-nav-light" cx="51.6" cy="3" r="1.5" fill="#ff5a4d"/>
-              </svg>
-            </div>
-            <img class="hl" id="hl-skyline" src="images/hero-layers/skyline-strip.png" alt="" draggable="false">
-
-            <img class="hl" id="hl-straw-l" src="images/hero-layers/straw-l.png" alt="" draggable="false">
-            <img class="hl" id="hl-straw-r" src="images/hero-layers/straw-r.png" alt="" draggable="false">
-            <img class="hl" id="hl-hole-l" src="images/hero-layers/hole-l.png" alt="" draggable="false">
-            <img class="hl" id="hl-hole-r" src="images/hero-layers/hole-r.png" alt="" draggable="false">
-
-            <img class="hl" id="hl-occ-pouch-l" src="images/hero-layers/occ-pouch-l.png" alt="" draggable="false">
-            <img class="hl" id="hl-occ-tower-l" src="images/hero-layers/occ-tower-l.png" alt="" draggable="false">
-            <img class="hl" id="hl-occ-tower-r" src="images/hero-layers/occ-tower-r.png" alt="" draggable="false">
-            <img class="hl" id="hl-occ-pouch-r" src="images/hero-layers/occ-pouch-r.png" alt="" draggable="false">
+            <canvas id="hero-animation" width="1672" height="940" aria-hidden="true"></canvas>
           </div>
         </div>
         <div id="app-frame">
@@ -1934,6 +1832,7 @@
     </div>
   </div>
 
+  <script src="js/hero-animation.js"></script>
   <script>
     const GITHUB_HOST = "https://github.com/polski-sklep";
 
@@ -2151,7 +2050,6 @@
       targetProgress: 0,
       renderedProgress: 0,
       heroFrame: 0,
-      heroClicks: 0,
       heroScrollIntent: 0,
       heroReverseIntent: 0,
       heroReverseScrolls: 0,
@@ -2259,7 +2157,7 @@
         }).then(() => (image.decode ? image.decode().catch(() => {}) : undefined));
       };
 
-      Promise.all(heroImages.map(imageReady)).then(() => {
+      Promise.all([...heroImages.map(imageReady), window.heroAnimation?.ready]).then(() => {
         clearTimeout(revealFallback);
         requestAnimationFrame(markHeroReady);
       });
@@ -2829,6 +2727,7 @@
       }
 
       state.locked = true;
+      window.heroAnimation?.setActive(false);
       state.autoEntering = false;
       resetHeroIntents();
       heroScene.classList.remove("aku-active");
@@ -2851,7 +2750,6 @@
     }
 
     function resetHeroIntents() {
-      state.heroClicks = 0;
       state.heroScrollIntent = 0;
       state.heroReverseIntent = 0;
       state.heroReverseScrolls = 0;
@@ -2920,6 +2818,7 @@
       }
 
       restoreHeroSurface();
+      window.heroAnimation?.setActive(true);
       paintHero(0);
       window.scrollTo(0, 0);
 
@@ -2938,8 +2837,12 @@
         return;
       }
 
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        lockApp(section);
+        return;
+      }
+      window.heroAnimation?.setActive(false);
       state.autoEntering = true;
-      state.heroClicks = 0;
       state.heroScrollIntent = 0;
       heroScene.classList.remove("aku-active");
       void heroScene.offsetWidth;
@@ -2976,14 +2879,7 @@
     }
 
     function handleHeroClick() {
-      if (state.locked) {
-        return;
-      }
-
-      state.heroClicks += 1;
-      if (state.heroClicks >= 2) {
-        startAutoEnter(hashToSection() || "projects");
-      }
+      startAutoEnter(hashToSection() || "projects");
     }
 
     function isSkillModalOpen() {
