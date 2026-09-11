@@ -35,3 +35,5 @@ Symmetric side-layer follow-up:
 - After entrance, 32 sampled frames still produce exactly two states per straw. The broad straw sample regions also contain the sliding background during entrance; they should only be used for state counts after 1.2 seconds.
 - Checked entry/Escape return, a mobile viewport, static reduced-motion output, `/apps/` loading and direct `file://` loading with the new self-contained SVG assets. No uncaught JavaScript errors.
 - The finished side composite is cached; only the first 1.2 seconds require side-layer recompositing. Script syntax and whitespace checks pass. Physical-device/Safari and production checks remain outstanding.
+
+Static MissingNo follow-up: the entrance animation is removed. Both patterns now retain identical rendered samples at 0, 0.3, 0.6, 1.2, 2 and 10 seconds, with all animation assets loaded and no JavaScript errors. The earlier entrance-specific checks above are historical.

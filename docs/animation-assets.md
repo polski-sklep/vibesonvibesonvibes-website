@@ -35,7 +35,7 @@ Create a transparent PNG asset for a distant airplane flyover. ONE extremely thi
 These assets were extracted by editing the existing SVG document, without image generation or redrawing the source imagery:
 
 - `phone-source.svg`: original right-phone group (top-level child 8) and only its referenced definitions, from `images/new/vibesvibesvibes website.svg`. Rendered at 1672×940, translated +267px / −170px to align with the current hero; the left phone is an exact horizontal reflection.
-- `missingno-source.svg`: original right MissingNo group (child 6) and referenced definitions. One copy per side, mirrored around the artwork centre. Both slide inward 220px over 1.2s, then remain still.
+- `missingno-source.svg`: original right MissingNo group (child 6) and referenced definitions. One copy per side, mirrored around the artwork centre. Both are static in their final positions from the first frame; the earlier slide-in has been removed.
 - `skyline-source.svg`: original skyline group (child 7), used only beneath the old side objects; the centre of the collage retains its existing pixels.
 - `pouch-mask-source.svg`: original pouch groups (children 13/14) and their alpha-mask definitions. Right alignment +75/−9px; left −77/−31px. Colour images are replaced by white rectangles under their original masks because only silhouettes are needed. The compositor removes exposed old-straw tips from this mask while keeping the foil under each shaft opaque.
 

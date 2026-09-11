@@ -64,7 +64,6 @@
   const phones = makeCanvas(W, H);
   const pouchMask = makeCanvas(W, H);
   const sideComposite = makeCanvas(W, H);
-  let lastSideSlide = null;
   // Centre the visible artwork, excluding its transparent wave padding.
   const lockupOrigin = {
     x: screen.reduce((sum, point) => sum + point[0], 0) / screen.length - (16 + 328 / 2),
@@ -149,29 +148,25 @@
     pink.addColorStop(0,"#bdd0df"); pink.addColorStop(.025,"#d8a0bd");
     pink.addColorStop(1,"#c995b5");
     p.fillStyle=pink; p.fillRect(0,0,250,8);
+    prepareSides();
   }
 
-  function drawSides(seconds) {
-    // One entrance per page load: 1.2s ease-out, with no bounce or replay when
-    // returning from the app. Reduced motion uses the final position directly.
-    const progress = Math.min(1, seconds / 1.2);
-    const slide = 220 * Math.pow(1 - progress, 3);
-    if (lastSideSlide === slide) { ctx.drawImage(sideComposite, 0, 0); return; }
-    lastSideSlide = slide;
+  function prepareSides() {
+    // Phones and MissingNo stay in their final mirrored positions from the
+    // first frame. Build this static composite only once after assets decode.
     const sides = sideComposite.getContext("2d");
     sides.clearRect(0, 0, W, H);
     sides.drawImage(sideBackground, 0, 0);
     for (const region of sideWindows) {
       sides.save(); polygon(sides, region); sides.clip();
-      sides.drawImage(images.missingno, slide, 0, W, H);
+      sides.drawImage(images.missingno, 0, 0, W, H);
       sides.translate(W, 0); sides.scale(-1, 1);
-      sides.drawImage(images.missingno, slide, 0, W, H);
+      sides.drawImage(images.missingno, 0, 0, W, H);
       sides.restore();
     }
     sides.drawImage(phones, 0, 0);
     sides.save(); sides.globalCompositeOperation = "destination-out";
     sides.drawImage(pouchMask, 0, 0); sides.restore();
-    ctx.drawImage(sideComposite, 0, 0);
   }
 
   function drawClouds(seconds) {
@@ -320,7 +315,7 @@
     ctx.clearRect(0, 0, W, H);
     if (motion.matches) {
       ctx.drawImage(images.original, 0, 0, W, H);
-      drawSides(1.2);
+      ctx.drawImage(sideComposite, 0, 0);
       ctx.save(); polygon(ctx, screen); ctx.clip();
       ctx.drawImage(images.clean, 0, 0, W, H);
       ctx.imageSmoothingQuality = "high";
@@ -329,7 +324,7 @@
       return;
     }
     ctx.drawImage(backdrop, 0, 0);
-    drawSides(seconds);
+    ctx.drawImage(sideComposite, 0, 0);
     drawPlane(seconds);
     // Reduced frame rate, fixed centres, exact integer frame counts per loop.
     ctx.save(); polygon(ctx, crystalWindows[0]); ctx.clip();
