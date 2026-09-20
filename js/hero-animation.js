@@ -170,7 +170,7 @@
   }
 
   function drawClouds(seconds) {
-    const offset = (seconds * 1.2) % cloudStrip.width;
+    const offset = (seconds * 1.8) % cloudStrip.width;
     ctx.save(); polygon(ctx, screen); ctx.clip();
     ctx.drawImage(cloudStrip, 607 + offset, 188);
     ctx.drawImage(cloudStrip, 607 + offset - cloudStrip.width, 188);
@@ -258,7 +258,7 @@
   function strawLength(seconds, right) {
     const holds = right ? [1020, 1180] : [940, 1140];
     const lengths = [62, 143];
-    let ms = (seconds * 1300 + (right ? 730 : 0)) % holds.reduce((a, b) => a + b, 0);
+    let ms = (seconds * 1950 + (right ? 730 : 0)) % holds.reduce((a, b) => a + b, 0);
     for (let i = 0; i < holds.length; i++) {
       if (ms < holds[i]) return lengths[i];
       ms -= holds[i];
@@ -289,7 +289,9 @@
     if (position >= 60) return;
     const angle = Math.atan2(400, 565);
     const travel = position * 1040 / 84;
-    const distance = 300 + travel;
+    // Begin just below the roof edge so the aircraft emerges within 2s of
+    // the first animated frame, keeping the established trajectory and speed.
+    const distance = 345 + travel;
     const x = 1536 - Math.cos(angle) * distance;
     const y = 400 - Math.sin(angle) * distance;
     ctx.save();

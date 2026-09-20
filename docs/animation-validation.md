@@ -37,3 +37,5 @@ Symmetric side-layer follow-up:
 - The finished side composite is cached; only the first 1.2 seconds require side-layer recompositing. Script syntax and whitespace checks pass. Physical-device/Safari and production checks remain outstanding.
 
 Static MissingNo follow-up: the entrance animation is removed. Both patterns now retain identical rendered samples at 0, 0.3, 0.6, 1.2, 2 and 10 seconds, with all animation assets loaded and no JavaScript errors. The earlier entrance-specific checks above are historical.
+
+2026-09-20 timing update: straws and clouds run 50% faster than the previous release (straw clocks 1.95× original; clouds 1.8px/s rightward). The plane starts 345px along the same flight line. Chromium pixel checks against an empty-sky frame show it hidden at 0/0.5s, starting to emerge at 1s, and visible at 1.5/2s. Timing begins once artwork assets finish decoding. Both straws retain exactly two positions; five left-straw transitions occur in three seconds. Clouds move, and no JavaScript errors were reported.
