@@ -1874,15 +1874,26 @@
         bitrate: "128",
         icon: "🥗",
         category: "Apps",
-        desc: "A Telegram nutrition tracker: photograph or describe a meal and the model names the food, never inventing a nutrient value. Every figure is looked up in SQL against 13,636 USDA records. An Atwater cross-check recomputes energy from macronutrients and flags any dish that disagrees with the database by more than 12%. Supplements can be tracked and tick themselves off when a meal names them; fasting windows are derived from the timestamps.",
+        desc: "A Telegram-first nutrition tracker: photograph or describe a meal and the model IDs the food; nutrients come from USDA SQL and are never invented. /command turns a sentence into diary changes after you confirm; /edit revises logged entries; /again takes multiple numbers; /why, /next, and /leftovers cover follow-ups. Homemade is on by default. Sunday challenge, birthday tracking with optional cake kcal, and a morning note that scores every target. Meals use names rather than clock slots. Serves-two and batches, alcohol-in-food is not treated as drunk, and cigarettes are typed like food.",
         descHighlights: [
-          "photograph or describe a meal",
-          "never inventing a nutrient value",
-          "13,636 USDA records",
-          "Atwater cross-check",
-          "flags any dish that disagrees with the database by more than 12%",
-          "Supplements",
-          "fasting windows"
+          "Telegram-first",
+          "model IDs the food",
+          "USDA SQL",
+          "never invented",
+          "/command",
+          "/edit",
+          "/again",
+          "/why",
+          "/next",
+          "/leftovers",
+          "Homemade",
+          "Sunday challenge",
+          "birthday tracking with optional cake kcal",
+          "morning note that scores every target",
+          "Meals use names rather than clock slots",
+          "Serves-two",
+          "alcohol-in-food is not treated as drunk",
+          "cigarettes are typed like food"
         ],
         tech: "Python, Telegram Bot API, SQL, USDA SR",
         url: "https://github.com/polski-sklep/nutrAI"
@@ -1950,7 +1961,7 @@
         url: "https://github.com/polski-sklep/fitness-tracker"
       },
       {
-        name: "POP_v1.0.py",
+        name: "DRBR_doctor_brain_rot_v1.0.py",
         quality: 2,
         num: 6,
         license: "✅",
@@ -1961,13 +1972,13 @@
         bitrate: "128",
         icon: "🎧",
         category: "Apps",
-        desc: "A Telegram bot that cuts excessive podcast bingeing by making every listen a conscious choice: a desired episode is sent to the bot and locked for 48 hours, not saved until specific reasoning is provided. On Sunday the bot lists episodes back with runtimes (maximum allowance of 180 minutes a week), then uses the Spotify API to summarise what was actually played.",
+        desc: "DRBR (Doctor Brain Rot) is an 8-week brain-rot diagnostic that absorbs the POP podcast queue: desired episodes go to Telegram, lock for 48 hours until you give a reason, and Spotify summarises what was actually played. The queue and playback data feed the diagnostic.",
         descHighlights: [
-          "conscious choice",
-          "locked for 48 hours",
-          "specific reasoning",
-          "180 minutes a week",
-          "Spotify API"
+          "DRBR (Doctor Brain Rot)",
+          "8-week brain-rot diagnostic",
+          "POP podcast queue",
+          "lock for 48 hours",
+          "Spotify"
         ],
         tech: "Python, Telegram Bot API, Spotify API",
         url: "https://github.com/polski-sklep/POP"

@@ -179,8 +179,8 @@ profile.
 | `polski-sklep/ai-curriculum-ingest` | Telegram bot that turns links, screenshots and notes into a self-building AI learning curriculum. |
 | `polski-sklep/telegram-contact-graph` | LLM pipeline that turns Telegram history into a structured contact CRM in Notion. |
 | `polski-sklep/fitness-tracker` | Single-user fitness tracker with Telegram intake, Claude extraction, Power Score and HTMX dashboard. |
-| `polski-sklep/nutrAI` | Telegram nutrition tracker with USDA-backed nutrients (no invented values). |
-| `polski-sklep/POP` | Telegram bot that makes podcast listening a conscious choice (48h lock + Spotify check). |
+| `polski-sklep/nutrAI` | Telegram-first nutrition tracker: model IDs food; nutrients from USDA SQL (never invented). |
+| `polski-sklep/POP` | DRBR (Doctor Brain Rot): 8-week brain-rot diagnostic absorbing the POP podcast queue (48h lock + Spotify). |
 | `polski-sklep/vibesonvibesonvibes-website` | Retro VibeWire portfolio for vibecoded apps, agents and downloadable Claude skills. |
 
 ---
