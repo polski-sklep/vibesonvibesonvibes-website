@@ -17,7 +17,7 @@ Verified by: imported baseline from Codex attachment; fill unresolved fields bef
 |---|---|
 | Public repo | `polski-sklep/aiic` |
 | Intended repo name | `polski-sklep/committee-orchestrator` - not currently public; do not link until created/renamed |
-| Site entry | `AIIC_v2.1.py` |
+| Site entry | `investment_committee_v2.1.py` |
 | Version | v2.1 |
 | Status | Deployed, running |
 | Readiness (site) | 4/5 |
