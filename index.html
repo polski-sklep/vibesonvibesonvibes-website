@@ -1073,6 +1073,12 @@
       pointer-events: none;
     }
 
+    @media (max-width: 768px), (hover: none), (pointer: coarse) {
+      #tooltip {
+        display: none !important;
+      }
+    }
+
     .tip-title {
       margin-bottom: 4px;
       font-weight: 700;
@@ -2129,6 +2135,10 @@
     const resultsWarningText = document.getElementById("results-warning-text");
     const downloadAllSkillsButton = document.getElementById("download-all-skills");
     const tooltip = document.getElementById("tooltip");
+    const tooltipHover = matchMedia("(min-width: 769px) and (hover: hover) and (pointer: fine)");
+    tooltipHover.addEventListener("change", hideTooltip);
+    document.addEventListener("pointerdown", hideTooltip);
+    window.addEventListener("blur", hideTooltip);
     const skillModal = document.getElementById("skill-modal");
     const skillModalTitle = document.getElementById("skill-modal-title");
     const skillModalContent = document.getElementById("skill-modal-content");
@@ -2358,12 +2368,14 @@
 
       resultsBody.querySelectorAll("tr").forEach((row) => {
         row.addEventListener("click", () => {
+          hideTooltip();
           selectRow(Number(row.dataset.index));
           openSelectedProject();
         });
-        row.addEventListener("mouseenter", (event) => showTooltip(Number(row.dataset.index), event));
-        row.addEventListener("mousemove", moveTooltip);
-        row.addEventListener("mouseleave", hideTooltip);
+        row.addEventListener("pointerenter", (event) => showTooltip(Number(row.dataset.index), event));
+        row.addEventListener("pointermove", moveTooltip);
+        row.addEventListener("pointerleave", hideTooltip);
+        row.addEventListener("pointercancel", hideTooltip);
       });
     }
 
@@ -2375,6 +2387,10 @@
     }
 
     function showTooltip(index, event) {
+      if (!tooltipHover.matches || event.pointerType !== "mouse") {
+        hideTooltip();
+        return;
+      }
       const app = apps[index];
       tooltip.innerHTML = `
         <div class="tip-title">${app.icon} ${escapeHtml(app.name)}</div>
@@ -2392,6 +2408,10 @@
     }
 
     function moveTooltip(event) {
+      if (!tooltipHover.matches || event.pointerType !== "mouse") {
+        hideTooltip();
+        return;
+      }
       const offset = 15;
       const box = tooltip.getBoundingClientRect();
       let x = event.clientX + offset;
